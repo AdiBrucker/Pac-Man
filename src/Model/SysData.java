@@ -18,11 +18,11 @@ public class SysData implements Serializable{
 	
 	
 	///Stores all questions from the class that imports the JSON 
-	private static List<Question> questions;
+	public static List<Question> questions;
 	//all the pacman results after the game finish;
 	/// can be a hash map right now i cant see why 
 	// i think that at the table scores same player can be appear more then one time ;
-	private  ArrayList< Pacman>Pacman;
+	public  ArrayList< Pacman>Pacman;
 	/**The path to which the data will be stored*/
 	public static String route="src//Serializable.ser";
 	

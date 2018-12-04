@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import jdk.internal.org.objectweb.asm.commons.InstructionAdapter;
 
 import java.awt.*;
 
@@ -40,7 +41,7 @@ public class GameView{
     public static void  initGame(){
         ViewLogic instance = ViewLogic.getInstance();
         controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
-        SysData s=new SysData();//// just for checking the question json
+        //SysData s=new SysData();//// just for checking the question json
 
         Game game = Game.getInstance();
         JFrame frame = new JFrame(game.TITLE);
@@ -48,6 +49,7 @@ public class GameView{
         frame.add(BorderLayout.PAGE_END, game);
         frame.add(BorderLayout.WEST,instance.getlScoreForPacman());
         frame.add(BorderLayout.EAST,instance.getLifeScoreForPacman());
+        frame.add(BorderLayout.CENTER,instance.getTimer());
         frame.setResizable(false);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

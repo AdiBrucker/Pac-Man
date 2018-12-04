@@ -25,9 +25,9 @@ public class ViewLogic {
             instance = new ViewLogic();
             game = Game.getInstance();
             lScore = new Label("SCORE: " + String.valueOf(Game.pacman.getScore()));
-    //         lScore.setMinimumSize(new Dimension(200,50));
+    //      lScore.setMinimumSize(new Dimension(200,50));
              
-            lScore.setPreferredSize(new Dimension(500,70));
+            lScore.setPreferredSize(new Dimension(400,70));
 //           lScore.setMaximumSize(new Dimension(200,50));
             lScore.setForeground(Color.WHITE);
             lScore.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD

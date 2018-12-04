@@ -6,9 +6,9 @@ import Model.SysData;
 
 public class PacmanController {
 	
-	private static PacmanController instance;///singleton
+	public static PacmanController instance;///singleton
 	/** ModelLogic reference pointer */
-	private static InterModel model;
+	public static InterModel model;
 	//Constructor
 	public PacmanController() {
 		model = new ModelLogic();

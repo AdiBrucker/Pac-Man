@@ -17,12 +17,12 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
 	private static final long serialVersionUID = 1L;
 
     public boolean right, left, up, down;
-    private int speed = 4;
+    public int speed = 4;
     private Location location;
-    private static int lifeScore = 3;
-    private static int score = 0; 
-    private static ViewLogic viewInstance;
-    private String PacmanNane;
+    public static int lifeScore = 3;
+    public static int score = 0;
+    public static ViewLogic viewInstance;
+    public String PacmanNane;
     private int score1  ; //// just for checking how the score saved to a file
 
     public Pacman(int x, int y){

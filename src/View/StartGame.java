@@ -63,7 +63,7 @@ public class StartGame {
             button.setMaxSize(260, 30);
             button.setTranslateX(-110);
             button.setTranslateY(-110);
-            button.setStyle("-fx-background-color:transparent ");
+            button.setStyle("-fx-background-color:transparent ; -fx-text-fill:transparent ");
          //  button.setOnAction(e->Controller.MainClass.getInstance().begin() );
             button.setOnAction(e->new GameView() );
 
@@ -74,7 +74,7 @@ public class StartGame {
             button1.setMaxSize(300, 30);
             button1.setTranslateX(-50);
             button1.setTranslateY(23);
-            button1.setStyle("-fx-background-color:transparent ");
+            button1.setStyle("-fx-background-color:transparent; -fx-text-fill:transparent ");
             //   button1.setOnAction(e->);
 
             button2 = new Button("LogOut");
@@ -82,7 +82,7 @@ public class StartGame {
             button2.setMaxSize(250, 30);
             button2.setTranslateX(-60);
             button2.setTranslateY(100);
-            button2.setStyle("-fx-background-color:transparent ");
+            button2.setStyle("-fx-background-color:transparent; -fx-text-fill:transparent ");
             button2.setOnAction(e -> {
                 stage.close();
             });

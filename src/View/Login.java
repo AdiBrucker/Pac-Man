@@ -59,7 +59,7 @@ public class Login  {
        comboBox.setPromptText("How many Players?");
        comboBox.setMaxSize(450,50);
        comboBox.setMinSize(450,50);
-        comboBox.setStyle("-fx-background-color: black" );
+        comboBox.setStyle("-fx-background-color: black; -fx-text-fill: white ; -fx-font-weight: bold; -fx-font-size: 25 " );
         GridPane.setConstraints(comboBox,4,21);
 
         button =new Button("Start");
@@ -67,18 +67,19 @@ public class Login  {
         button.setMinSize(450,35);
         //button.setTranslateX(90);
        // button.setTranslateY(80);
-        button.setStyle("-fx-background-color: transparent");
+        button.setStyle("-fx-background-color: transparent; -fx-font-size: 24; -fx-text-fill: white");
+     //   button.setStyle("-fx-font-size: 24;");
   //      button.
        // button.setStyle("-fx-text-Fill: white");
         button.setOnAction(e-> new StartGame(stage));
 
-       GridPane.setConstraints(button,4,30);
+       GridPane.setConstraints(button,4,26);
 
 
         TextField nameText = new TextField("Nickname");
         nameText.setMaxSize(450,50 );
         nameText.setMinSize(450,50);
-        nameText.setStyle("-fx-background-color: black" );
+        nameText.setStyle("-fx-background-color: black ; -fx-font-weight: bold; -fx-font-size: 25 " );
         GridPane.setConstraints(nameText,4,24);
 
 
