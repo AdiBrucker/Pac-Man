@@ -14,8 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import jdk.internal.org.objectweb.asm.commons.InstructionAdapter;
-
+ 
 import java.awt.*;
 
 
@@ -24,6 +23,10 @@ import javax.swing.*;
 
 
 public class GameView{
+	private	static JFrame frame;
+	private	static Game game;
+	private	static	ViewLogic instance;
+	private static PacmanController controller;
 
     public GameView()
     {
@@ -34,17 +37,16 @@ public class GameView{
         }
     }
 
-    private static PacmanController controller;
-    /*  static Stage window;
+     /*  static Stage window;
       Scene scene;
       static GridPane gridPane;*/
     public static void  initGame(){
-        ViewLogic instance = ViewLogic.getInstance();
+         instance = ViewLogic.getInstance();
         controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
         //SysData s=new SysData();//// just for checking the question json
 
-        Game game = Game.getInstance();
-        JFrame frame = new JFrame(game.TITLE);
+          game = Game.getInstance();
+          frame = new JFrame(game.TITLE);
         //  Container pane = bs.getContentPane();
         frame.add(BorderLayout.PAGE_END, game);
         frame.add(BorderLayout.WEST,instance.getlScoreForPacman());
@@ -52,7 +54,7 @@ public class GameView{
         frame.add(BorderLayout.CENTER,instance.getTimer());
         frame.setResizable(false);
         frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(Color.BLACK);
         frame.setVisible(true);
@@ -61,5 +63,19 @@ public class GameView{
     }
 
 
+	public static void closewindow() {
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.dispose();
+ 		game.isRunning=true;
+		game.pacman=null;
+		game.maze.ghosts=null;
+		game.maze.candy=null;
+		game.maze=null;
+ 		game.SetInstance();
+	   instance.SetInstance();
+	   controller.SetInstance();
+	    
 
+ 	}
+	
 }

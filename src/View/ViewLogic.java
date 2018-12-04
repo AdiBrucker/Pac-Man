@@ -18,7 +18,11 @@ public class ViewLogic {
     static Game game;
     static  int s = 0;// counting seconds
     static String timeResults="";/// 
- 
+  /// need to check this one    
+    public static void SetInstance() {
+    	instance=null;
+    }
+
    
     public static ViewLogic getInstance() {
         if (instance == null) {

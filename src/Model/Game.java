@@ -7,7 +7,7 @@ import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable, KeyListener {
 
-    private boolean isRunning = false;
+	public boolean isRunning = false;
     public static final int WIDTH = 1120, HEIGHT = 800;
     public static final String TITLE = "PACMAN";
     public static Pacman pacman;
@@ -134,5 +134,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         return  instance;
     }
-
+    /// need to check this one    
+    public static void SetInstance() {
+    	instance=null;
+    }
 }
