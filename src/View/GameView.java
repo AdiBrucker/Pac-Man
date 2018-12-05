@@ -10,7 +10,7 @@ import javafx.embed.swing.SwingNode;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
+import java.awt.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -19,8 +19,6 @@ import java.awt.*;
 
 
 import javax.swing.*;
-
-
 
 public class GameView{
 	private	static JFrame frame;
@@ -36,35 +34,43 @@ public class GameView{
             e.printStackTrace();
         }
     }
-
-     /*  static Stage window;
-      Scene scene;
-      static GridPane gridPane;*/
+ 
     public static void  initGame(){
-         instance = ViewLogic.getInstance();
+    	
+    	instance = ViewLogic.getInstance();
         controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
-        //SysData s=new SysData();//// just for checking the question json
-
-          game = Game.getInstance();
-          frame = new JFrame(game.TITLE);
-        //  Container pane = bs.getContentPane();
+        game = Game.getInstance();
+        frame = new JFrame(game.TITLE);
         frame.add(BorderLayout.PAGE_END, game);
         frame.add(BorderLayout.WEST,instance.getlScoreForPacman());
         frame.add(BorderLayout.EAST,instance.getLifeScoreForPacman());
         frame.add(BorderLayout.CENTER,instance.getTimer());
         frame.setResizable(false);
         frame.pack();
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(Color.BLACK);
         frame.setVisible(true);
+       	ImageIcon img = new ImageIcon("pacnanIm.png");
+ 
+       	frame.setIconImage(img.getImage());
+         game.start();
+        
+      frame.addWindowListener(new java.awt.event.WindowAdapter() {
+    @Override
+    	public void windowClosing(java.awt.event.WindowEvent e) {
+	       if( PopUpLogic.getInstance().ShowEXit()==0) {
+		        closewindow();
+	       }
+	 	frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+ 
+    	}
+        });
 
-        game.start();
     }
-
-
+ 
 	public static void closewindow() {
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+	 	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.dispose();
  		game.isRunning=true;
 		game.pacman=null;
@@ -72,8 +78,8 @@ public class GameView{
 		game.maze.candy=null;
 		game.maze=null;
  		game.SetInstance();
-	   instance.SetInstance();
-	   controller.SetInstance();
+ 		instance.SetInstance();
+ 		controller.SetInstance();
 	    
 
  	}

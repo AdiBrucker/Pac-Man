@@ -9,30 +9,29 @@ import java.awt.*;
 
 public class ViewLogic {
 
-    static Label lScore;
-    static Label lifeScore;
-    
-    static Label timer;
+	private static Label lScore;
+    private static Label lifeScore;
+    private static Label timer;
+    private static ViewLogic instance;
+    private static  Game game;
+    private static  int s = 0;// counting seconds
+    private static String timeResults="";/// 
 
-    static ViewLogic instance;
-    static Game game;
-    static  int s = 0;// counting seconds
-    static String timeResults="";/// 
-  /// need to check this one    
+
+    
     public static void SetInstance() {
     	instance=null;
     }
-
+    public   String GetTimeResults() {
+    	return timeResults;
+    }
    
-    public static ViewLogic getInstance() {
+    public static  ViewLogic getInstance() {
         if (instance == null) {
             instance = new ViewLogic();
             game = Game.getInstance();
-            lScore = new Label("SCORE: " + String.valueOf(Game.pacman.getScore()));
-    //      lScore.setMinimumSize(new Dimension(200,50));
-             
+            lScore = new Label("SCORE: " + String.valueOf(Game.pacman.getScore()));    
             lScore.setPreferredSize(new Dimension(400,70));
-//           lScore.setMaximumSize(new Dimension(200,50));
             lScore.setForeground(Color.WHITE);
             lScore.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
                     | java.awt.Font.ITALIC, 36));
@@ -41,16 +40,12 @@ public class ViewLogic {
             lifeScore = new Label("LIFE SCORE: " + String.valueOf(Game.pacman.getLifeScore()));
             lifeScore.setForeground(Color.WHITE);
             lifeScore.setMinimumSize(new Dimension(200,50));
-
             lifeScore.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
                     | java.awt.Font.ITALIC, 36));
-            lifeScore.setBackground(Color.BLACK);
-        
-            
+            lifeScore.setBackground(Color.BLACK);                   
             timer = new Label("timer : 00:00");
             timer.setForeground(Color.WHITE);
             timer.setMinimumSize(new Dimension(200,50));
-
             timer.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
                     | java.awt.Font.ITALIC, 36));
             timer.setBackground(Color.BLACK);
@@ -74,7 +69,7 @@ public class ViewLogic {
     }
     
     public Label getTimer() {
-     
+     s=0;
         Timer timer1=new Timer();
         TimerTask task =new TimerTask() {
     	    	public void run () {
@@ -88,7 +83,6 @@ public class ViewLogic {
     	            else {
     	            	timeResults="0"+minutes1+":"+second1;
      	            	timer.setText("Timer: " + timeResults) ;
-System.out.println();
     	            }
      
     	         	

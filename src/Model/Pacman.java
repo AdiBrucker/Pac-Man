@@ -61,6 +61,12 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                     viewInstance.setScoreForPacman();
 
                 }
+                else if(maze.candy.get(i).getType() == "Gold" && maze.candy.get(i) instanceof ScoreCandy){
+                    lifeScore++;
+                    maze.candy.remove(i);
+                    viewInstance.setLifeScoreForPacman();
+
+                }
                 else if(maze.candy.get(i).getType() == "QuestionCandy"){
                     right = false;
                     left = false;

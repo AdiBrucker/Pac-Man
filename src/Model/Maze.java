@@ -18,7 +18,7 @@ public class Maze{
     public Walls[][] walls;
     public List<Candy> candy;
     public List<Ghost> ghosts;
-
+    public static boolean level2 =false;
     public Maze(String path){
         candy = new ArrayList();
         ghosts = new ArrayList();
@@ -53,6 +53,15 @@ public class Maze{
                     }
                     else {
                         //Candy
+                    	// if its a gold candy 
+                    	
+                    	if (level2 ) {// if the player pass the first level 
+                    		level2=false;
+                    		ScoreCandy gold =new ScoreCandy(xx * 32, yy * 32, "Gold");
+                    		gold.setnewLifeBonus(new isLife());
+                            candy.add(gold);
+
+                    	}
                         if(getCandy < 10){
                             candy.add(new ScoreCandy(xx * 32, yy * 32, "Yellow"));
                             getCandy++;

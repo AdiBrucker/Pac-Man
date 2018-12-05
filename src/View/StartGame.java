@@ -59,6 +59,7 @@ public class StartGame {
            // stage.show();
           	Image icon =new Image("pacnanIm.png");////   src//pacnanIm.jpg
         	stage.getIcons().add(icon);
+        	stage.setTitle("PACMAN");
             button = new Button(" ");
             pane.getChildren().add(button);
             button.setMaxSize(260, 30);
