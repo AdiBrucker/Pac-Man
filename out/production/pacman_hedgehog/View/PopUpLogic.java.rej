@@ -1,0 +1,6 @@
+diff a/src/View/PopUpLogic.java b/src/View/PopUpLogic.java	(rejected hunks)
+@@ -0,0 +1,4 @@
++package View;
++
++public class PopUpLogic {
++}

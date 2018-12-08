@@ -75,7 +75,7 @@ public class StartGame {
             button1.setTranslateX(-50);
             button1.setTranslateY(23);
             button1.setStyle("-fx-background-color:transparent; -fx-text-fill:transparent ");
-            //   button1.setOnAction(e->);
+            button1.setOnAction(e-> new QuestionManager(stage));
 
             button2 = new Button("LogOut");
             pane.getChildren().add(button2);
