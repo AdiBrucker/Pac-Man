@@ -43,7 +43,7 @@ public class MainClass extends Application{
 		ViewLogic instances = ViewLogic.getInstance();
 		controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
 
-		StartGame start = new StartGame();
+        Login login = new Login();
 
     }
 }

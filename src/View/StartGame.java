@@ -25,9 +25,9 @@ import java.awt.*;
 
 public class StartGame {
 
-    public StartGame( ) {
+    public StartGame(Stage stage) {
         try {
-            initStartGame(new Stage() );
+            initStartGame(stage);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,22 +56,20 @@ public class StartGame {
             iv.setFitWidth(700);
             iv.setPreserveRatio(true);
             stage.setScene(scene);
-           // stage.show();
-          	Image icon =new Image("pacnanIm.png");////   src//pacnanIm.jpg
-        	stage.getIcons().add(icon);
-        	stage.setTitle("PACMAN");
-            button = new Button(" ");
+            // stage.show();
+
+            button = new Button("Start");
             pane.getChildren().add(button);
             button.setMaxSize(260, 30);
             button.setTranslateX(-110);
             button.setTranslateY(-110);
             button.setStyle("-fx-background-color:transparent ; -fx-text-fill:transparent ");
-         //  button.setOnAction(e->Controller.MainClass.getInstance().begin() );
-            button.setOnAction(e->new Login(stage)  );
+            //  button.setOnAction(e->Controller.MainClass.getInstance().begin() );
+            button.setOnAction(e->new GameView() );
 
 
             //  pane.getChildren().add(button1);
-            button1 = new Button(" ");
+            button1 = new Button("Question");
             pane.getChildren().add(button1);
             button1.setMaxSize(300, 30);
             button1.setTranslateX(-50);
@@ -79,7 +77,7 @@ public class StartGame {
             button1.setStyle("-fx-background-color:transparent; -fx-text-fill:transparent ");
             button1.setOnAction(e-> new QuestionManager(stage));
 
-            button2 = new Button(" ");
+            button2 = new Button("LogOut");
             pane.getChildren().add(button2);
             button2.setMaxSize(250, 30);
             button2.setTranslateX(-60);
