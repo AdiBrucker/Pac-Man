@@ -5,9 +5,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
+import View.PopUpLogic;
+
 public class Game extends Canvas implements Runnable, KeyListener {
 
-    private boolean isRunning = false;
+	public boolean isRunning = false;
     public static final int WIDTH = 1120, HEIGHT = 800;
     public static final String TITLE = "PACMAN";
     public static Pacman pacman;
@@ -117,6 +119,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) pacman.left = true;
         if (e.getKeyCode() == KeyEvent.VK_UP) pacman.up = true;
         if (e.getKeyCode() == KeyEvent.VK_DOWN) pacman.down = true;
+        
+        if(e.getKeyCode() == KeyEvent.VK_SPACE)// when pressing space 
+        	PopUpLogic.getInstance().pauseGame();
     }
 
     @Override
@@ -134,5 +139,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         return  instance;
     }
-
+    /// need to check this one    
+    public static void SetInstance() {
+    	instance=null;
+    }
 }

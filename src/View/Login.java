@@ -20,24 +20,20 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.Node;
 
 public class Login  {
-
-
-
-
-
+ 
    // Image image = new Image("res/first.PNG");
     Button button;
     ComboBox<String> comboBox;
     GridPane grid;
     TextField nameText;
 
-  public Login()
+  public Login(Stage Stage)
     {
-        try {
-            initLogin(new Stage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+	  try {
+          initLogin( Stage );
+       } catch (Exception e) {
+          e.printStackTrace();
+      }
     }
 
 
@@ -62,7 +58,7 @@ public class Login  {
         comboBox.setStyle("-fx-background-color: black; -fx-text-fill: white ; -fx-font-weight: bold; -fx-font-size: 25 " );
         GridPane.setConstraints(comboBox,4,21);
 
-        button =new Button("Start");
+        button =new Button("");
         button.setMaxSize(450,35 );
         button.setMinSize(450,35);
         //button.setTranslateX(90);
@@ -71,12 +67,12 @@ public class Login  {
      //   button.setStyle("-fx-font-size: 24;");
   //      button.
        // button.setStyle("-fx-text-Fill: white");
-        button.setOnAction(e-> new StartGame(stage));
+        button.setOnAction(e-> new GameView());
 
-       GridPane.setConstraints(button,4,26);
+ 	     GridPane.setConstraints(button,4,27);
 
 
-        TextField nameText = new TextField("Nickname");
+        TextField nameText = new TextField("");
         nameText.setMaxSize(450,50 );
         nameText.setMinSize(450,50);
         nameText.setStyle("-fx-background-color: black ; -fx-font-weight: bold; -fx-font-size: 25 " );

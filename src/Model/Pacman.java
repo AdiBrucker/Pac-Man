@@ -1,5 +1,6 @@
 package Model;
 
+import View.GameView;
 import View.PopUpLogic;
 import View.ViewLogic;
 
@@ -28,6 +29,8 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     public Pacman(int x, int y){
         setBounds(x, y, 32, 32);
         location = new Location(x,y);
+        score = 0;
+        lifeScore = 3;
     }
 
     public Pacman(int score2 ,String name){
@@ -56,6 +59,12 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                     score += s.getSilverCandyScore();
                     maze.candy.remove(i);
                     viewInstance.setScoreForPacman();
+
+                }
+                else if(maze.candy.get(i).getType() == "Gold" && maze.candy.get(i) instanceof ScoreCandy){
+                    lifeScore++;
+                    maze.candy.remove(i);
+                    viewInstance.setLifeScoreForPacman();
 
                 }
                 else if(maze.candy.get(i).getType() == "QuestionCandy"){
@@ -121,6 +130,9 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                 else
                 {
                     ShowGameOver();
+                    GameView.closewindow();
+                 //   Game.instance=null;/// we need  to close all the data from the game 
+                  // Because after that we need to run another game ;
                 }
                 break;
             }

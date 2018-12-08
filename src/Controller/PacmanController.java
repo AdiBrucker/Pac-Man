@@ -6,11 +6,11 @@ import Model.SysData;
 
 public class PacmanController {
 	
-	public static PacmanController instance;///singleton
+	private static PacmanController instance;///singleton
 	/** ModelLogic reference pointer */
-	public static InterModel model;
+	private static InterModel model;
 	//Constructor
-	public PacmanController() {
+	private PacmanController() {
 		model = new ModelLogic();
 
 	}
@@ -30,7 +30,10 @@ public class PacmanController {
 		return instance;
 
  	}
-	
+	/// need to check this one    
+    public static void SetInstance() {
+    	instance=null;
+    }
 	
 	public static PacmanController getInstance() {
 		return instance;

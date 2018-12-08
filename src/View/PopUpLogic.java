@@ -45,23 +45,21 @@ public class PopUpLogic {
     }
 
     public void ShowGameOver(int score){
-//        JLabel label1 = new JLabel("Game over \n"
-//        		+ " You are final score is "+score+ " at "+ViewLogic.timeResults+" minutes");
-//
-//        
-//        label.setFont(new Font("Lucida Console", Font.BOLD, 20));
-//        JOptionPane.showMessageDialog(null,label1,"Game over",JOptionPane.INFORMATION_MESSAGE);
-//    	JLabel msg = new JLabel("Game over \n"+
-//        		 " You are final score is "+score+ " at "+ViewLogic.timeResults+" minutes");
-    //	msg.setLineWrap(true);
-    	//msg.setWrapStyleWord(true);
-
-  //  	JScrollPane scrollPane = new JScrollPane(msg);
         UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
      	JOptionPane.showMessageDialog(null, "                       Game over!!! \n"+
-       		 " You are final score is "+score+ " at "+ViewLogic.timeResults+" minutes","Game over",JOptionPane.INFORMATION_MESSAGE);
+       		 " You are final score is "+score+ " at "+ViewLogic.getInstance().GetTimeResults()+" minutes","Game over",JOptionPane.INFORMATION_MESSAGE);
 
 
+    }
+    public int ShowEXit( ){
+      	int g =  JOptionPane.showConfirmDialog(null, "Would you like to exit from the game?", "Exit?", JOptionPane.YES_NO_OPTION);
+
+     	return g;
+    }
+    
+    public void pauseGame(){
+        UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
+     	JOptionPane.showMessageDialog(null, "you stop the game ,press ok to continue  ","Pause",JOptionPane.INFORMATION_MESSAGE);
     }
 
 

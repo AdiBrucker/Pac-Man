@@ -3,6 +3,8 @@ package Model;
 import java.awt.*;
 
 public class Candy extends Rectangle {
+	
+	public LifeBonus LifeBonus; 
 
     private String type;
     private Location location;
@@ -20,6 +22,10 @@ public class Candy extends Rectangle {
             g.setColor(Color.yellow);
             g.fillRect(x, y, width, height);
         }
+        else if (type == "Gold") {
+        	   g.setColor(new Color(255,204,51));
+               g.fillRect(x, y, width, height);
+        }
         else{
             g.setColor(Color.lightGray);
             g.fillRect(x, y, width, height);
@@ -31,4 +37,21 @@ public class Candy extends Rectangle {
     public String getType() {
         return type;
     }
+    
+    
+    public boolean getLifeBonus(){
+    	 
+    	        return LifeBonus.life();
+    	 
+    	    }
+    	 
+    	    // If you want to be able to change the LifeBonus  dynamically
+    	 
+    	    // add the following method
+    	 
+    	    public void setnewLifeBonus(LifeBonus newLifeBonus){
+    	 
+    	    	LifeBonus = newLifeBonus;
+    	  }
+
 }

@@ -4,6 +4,7 @@ import Model.Game;
 import Model.SysData;
 import View.Login;
 import View.PopUpLogic;
+import View.StartGame;
 import View.ViewLogic;
 import javafx.application.Application;
 import javafx.embed.swing.SwingNode;
@@ -39,15 +40,10 @@ public class MainClass extends Application{
 
     public void start(Stage stage) throws Exception {
 
-         ViewLogic instances = ViewLogic.getInstance();
-         controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
+		ViewLogic instances = ViewLogic.getInstance();
+		controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
 
-        Login login = new Login();
-
+		StartGame start = new StartGame();
 
     }
-
-
-
-
 }
