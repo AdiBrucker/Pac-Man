@@ -1,5 +1,6 @@
 package Model;
 
+import View.PacmanAnimation;
 import View.GameView;
 import View.PopUpLogic;
 import View.ViewLogic;
@@ -25,9 +26,13 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     public static ViewLogic viewInstance;
     public String PacmanNane;
     private int score1  ; //// just for checking how the score saved to a file
+    private int animationTime = 0;
+    private int targetAnimationTime = 10;
+    private int animationIndexImage = 0;
+    private int lastDir = 1;
 
     public Pacman(int x, int y){
-        setBounds(x, y, 32, 32);
+        setBounds(x, y, 26, 26);
         location = new Location(x,y);
         score = 0;
         lifeScore = 3;
@@ -46,6 +51,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     public void tick(){
         Maze maze = Game.maze;
          viewInstance = ViewLogic.getInstance();
+        animatePacman();
         for (int i = 0; i < maze.candy.size(); i++){
             if (this.intersects(maze.candy.get(i))){
                 if(maze.candy.get(i).getType() == "Yellow" && maze.candy.get(i) instanceof ScoreCandy){
@@ -109,11 +115,22 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
             }
         }
 
-
-        if (right && canMove(x+ speed,y)) x += speed;
-        else if (left && canMove(x-speed,y)) x -= speed;
-        else if (up && canMove(x,y-speed)) y -= speed;
-        else  if (down && canMove(x,y+speed)) y += speed;
+        if (right && canMove(x+ speed,y)){
+            x += speed;
+            lastDir = 1;
+        }
+        else if (left && canMove(x-speed,y)){
+            x -= speed;
+            lastDir = -1;
+        }
+        else if (up && canMove(x,y-speed)){
+            y -= speed;
+            lastDir = 2;
+        }
+        else  if (down && canMove(x,y+speed)){
+            y += speed;
+            lastDir = -2;
+        }
 
 
 
@@ -143,8 +160,16 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
             System.exit(1);
         }*/
     }
-	
-	public void  Music(String path2) {
+
+    private void animatePacman() {
+        animationTime++;
+        if (animationTime == targetAnimationTime){
+            animationTime = 0;
+            animationIndexImage++;
+        }
+    }
+
+    public void  Music(String path2) {
         String path = new File("").getAbsolutePath() + path2;
         //Make a File object with a path to the audio file.
         File sound = new File(path);
@@ -204,8 +229,18 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
 
     @Override
     public void render(Graphics g){
-        SpriteSheet sheet = Game.spriteSheet;
-        g.drawImage(sheet.getSprite(0, 0), x, y, 32, 32 ,null);
+        if (lastDir == 1){
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2], x, y, width, height, null);
+        }
+        if (lastDir == -1){
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2], x + 32, y, -width, height, null);
+        }
+        if (lastDir == 2){
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2+2], x, y, width, height, null);
+        }
+        if (lastDir == -2){
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2+4], x, y, width, height, null);
+        }
     }
 
     public int getLifeScore(){

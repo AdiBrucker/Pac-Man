@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
+import View.PacmanAnimation;
 import View.PopUpLogic;
 
 public class Game extends Canvas implements Runnable, KeyListener {
@@ -26,6 +27,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
 
         addKeyListener(this);
+        new PacmanAnimation();
         pacman = new Pacman(Game.WIDTH/2, Game.HEIGHT/2);
         maze = new Maze("/res/map/map.png");
         spriteSheet = new SpriteSheet("/res/sprites/spritesheet.png");
