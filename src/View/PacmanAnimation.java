@@ -5,12 +5,12 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.Buffer;
 
-public class Animation {
+public class PacmanAnimation {
 
     public static BufferedImage spritesheet;
     public static BufferedImage[] pacman;
 
-    public Animation(){
+    public PacmanAnimation(){
         try {
             spritesheet = ImageIO.read(getClass().getResource("/res/sprites/spritesheet.png"));
         } catch (IOException e) {
