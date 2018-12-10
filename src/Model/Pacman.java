@@ -1,6 +1,6 @@
 package Model;
 
-import View.Animation;
+import View.PacmanAnimation;
 import View.GameView;
 import View.PopUpLogic;
 import View.ViewLogic;
@@ -230,16 +230,16 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     @Override
     public void render(Graphics g){
         if (lastDir == 1){
-            g.drawImage(Animation.pacman[animationIndexImage%2], x, y, width, height, null);
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2], x, y, width, height, null);
         }
         if (lastDir == -1){
-            g.drawImage(Animation.pacman[animationIndexImage%2], x + 32, y, -width, height, null);
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2], x + 32, y, -width, height, null);
         }
         if (lastDir == 2){
-            g.drawImage(Animation.pacman[animationIndexImage%2+2], x, y, width, height, null);
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2+2], x, y, width, height, null);
         }
         if (lastDir == -2){
-            g.drawImage(Animation.pacman[animationIndexImage%2+4], x, y, width, height, null);
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2+4], x, y, width, height, null);
         }
     }
 
