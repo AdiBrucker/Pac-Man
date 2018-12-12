@@ -3,21 +3,48 @@ package View;
 import Model.Game;
 import Model.ModelLogic;
 import Model.Pacman;
+import java.lang.Object.*;
+import java.util.*;
+
 import Model.SysData;
+import com.jfoenix.controls.*;
+import com.sun.javaws.net.protocol.jar.Handler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 
 import javax.swing.*;
 
- 
+
 import java.awt.*;
+<<<<<<< HEAD
  import java.util.List;
 import java.util.Random;
 /**
  * class that used for messages to the user 
  *
  */
+=======
+import java.util.List;
+import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+>>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
 public class PopUpLogic {
 
     static PopUpLogic instance;
+	static JFXTextField player1; // name of player 1
+	static JFXTextField player2; // name of player 2
+	static int numOfPlayers = 0; // field that will say how many players are participate in the game
 
     public static PopUpLogic getInstance() {
     	
@@ -48,12 +75,12 @@ public class PopUpLogic {
     			" <br>"+" <br>"+"3. "+ answer2+
     			" <br>"+" <br>"+ answer3+" <br>"+
     			"</html>");
-    	UIManager.put("OptionPane.minimumSize",new Dimension(150,150)); 
+    	UIManager.put("OptionPane.minimumSize",new Dimension(150,150));
     	label.setFont(new Font("Lucida Console", Font.BOLD, 13));
         JOptionPane.showMessageDialog(null,label,"Question",JOptionPane.QUESTION_MESSAGE,icon);
 	 	   ViewLogic.getInstance().getTimer();
 
-    
+
     }
 /**
  * pop up that show that the game is over 
@@ -103,10 +130,14 @@ public class PopUpLogic {
  
      	return g;
     }
+<<<<<<< HEAD
     /**
      * pop up with a message that the game is pause
      * occur when the player press on space keyboard 
      */
+=======
+
+>>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
     public void pauseGame(){
     	
         UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
@@ -118,6 +149,93 @@ public class PopUpLogic {
      	 }
 	 	   ViewLogic.getInstance().getTimer();
 
+<<<<<<< HEAD
     } 
+=======
+	public void showGameType(StackPane pane){
+        javafx.scene.control.Label field = new Label("Please choose how many players");
+		GridPane gridPane = new GridPane();
+		gridPane.setPadding(new Insets(10,10,10,10));
+		gridPane.setVgap(20);
+		gridPane.setHgap(20);
+		ObservableList<String> options = FXCollections.observableArrayList("One Player","Two Players");
 
+
+		JFXDialogLayout content = new JFXDialogLayout();
+		content.setHeading(new Text("Let's start!"));
+		// content.setBody(gridPane);
+		//StackPane stackPane = new StackPane();
+		pane.autosize();
+		JFXDialog dialog = new JFXDialog(pane,content, JFXDialog.DialogTransition.CENTER );
+		JFXComboBox gameType=new JFXComboBox(options);
+		gameType.setPromptText("How many players?");
+		gameType.setOnAction(e -> chooseGameType(gameType.getValue().toString(), gridPane));
+		GridPane.setConstraints(gameType,0,1);
+		gridPane.getChildren().addAll(gameType);
+		JFXButton button = new JFXButton("Start game!");
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if(gameType.getValue() == null) {
+                    GridPane.setConstraints(field, 0, 0);
+                    gridPane.getChildren().addAll(field);
+                }
+				else {
+					gridPane.getChildren().removeAll();
+					content.setBody(new Text("Please wait..."));
+					Timer timer = new Timer();
+
+					timer.schedule(new TimerTask() {
+						public void run() {
+							System.out.println(content.getBody().size());
+							new GameView();
+							dialog.close();
+						}
+					}, 1);
+				}
+				}
+		});
+
+		GridPane.setConstraints(button,0,1);
+		//gridPane.getChildren().addAll(gameType, button);
+		content.setBody(gridPane);
+		content.setActions(button);
+		dialog.show();
+	}
+
+	public GridPane chooseGameType(String option,GridPane gridPane){
+		switch (option){
+			case "One Player":
+				if (gridPane.getChildren().contains(player2)){
+					gridPane.getChildren().remove(player2);
+				}
+				player1 = new JFXTextField("Nickname player 1");
+				GridPane.setConstraints(player1,0,2);
+				gridPane.getChildren().addAll(player1);
+				numOfPlayers =1;
+				break;
+			case "Two Players":
+				player1 = new JFXTextField("Nickname player 1");
+				GridPane.setConstraints(player1,0,2);
+				player2 = new JFXTextField("Nickname player 2");
+				GridPane.setConstraints(player2,0,3);
+				gridPane.getChildren().addAll(player1,player2);
+				numOfPlayers =2;
+				break;
+		}
+		return gridPane;
+	}
+
+	public static String getPlayer1() {
+		return player1.getText();
+	}
+
+	public static String getPlayer2() {
+		return player2.getText();
+	}
+>>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
+
+	public static int getNumOfPlayers() {
+		return numOfPlayers;
+	}
 }

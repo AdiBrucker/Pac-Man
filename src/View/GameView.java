@@ -36,12 +36,19 @@ public class GameView{
     }
  
     public static void  initGame(){
+<<<<<<< HEAD
  
     	instance = ViewLogic.getInstance();
         controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
+=======
+
+>>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
         game = Game.getInstance();
+        instance = ViewLogic.getInstance();
+    //    controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
         frame = new JFrame(game.TITLE);
         frame.add(BorderLayout.PAGE_END, game);
+        frame.add(BorderLayout.BEFORE_FIRST_LINE, instance.getNickname());
         frame.add(BorderLayout.WEST,instance.getlScoreForPacman());
         frame.add(BorderLayout.EAST,instance.getLifeScoreForPacman());
         instance.getTimer();
@@ -76,8 +83,17 @@ public class GameView{
 		
 	 	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.dispose();
+<<<<<<< HEAD
  	 	game.isRunning=false;	
 		game.SetInstance();
+=======
+ 		game.isRunning=true;
+		game.pacmans.remove(game.pacmans.get(game.getPlayerIndex()));
+		game.mazes.get(game.getPlayerIndex()).ghosts=null;
+		game.mazes.get(game.getPlayerIndex()).candy=null;
+		game.mazes.remove(game.mazes.get(game.getPlayerIndex()));
+ 		game.SetInstance();
+>>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
  		instance.SetInstance();
 		controller.SetInstance();
 	    

@@ -21,9 +21,14 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     public boolean right, left, up, down;
     public int speed = 4;
     private Location location;
+<<<<<<< HEAD
     public static int lifeScore = 3;
     public static int score = 0;
     public  int score1  ;
+=======
+    public int lifeScore = 3;
+    public int score = 0;
+>>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
     public static ViewLogic viewInstance;
     public String PacmanNane;
     private int animationTime = 0;
@@ -31,11 +36,13 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     private int animationIndexImage = 0;
     private int lastDir = 1;
 
-    public Pacman(int x, int y){
+
+    public Pacman(int x, int y,String nickname){
         setBounds(x, y, 26, 26);
         location = new Location(x,y);
         score = 0;
         lifeScore = 3;
+        PacmanNane = nickname;
     }
 
     public Pacman(int score2 ,String name){
@@ -43,13 +50,13 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     	  score1=score2;
     }
     
-    public static void setScore(int score) {
-		Pacman.score = score;
+    public void setScore(int score) {
+		this.score = score;
 	}
 
 	@Override
     public void tick(){
-        Maze maze = Game.maze;
+        Maze maze = Game.mazes.get(Game.getPlayerIndex());
          viewInstance = ViewLogic.getInstance();
         animatePacman();
         for (int i = 0; i < maze.candy.size(); i++){
@@ -206,7 +213,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     @Override
     public boolean canMove(int nextx, int nexty){
         Rectangle bounds = new Rectangle(nextx, nexty, width,  height);
-        Maze maze = Game.maze;
+        Maze maze = Game.mazes.get(Game.getPlayerIndex());
 
         for (int xx = 0; xx < maze.walls.length; xx++){
             for (int yy = 0; yy < maze.walls[0].length; yy++){
@@ -261,6 +268,10 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
 		// TODO Auto-generated method stub
 		return ((Pacman) o).getScoreResult()-this.getScoreResult() ;
 	}
+
+    public String getPacmanName() {
+        return PacmanNane;
+    }
 
 	@Override
 	public String toString() {

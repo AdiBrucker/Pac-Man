@@ -18,7 +18,7 @@ public class QuestionResultsFromJSON implements Serializable{
 
 
 	public List<Question> getQuestions() {
-		System.out.println(questions);
+		System.err.println(questions);
 		return questions;
 	}
 

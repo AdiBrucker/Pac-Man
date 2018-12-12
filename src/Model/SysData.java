@@ -180,7 +180,6 @@ public class SysData implements Serializable{
 	public boolean AddPacman(int score, String name) {
  		if (name!=null&& score>0) {
 		 	Pacman.add(new Pacman(score, name));
-		//	if() {
  			 	Collections.sort(getPacman());
  				System.out.println(getPacman()+"after adding ");
 

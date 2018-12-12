@@ -11,7 +11,12 @@ public class ViewLogic {
 
 	private static Label lScore;
     private static Label lifeScore;
+<<<<<<< HEAD
     public static Label timer;
+=======
+    private static Label nickname;
+    private static Label timer;
+>>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
     private static ViewLogic instance;
     private static  Game game;
     private    int TimerCounting = 0;// counting seconds
@@ -28,24 +33,37 @@ public class ViewLogic {
     public   String GetTimeResults() {
     	return timeResults;
     }
-   
-    public static  ViewLogic getInstance() {
+
+    public static Label getNickname() {
+        return nickname;
+    }
+
+    public static ViewLogic getInstance() {
         if (instance == null) {
             instance = new ViewLogic();
             game = Game.getInstance();
-            lScore = new Label("SCORE: " + String.valueOf(Game.pacman.getScore()));    
+            nickname = new Label(Game.pacmans.get(Game.getPlayerIndex()).getPacmanName());
+
+            nickname.setPreferredSize(new Dimension(400,70));
+            nickname.setForeground(Color.WHITE);
+            nickname.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
+                    | java.awt.Font.ITALIC, 36));
+            nickname.setBackground(Color.BLACK);
+
+            lScore = new Label("SCORE: " + String.valueOf(Game.pacmans.get(Game.getPlayerIndex()).getScore()));
             lScore.setPreferredSize(new Dimension(400,70));
             lScore.setForeground(Color.WHITE);
             lScore.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
                     | java.awt.Font.ITALIC, 36));
             lScore.setBackground(Color.BLACK);
 
-            lifeScore = new Label("LIFE SCORE: " + String.valueOf(Game.pacman.getLifeScore()));
+            lifeScore = new Label("LIFE SCORE: " + String.valueOf(Game.pacmans.get(Game.getPlayerIndex()).getLifeScore()));
             lifeScore.setForeground(Color.WHITE);
             lifeScore.setMinimumSize(new Dimension(200,50));
             lifeScore.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
                     | java.awt.Font.ITALIC, 36));
-            lifeScore.setBackground(Color.BLACK);                   
+            lifeScore.setBackground(Color.BLACK);
+
             timer = new Label("timer : 00:00");
             timer.setForeground(Color.WHITE);
             timer.setMinimumSize(new Dimension(200,50));
@@ -57,8 +75,8 @@ public class ViewLogic {
         return instance;
     }
 
-    public void setScoreForPacman() {
-        lScore.setText("SCORE: " + Game.pacman.getScore());
+    public static void setScoreForPacman() {
+        lScore.setText("SCORE: " + Game.pacmans.get(Game.getPlayerIndex()).getScore());
     }
     public void setTimerCounting() {
     	 TimerCounting = 0;
@@ -67,8 +85,8 @@ public class ViewLogic {
         return lScore;
     }
 
-    public void setLifeScoreForPacman() {
-        lifeScore.setText("LIFE SCORE: " + Game.pacman.getLifeScore());
+    public static void setLifeScoreForPacman() {
+        lifeScore.setText("LIFE SCORE: " + Game.pacmans.get(Game.getPlayerIndex()).getLifeScore());
     }
     public Label getLifeScoreForPacman(){
     	
@@ -114,6 +132,7 @@ public class ViewLogic {
     	            	}
     	            }
     	            else {
+<<<<<<< HEAD
     	            	if(minutes1<10) {
         	            	timeResults="0"+minutes1+":"+second1;
          	            	timer.setText("Timer: " + timeResults) ;
@@ -130,4 +149,38 @@ public class ViewLogic {
     	timer1.scheduleAtFixedRate(task,1000,1000);/// the time will work the same as a regular timer
  
      }
+=======
+    	            	timeResults="0"+minutes1+":"+second1;
+     	            	timer.setText("Timer: " + timeResults) ;
+    	            }
+
+                    if(second1%40 == 0){
+                        setPacmanTurn();
+                    }
+                }
+    	   };
+    	timer1.scheduleAtFixedRate(task,1000,1000);
+    	return timer;
+
+    }
+
+    public static void setPacmanTurn(){
+        if(Game.getPlayerIndex() == 0 && PopUpLogic.getNumOfPlayers() >1) {
+            Game.setPlayerIndex(1);
+            setNickname();
+            setLifeScoreForPacman();
+            setScoreForPacman();
+        }
+        else {
+            Game.setPlayerIndex(0);
+            setNickname();
+            setLifeScoreForPacman();
+            setScoreForPacman();
+        }
+    }
+
+    public static void setNickname() {
+        ViewLogic.nickname.setText(Game.pacmans.get(Game.getPlayerIndex()).getPacmanName());
+    }
+>>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
 }
