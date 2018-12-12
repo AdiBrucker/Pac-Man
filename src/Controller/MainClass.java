@@ -40,10 +40,11 @@ public class MainClass extends Application{
 
     public void start(Stage stage) throws Exception {
 
-		ViewLogic instances = ViewLogic.getInstance();
+		//ViewLogic instances = ViewLogic.getInstance();
 		controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
 
-        Login login = new Login();
+        //Login login = new Login();
+        StartGame s = new StartGame(stage);
 
     }
 }

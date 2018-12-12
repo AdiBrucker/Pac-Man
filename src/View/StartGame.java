@@ -1,9 +1,14 @@
 package View;
 import Controller.MainClass;
+import com.jfoenix.controls.*;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -38,13 +43,16 @@ public class StartGame {
     Button button1;
     Button button2;
     Image image = new Image("res/Startgame.PNG");
+    StackPane pane;
+
 
     public void initStartGame(Stage stage) {
         try {
 
             ImageView iv = new ImageView();
+            PopUpLogic popUpLogic= PopUpLogic.getInstance();
 
-            StackPane pane = new StackPane();
+             pane = new StackPane();
             Scene scene = new Scene(pane, 550, 600);
             pane.getChildren().add(iv);
             stage.setScene(scene);
@@ -65,7 +73,9 @@ public class StartGame {
             button.setTranslateY(-110);
             button.setStyle("-fx-background-color:transparent ; -fx-text-fill:transparent ");
             //  button.setOnAction(e->Controller.MainClass.getInstance().begin() );
-            button.setOnAction(e->new GameView() );
+
+          button.setOnAction(e -> popUpLogic.showGameType(pane));
+            //  button.setOnAction(e->new GameView() );
 
 
             //  pane.getChildren().add(button1);
@@ -99,5 +109,8 @@ public class StartGame {
             //       System.out.println("wowwwww");
         }
     }
+
+
+
 }
 

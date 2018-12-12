@@ -22,7 +22,7 @@ import javafx.scene.Node;
 public class Login  {
 
 
-
+    // This class create the screen of choosing game type: pacman for one or two players and nickname.
 
 
     // Image image = new Image("res/first.PNG");
@@ -71,6 +71,7 @@ public class Login  {
         //   button.setStyle("-fx-font-size: 24;");
         //      button.
         // button.setStyle("-fx-text-Fill: white");
+
         button.setOnAction(e-> new StartGame(stage));
 
         GridPane.setConstraints(button,4,26);
