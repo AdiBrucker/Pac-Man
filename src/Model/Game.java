@@ -17,7 +17,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public static Maze maze;
     public static SpriteSheet spriteSheet;
     private static Game instance;
-
+    public static boolean  flag= false;
     private Thread thread;
 
     public Game(){
@@ -35,12 +35,15 @@ public class Game extends Canvas implements Runnable, KeyListener {
     }
 
     public synchronized void start(){
+    	
         if (isRunning){
             return;
         }
         isRunning = true;
         thread = new Thread(this);
         thread.start();
+    
+
     }
 
     public synchronized void stop(){
@@ -53,6 +56,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         }
         catch (InterruptedException e){
             e.printStackTrace();
+
         }
     }
 
@@ -82,32 +86,49 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
     @Override
     public void run() {
+		try {
+	        requestFocus();
+	        int fps = 0;
+	        double timer = System.currentTimeMillis();
+	        long lastTime = System.nanoTime();
+	        double targetTick = 60.0;
+	        double delta = 0;
+	        double ns = 1000000000 / targetTick;
+	
+	        while (isRunning){
+	            long now = System.nanoTime();
+	            delta += (now - lastTime) / ns;
+	            lastTime = now;
+	            while (delta >= 1){
+	            	 
+	            	if( flag) {
+	            		 synchronized (this) {
+	            			 try {
+								getInstance().wait();
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+							//	e.printStackTrace();
+							}
+	            			 flag=false;
+	            		 }
+	            	}
+	                tick();
+	                render();
+	                fps++;
+	                delta=0;
+	            }
+	            if (System.currentTimeMillis() - timer >= 1000){
+	                 fps = 0;
+	                timer += 1000;
+	            }
+	        }
 
-        requestFocus();
-        int fps = 0;
-        double timer = System.currentTimeMillis();
-        long lastTime = System.nanoTime();
-        double targetTick = 60.0;
-        double delta = 0;
-        double ns = 1000000000 / targetTick;
-
-        while (isRunning){
-            long now = System.nanoTime();
-            delta += (now - lastTime) / ns;
-            lastTime = now;
-            while (delta >= 1){
-                tick();
-                render();
-                fps++;
-                delta=0;
-            }
-            if (System.currentTimeMillis() - timer >= 1000){
-         //       System.out.println(fps);
-                fps = 0;
-                timer += 1000;
-            }
-        }
-        stop();
+	        stop();
+			}
+		catch (Exception e){
+		     e.printStackTrace();
+		
+		}
     }
 
     @Override

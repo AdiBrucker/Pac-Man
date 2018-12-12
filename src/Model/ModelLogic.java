@@ -12,7 +12,7 @@ public class ModelLogic  implements InterModel, Serializable{
 		//for Serialization
 	private static final long serialVersionUID = 1L;
 	private static ModelLogic instance;
- 	public static SysData data; 
+ 	public static SysData data = SysData.createInstance(); 
  	
  	
  	public static SysData getsData() {
@@ -23,7 +23,6 @@ public class ModelLogic  implements InterModel, Serializable{
 		if(instance == null){
 			instance  = new ModelLogic();
 			data = SysData.createInstance();
-
 			return instance;
 		}
 		else{
@@ -53,9 +52,8 @@ public class ModelLogic  implements InterModel, Serializable{
 
 	@Override
 	public void loadQuestionsFromJsonFile() {
-
 		data.loadQuestionsFromJsonFile();
-	}
+ 	}
 
 	@Override
 	public boolean AddPacman(int score, String name) {
@@ -63,7 +61,9 @@ public class ModelLogic  implements InterModel, Serializable{
 	}
 	
 	public  void inputSerialize(){
-		data=data.inputSerialize();
-		System.err.println(data.getPacman());;
+		 data=data.inputSerialize();
+		 SysData.createInstance().SetPacman(data.getPacman());
+		System.err.println(SysData.createInstance().getPacman());
+		 
 	}
 }

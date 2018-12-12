@@ -23,9 +23,9 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     private Location location;
     public static int lifeScore = 3;
     public static int score = 0;
+    public  int score1  ;
     public static ViewLogic viewInstance;
     public String PacmanNane;
-    private int score1  ; //// just for checking how the score saved to a file
     private int animationTime = 0;
     private int targetAnimationTime = 10;
     private int animationIndexImage = 0;
@@ -100,7 +100,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                     }
                     else
                     {
-              ///      	SysData.instance.AddPacman(score, name); when we will add a name 
+                     //	SysData.instance.AddPacman(score, "shai");// when we will add a name 
                     	// its will add to pacman list that will be the winner at scores table
                         ShowGameOver();
                     }
@@ -146,19 +146,17 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                 }
                 else
                 {
-                    ShowGameOver();
-                    GameView.closewindow();
-                 //   Game.instance=null;/// we need  to close all the data from the game 
-                  // Because after that we need to run another game ;
-                }
-                break;
+                // 	SysData.instance.AddPacman(score, "haim");// when we will add a name 
+                	// its will add to pacman list that will be the winner at scores table
+                    ShowGameOver();                 }
+                	break;
             }
         }
 
-        /* The method to end the game. we'll use it later.
+        ///if 
         if (maze.candy.size() == 0){
             System.exit(1);
-        }*/
+        } 
     }
 
     private void animatePacman() {
@@ -188,16 +186,21 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
 	}
 
     public void showQuestion(){
-        PopUpLogic instance = PopUpLogic.getInstance();
-        instance.ShowQuestion();
-}
+      
+       PopUpLogic.getInstance().ShowQuestion();
+    }
 
     public void ShowGameOver(){
-        PopUpLogic instance = PopUpLogic.getInstance();
-        instance.ShowGameOver(score);
+        PopUpLogic.getInstance().ShowGameOver(score);
+        GameView.closewindow();
     }
     public int getScore(){
         return score;
+    }
+    
+
+    public int getScoreResult(){
+        return score1;
     }
 
     @Override
@@ -256,7 +259,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
 	 */
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
-		return ((Pacman) o).getScore()-this.getScore() ;
+		return ((Pacman) o).getScoreResult()-this.getScoreResult() ;
 	}
 
 	@Override

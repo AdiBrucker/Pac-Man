@@ -88,7 +88,9 @@ public class Login  {
         pane.getChildren().addAll(comboBox,button,nameText);
         Scene scene = new Scene(pane, 550,600);
         stage.setScene(scene);
-
+    	Image icon =new Image("pacnanIm.png");////   src//pacnanIm.jpg
+    	stage.getIcons().add(icon);
+    	stage.setTitle("PACMAN");
         stage.show();
 
 

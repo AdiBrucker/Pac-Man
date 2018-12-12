@@ -24,23 +24,16 @@ public class SysData implements Serializable{
 	// i think that at the table scores same player can be appear more then one time ;
 	public  ArrayList< Pacman>Pacman;
 	/**The path to which the data will be stored*/
-	public static String route="src//Serializable.ser";
+	public static String route="Serializable.ser";
 	
  	/**
 	 * Full constructor 
 	 */
-	// need to change to private /// just for checking the q load
-	public SysData(){
-		questions = new ArrayList<Question>();
-		Pacman=new ArrayList<Pacman>();
-		///data for checking Serializable
-// 		AddPacman(568, "shahar");
-// 		AddPacman(323232, "neta");
-// 		AddPacman(323232321, "guy");
+	private SysData(){		
+ 		
+ 		questions = new ArrayList<Question>();
+ 		Pacman=new ArrayList<Pacman>();
  
-		//question data is saved in JSON file and being transfered back 
-	 	
-	 
 	}
 	
   
@@ -52,12 +45,14 @@ public class SysData implements Serializable{
 
 		if(instance == null){
 			instance = new SysData();
-	 	 	loadQuestionsFromJsonFile();
-
 			return instance;
 		}
 			return instance;
 	}
+	
+	public void SetPacman(ArrayList< Pacman> A) {
+		Pacman=A;
+		}
 	/**
 	 * @return the pacman DB.
 	 */
@@ -71,16 +66,15 @@ public class SysData implements Serializable{
 	/**
 	 * this method loads the questions data from the JSON file
 	 */
-	public static void loadQuestionsFromJsonFile () {
+	public void loadQuestionsFromJsonFile () {
 		
 		Gson gson = new Gson();
 		BufferedReader br = null;
 		
 		try {///src\\res\\questions.json
-				br = new BufferedReader(new FileReader(new File("src\\res\\questions.json").getAbsolutePath()));
+				br = new BufferedReader(new FileReader(new File("res/questions.json").getAbsolutePath()));
 				QuestionResultsFromJSON questionsResults = gson.fromJson(br, QuestionResultsFromJSON.class);
-				
-			  questions = questionsResults.getQuestions();
+				questions = questionsResults.getQuestions();
 				
 		} catch (FileNotFoundException e) {
  				e.printStackTrace();
@@ -101,9 +95,9 @@ public class SysData implements Serializable{
 	 * this method writes the questions data to the JSON file
 	 */
 	public void writeQuestionsToJsonFile() {
-		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String strJson = "{\n    \"questions\":"+gson.toJson(this.questions)+"}";
+ 
+ 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String strJson = "{\n    \"questions\":"+gson.toJson(getQuestions())+"}";
 		
 		FileWriter writer = null;
 		
@@ -123,13 +117,21 @@ public class SysData implements Serializable{
 			}
 		}
 	}
-	
+	/**
+	 * adding Question to json file 
+	 * at the end of the game we will update json file 
+	 * we will call writeQuestionsToJsonFile(); to update
+	 * @param question
+	 * @param level
+	 * @param team
+	 * @param answers
+	 * @param correct_ans
+	 * @return
+	 */
 	public boolean addQuestion(String question, int level,   String team, List<String> answers,String correct_ans ) {
 		
 		int id = getQuestions().size()+1;
-		
 		boolean hasntBeenWritenYet = true;
-		
 		for(Question q: getQuestions()) {
 			if (q.getquestion().equals(question)) {
 				hasntBeenWritenYet=false;
@@ -144,35 +146,46 @@ public class SysData implements Serializable{
 			newQ.setAnswers(answers);
 			newQ.setCorrect_ans(correct_ans);
 			getQuestions().add(newQ);
-			writeQuestionsToJsonFile();
 			return true;
 		}
 		return false;
 	}
-	
+	/**
+	 * remove Question from json files
+	 * we update the list and when we finished the game and we close the screen 
+	 * we will call the mathode  	writeQuestionsToJsonFile();
+	 * @param index
+	 * @return
+	 */
 	public boolean removeQuestion(Integer index) {
 		if(index!=null) {
 			Question questionToRemove = getQuestions().get(index);
 			if (questionToRemove != null) {
 				getQuestions().remove(questionToRemove);
-				writeQuestionsToJsonFile();
-				return true;
+ 				return true;
 			}
 		}
 		return false;
 	}
 	
+	
+	
+	/**
+	 * adding  pacman results  to the PacmanResults list and sort by scores
+	 * 
+	 * @param score
+	 * @param name
+	 * @return
+	 */
 	public boolean AddPacman(int score, String name) {
-		
-		if (name!=null&& score>0) {
-		//	Pacman P = new Pacman(score, name);
-		//	System.out.println(P);
+ 		if (name!=null&& score>0) {
 		 	Pacman.add(new Pacman(score, name));
 		//	if() {
-			 	Collections.sort(getPacman());  
-				Serialize(this);
-				return true; 
-	//		}
+ 			 	Collections.sort(getPacman());
+ 				System.out.println(getPacman()+"after adding ");
+
+ 				return true; 
+ 
 		}
 		return false; 
 	}
@@ -188,6 +201,7 @@ public class SysData implements Serializable{
 			SysData input = (SysData)inputStream.readObject();
  			inputStream.close();
  			inputFile.close();
+ 			
  			return input;
 		}
 		catch (Exception e){
@@ -203,15 +217,20 @@ public class SysData implements Serializable{
 	 */
 	public static void Serialize(Object Obj) throws IllegalPathStateException{
 		try{
-			FileOutputStream OutPutFile= new FileOutputStream(route);
+ 			FileOutputStream OutPutFile= new FileOutputStream(route);
 			ObjectOutputStream OutPutStream = new ObjectOutputStream(OutPutFile);
 			OutPutStream.writeObject(Obj);
  			OutPutStream.close();
 			OutPutFile.close();
+ 
 		}
 		catch (IOException e){
  			e.printStackTrace();
 		}
 	}
+
+ 
+	
+	
 }
 

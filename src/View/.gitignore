@@ -10,3 +10,6 @@
 /Login.class
 /StartGame.class
 /GameView$1.class
+/AddQuestion.class
+/PacmanAnimation.class
+/QuestionManager.class

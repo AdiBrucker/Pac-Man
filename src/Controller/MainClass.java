@@ -24,10 +24,8 @@ import javax.swing.*;
 public class MainClass extends Application{
 
 	
-	private static PacmanController controller;
-  /*  static Stage window;
-    Scene scene;
-    static GridPane gridPane;*/
+  private static PacmanController controller;
+
   static MainClass instance;
 
     public static MainClass getInstance() {
@@ -40,10 +38,9 @@ public class MainClass extends Application{
 
     public void start(Stage stage) throws Exception {
 
-		ViewLogic instances = ViewLogic.getInstance();
-		controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
-
-        Login login = new Login();
+	  /// ViewLogic instances = ViewLogic.getInstance();/// we didnt need that line here  because game view call to this class later 
+	   controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
+       Login login = new Login();
 
     }
 }
