@@ -21,14 +21,10 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     public boolean right, left, up, down;
     public int speed = 4;
     private Location location;
-<<<<<<< HEAD
-    public static int lifeScore = 3;
-    public static int score = 0;
-    public  int score1  ;
-=======
+
+    public  int score1=0  ;
     public int lifeScore = 3;
     public int score = 0;
->>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
     public static ViewLogic viewInstance;
     public String PacmanNane;
     private int animationTime = 0;
@@ -153,7 +149,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                 }
                 else
                 {
-                // 	SysData.instance.AddPacman(score, "haim");// when we will add a name 
+                  	SysData.instance.AddPacman(score,PacmanNane);// when we will add a name 
                 	// its will add to pacman list that will be the winner at scores table
                     ShowGameOver();                 }
                 	break;

@@ -1,17 +1,14 @@
 package View;
-<<<<<<< HEAD
-
+ 
 import javax.swing.JFrame;
 
 import Model.ModelLogic;
-=======
 import Controller.MainClass;
-import com.jfoenix.controls.*;
-import javafx.application.Application;
+import  com.jfoenix.controls.*;
+ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
->>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
@@ -67,8 +64,7 @@ public class StartGame {
             button.setTranslateX(-110);
             button.setTranslateY(-110);
             button.setStyle("-fx-background-color:transparent ; -fx-text-fill:transparent ");
-<<<<<<< HEAD
-            button.setOnAction(e->new GameView() );
+             button.setOnAction(e->new GameView() );
             stage.setOnCloseRequest(e-> {
             if( PopUpLogic.getInstance().ShowEXit(true)==0) {
 	       		 ModelLogic.getsData().writeQuestionsToJsonFile();
@@ -79,13 +75,9 @@ public class StartGame {
             	}
             e.consume();
             });
-=======
-            //  button.setOnAction(e->Controller.MainClass.getInstance().begin() );
-
+ 
           button.setOnAction(e -> popUpLogic.showGameType(pane));
-            //  button.setOnAction(e->new GameView() );
->>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
-
+  
 
             button1 = new Button("Question");
             pane.getChildren().add(button1);

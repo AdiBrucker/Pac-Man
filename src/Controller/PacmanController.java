@@ -21,7 +21,7 @@ public class PacmanController {
 	 */
 	public static PacmanController CreateInstance() {
 		try {
-			if (instance == null) {
+ 			if (instance == null) {
 				model = ModelLogic.CreateInstance();
 			 	model.loadQuestionsFromJsonFile();
 			  	model.inputSerialize();

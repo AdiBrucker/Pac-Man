@@ -18,7 +18,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public static ArrayList<Maze> mazes;
     public static ArrayList<SpriteSheet> spriteSheets;
     private  static ArrayList<Game> instances;
-		  public static boolean  flag= false;
+	public static boolean  flag= false;
     public static int playerCount = 0;
     private static Thread thread;
     static PopUpLogic popInctance = PopUpLogic.getInstance();
@@ -124,9 +124,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	            		 synchronized (this) {
 	            			 try {
 								getInstance().wait();
-							} catch (InterruptedException e) {
+							} catch (Exception e) {//InterruptedException
 								// TODO Auto-generated catch block
 							//	e.printStackTrace();
+								this.notify();
 							}
 	            			 flag=false;
 	            		 }
@@ -178,7 +179,6 @@ public class Game extends Canvas implements Runnable, KeyListener {
         if (instances == null){
             instances = new ArrayList<>();
         }
-
         while (playerCount < popInctance.getNumOfPlayers()) {
             playerCount++;
             instances.add(new Game());
@@ -189,6 +189,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
     /// need to check this one
     public void SetInstance() {
     	instances.remove(instances.get(playerIndex));
+    	instances=null;
+    	playerIndex = 0;
+    	playerCount=0;
     }
 
     public static int getPlayerIndex() {

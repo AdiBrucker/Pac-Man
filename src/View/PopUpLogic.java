@@ -8,7 +8,6 @@ import java.util.*;
 
 import Model.SysData;
 import com.jfoenix.controls.*;
-import com.sun.javaws.net.protocol.jar.Handler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,26 +18,19 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-
 import javax.swing.*;
 
-
-import java.awt.*;
-<<<<<<< HEAD
- import java.util.List;
-import java.util.Random;
-/**
- * class that used for messages to the user 
- *
- */
-=======
 import java.util.List;
 import java.util.Timer;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
->>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
+import java.awt.*;
+/**
+ * class that used for messages to the user 
+ *
+ */
 public class PopUpLogic {
 
     static PopUpLogic instance;
@@ -130,14 +122,11 @@ public class PopUpLogic {
  
      	return g;
     }
-<<<<<<< HEAD
     /**
      * pop up with a message that the game is pause
      * occur when the player press on space keyboard 
      */
-=======
 
->>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
     public void pauseGame(){
     	
         UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
@@ -149,9 +138,7 @@ public class PopUpLogic {
      	 }
 	 	   ViewLogic.getInstance().getTimer();
 
-<<<<<<< HEAD
     } 
-=======
 	public void showGameType(StackPane pane){
         javafx.scene.control.Label field = new Label("Please choose how many players");
 		GridPane gridPane = new GridPane();
@@ -233,7 +220,6 @@ public class PopUpLogic {
 	public static String getPlayer2() {
 		return player2.getText();
 	}
->>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
 
 	public static int getNumOfPlayers() {
 		return numOfPlayers;

@@ -26,7 +26,7 @@ public class GameView{
 	private	static	ViewLogic instance;
 	private static PacmanController controller;
 
-    public GameView()
+	public GameView()
     {
         try {
             initGame();
@@ -36,17 +36,10 @@ public class GameView{
     }
  
     public static void  initGame(){
-<<<<<<< HEAD
- 
-    	instance = ViewLogic.getInstance();
-        controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
-=======
 
->>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
         game = Game.getInstance();
         instance = ViewLogic.getInstance();
-    //    controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
-        frame = new JFrame(game.TITLE);
+         frame = new JFrame(game.TITLE);
         frame.add(BorderLayout.PAGE_END, game);
         frame.add(BorderLayout.BEFORE_FIRST_LINE, instance.getNickname());
         frame.add(BorderLayout.WEST,instance.getlScoreForPacman());
@@ -83,19 +76,14 @@ public class GameView{
 		
 	 	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.dispose();
-<<<<<<< HEAD
- 	 	game.isRunning=false;	
-		game.SetInstance();
-=======
- 		game.isRunning=true;
-		game.pacmans.remove(game.pacmans.get(game.getPlayerIndex()));
-		game.mazes.get(game.getPlayerIndex()).ghosts=null;
-		game.mazes.get(game.getPlayerIndex()).candy=null;
-		game.mazes.remove(game.mazes.get(game.getPlayerIndex()));
- 		game.SetInstance();
->>>>>>> 3920b5eb30d0ef932361083505816924fdb0bf8f
+		game.isRunning=false;//false shahar
+//		game.pacmans.remove(game.pacmans.get(game.getPlayerIndex()));
+//		game.mazes.get(game.getPlayerIndex()).ghosts=null;
+//		game.mazes.get(game.getPlayerIndex()).candy=null;
+//		game.mazes.remove(game.mazes.get(game.getPlayerIndex()));
+  		game.SetInstance();
  		instance.SetInstance();
-		controller.SetInstance();
+//	 	controller.SetInstance();
 	    
 
  	}
