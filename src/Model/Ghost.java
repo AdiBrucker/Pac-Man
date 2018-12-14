@@ -31,6 +31,8 @@ public class Ghost extends Rectangle implements IMovable{
 
     public void tick(){
 
+
+
         if (state == random){
             if (dir == right){
                 if (canMove(x + speed, y)){
@@ -75,7 +77,7 @@ public class Ghost extends Rectangle implements IMovable{
 
     public boolean canMove(int nextx, int nexty){
         Rectangle bounds = new Rectangle(nextx, nexty, width, height);
-        Maze maze = Game.maze;
+        Maze maze = Game.mazes.get(Game.getPlayerIndex());
 
         for (int xx = 0; xx < maze.walls.length; xx++){
             for (int yy = 0; yy < maze.walls[0].length; yy++){
@@ -100,7 +102,7 @@ public class Ghost extends Rectangle implements IMovable{
     }
 
     public void render(Graphics g){
-        SpriteSheet sheet = Game.spriteSheet;
+        SpriteSheet sheet = Game.spriteSheets.get(Game.getPlayerIndex());
         g.drawImage(sheet.getSprite(0, 16), x, y, 32, 32, null);
     }
 }
