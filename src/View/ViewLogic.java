@@ -69,7 +69,7 @@ public class ViewLogic {
     }
     
     public Label getTimer() {
-     s=0;
+        s=0;
         Timer timer1=new Timer();
         TimerTask task =new TimerTask() {
     	    	public void run () {

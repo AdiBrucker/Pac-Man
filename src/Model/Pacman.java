@@ -78,7 +78,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                     left = false;
                     up = false;
                     down=false;
-                    Music("src\\Question-SOUND.wav");
+                    Music("/src/Question-SOUND.wav");
 
                     showQuestion();
                     right = false;
@@ -138,7 +138,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
         for (int j = 0; j < maze.ghosts.size(); j++){
             if (this.intersects(maze.ghosts.get(j))){
                 maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
-                Music("\\pacmandeath.wav");
+                Music("/src/pacmandeath.wav");
                 
                 if (lifeScore > 1) {
                     lifeScore--;
