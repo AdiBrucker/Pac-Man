@@ -21,21 +21,24 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     public boolean right, left, up, down;
     public int speed = 4;
     private Location location;
-    public static int lifeScore = 3;
-    public static int score = 0;
+
+    public  int score1=0  ;
+    public int lifeScore = 3;
+    public int score = 0;
     public static ViewLogic viewInstance;
     public String PacmanNane;
-    private int score1  ; //// just for checking how the score saved to a file
     private int animationTime = 0;
     private int targetAnimationTime = 10;
     private int animationIndexImage = 0;
     private int lastDir = 1;
 
-    public Pacman(int x, int y){
+
+    public Pacman(int x, int y,String nickname){
         setBounds(x, y, 26, 26);
         location = new Location(x,y);
         score = 0;
         lifeScore = 3;
+        PacmanNane = nickname;
     }
 
     public Pacman(int score2 ,String name){
@@ -43,13 +46,13 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
     	  score1=score2;
     }
     
-    public static void setScore(int score) {
-		Pacman.score = score;
+    public void setScore(int score) {
+		this.score = score;
 	}
 
 	@Override
     public void tick(){
-        Maze maze = Game.maze;
+        Maze maze = Game.mazes.get(Game.getPlayerIndex());
          viewInstance = ViewLogic.getInstance();
         animatePacman();
         for (int i = 0; i < maze.candy.size(); i++){
@@ -100,7 +103,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                     }
                     else
                     {
-              ///      	SysData.instance.AddPacman(score, name); when we will add a name 
+                     //	SysData.instance.AddPacman(score, "shai");// when we will add a name 
                     	// its will add to pacman list that will be the winner at scores table
                         ShowGameOver();
                     }
@@ -146,19 +149,17 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                 }
                 else
                 {
-                    ShowGameOver();
-                    GameView.closewindow();
-                 //   Game.instance=null;/// we need  to close all the data from the game 
-                  // Because after that we need to run another game ;
-                }
-                break;
+                  	SysData.instance.AddPacman(score,PacmanNane);// when we will add a name 
+                	// its will add to pacman list that will be the winner at scores table
+                    ShowGameOver();                 }
+                	break;
             }
         }
 
-        /* The method to end the game. we'll use it later.
+        ///if 
         if (maze.candy.size() == 0){
             System.exit(1);
-        }*/
+        } 
     }
 
     private void animatePacman() {
@@ -188,22 +189,27 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
 	}
 
     public void showQuestion(){
-        PopUpLogic instance = PopUpLogic.getInstance();
-        instance.ShowQuestion();
-}
+      
+       PopUpLogic.getInstance().ShowQuestion();
+    }
 
     public void ShowGameOver(){
-        PopUpLogic instance = PopUpLogic.getInstance();
-        instance.ShowGameOver(score);
+        PopUpLogic.getInstance().ShowGameOver(score);
+        GameView.closewindow();
     }
     public int getScore(){
         return score;
+    }
+    
+
+    public int getScoreResult(){
+        return score1;
     }
 
     @Override
     public boolean canMove(int nextx, int nexty){
         Rectangle bounds = new Rectangle(nextx, nexty, width,  height);
-        Maze maze = Game.maze;
+        Maze maze = Game.mazes.get(Game.getPlayerIndex());
 
         for (int xx = 0; xx < maze.walls.length; xx++){
             for (int yy = 0; yy < maze.walls[0].length; yy++){
@@ -256,8 +262,12 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
 	 */
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
-		return ((Pacman) o).getScore()-this.getScore() ;
+		return ((Pacman) o).getScoreResult()-this.getScoreResult() ;
 	}
+
+    public String getPacmanName() {
+        return PacmanNane;
+    }
 
 	@Override
 	public String toString() {

@@ -26,7 +26,7 @@ public class GameView{
 	private	static	ViewLogic instance;
 	private static PacmanController controller;
 
-    public GameView()
+	public GameView()
     {
         try {
             initGame();
@@ -36,15 +36,16 @@ public class GameView{
     }
  
     public static void  initGame(){
-    	
-    	instance = ViewLogic.getInstance();
-        controller = PacmanController.CreateInstance(); // singleton (construction by method 'Create').
+
         game = Game.getInstance();
-        frame = new JFrame(game.TITLE);
+        instance = ViewLogic.getInstance();
+         frame = new JFrame(game.TITLE);
         frame.add(BorderLayout.PAGE_END, game);
+        frame.add(BorderLayout.BEFORE_FIRST_LINE, instance.getNickname());
         frame.add(BorderLayout.WEST,instance.getlScoreForPacman());
         frame.add(BorderLayout.EAST,instance.getLifeScoreForPacman());
-        frame.add(BorderLayout.CENTER,instance.getTimer());
+        instance.getTimer();
+        frame.add(BorderLayout.CENTER,instance.timer);
         frame.setResizable(false);
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -58,7 +59,7 @@ public class GameView{
       frame.addWindowListener(new java.awt.event.WindowAdapter() {
     @Override
     	public void windowClosing(java.awt.event.WindowEvent e) {
-	       if( PopUpLogic.getInstance().ShowEXit()==0) {
+	       if( PopUpLogic.getInstance().ShowEXit(false)==0) {
 		        closewindow();
 	       }
 	 	frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -67,19 +68,22 @@ public class GameView{
         });
 
     }
- 
+ /***update all the instance to null 
+  * in favor to open the game again
+  * 
+  */
 	public static void closewindow() {
 		
 	 	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.dispose();
- 		game.isRunning=true;
-		game.pacman=null;
-		game.maze.ghosts=null;
-		game.maze.candy=null;
-		game.maze=null;
- 		game.SetInstance();
+		game.isRunning=false;//false shahar
+//		game.pacmans.remove(game.pacmans.get(game.getPlayerIndex()));
+//		game.mazes.get(game.getPlayerIndex()).ghosts=null;
+//		game.mazes.get(game.getPlayerIndex()).candy=null;
+//		game.mazes.remove(game.mazes.get(game.getPlayerIndex()));
+  		game.SetInstance();
  		instance.SetInstance();
- 		controller.SetInstance();
+//	 	controller.SetInstance();
 	    
 
  	}

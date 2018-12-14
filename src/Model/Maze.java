@@ -44,8 +44,8 @@ public class Maze{
                     }
                     else if (val == 0xFF0000FF){
                         //pacman
-                        Game.pacman.x = xx * 32;
-                        Game.pacman.y = yy * 32;
+                        Game.pacmans.get(Game.getPlayerIndex()).x = xx * 32;
+                        Game.pacmans.get(Game.getPlayerIndex()).y = yy * 32;
                     }
                     else if (val == 0xFFFF0000){
                         //Ghost
