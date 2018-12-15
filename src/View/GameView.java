@@ -2,24 +2,13 @@ package View;
 
 import Controller.PacmanController;
 import Model.Game;
-import Model.SysData;
-import Model.*;
-import View.ViewLogic;
-import javafx.application.Application;
-import javafx.embed.swing.SwingNode;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import java.awt.Image;
-import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
- 
-import java.awt.*;
-
 
 import javax.swing.*;
+import java.awt.*;
 
+/**
+ * The view of the game view
+ */
 public class GameView{
 	private	static JFrame frame;
 	private	static Game game;
@@ -51,7 +40,7 @@ public class GameView{
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(Color.BLACK);
         frame.setVisible(true);
-       	ImageIcon img = new ImageIcon("pacnanIm.png");
+       	ImageIcon img = new ImageIcon("res/pacnanIm.png");
  
        	frame.setIconImage(img.getImage());
          game.start();

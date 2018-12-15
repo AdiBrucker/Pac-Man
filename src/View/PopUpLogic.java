@@ -1,11 +1,6 @@
 package View;
 
 import Model.Game;
-import Model.ModelLogic;
-import Model.Pacman;
-import java.lang.Object.*;
-import java.util.*;
-
 import Model.SysData;
 import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
@@ -13,20 +8,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+
 import javax.swing.*;
-
-import java.util.List;
-import java.util.Timer;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import java.awt.*;
+import java.util.List;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  * class that used for messages to the user 
  *
@@ -51,7 +43,7 @@ public class PopUpLogic {
     public void ShowQuestion(){
        	ViewLogic.getInstance().CancelTimer();
 
-    	ImageIcon icon =new ImageIcon("src//download.jpg");
+    	ImageIcon icon =new ImageIcon("src\\res\\download.jpg");
      	Random rand = new Random();
  		int indexOfQuestion = rand.nextInt(SysData.createInstance().getQuestions().size());
     	List<String> a= SysData.instance.getQuestions().get(indexOfQuestion).getAnswers();

@@ -2,51 +2,45 @@ package Controller;
 
 import Model.InterModel;
 import Model.ModelLogic;
-import Model.SysData;
 
+/**
+ * Controller class responsible to connect between the model and the view
+ */
 public class PacmanController {
-	
-	private static PacmanController instance;///singleton
-	/** ModelLogic reference pointer */
-	private static InterModel model;
-	//Constructor
-	private PacmanController() {
-		model = new ModelLogic();
 
-	}
-	/**
-	 * instance of PacmanController that also loading the questions and the 
-	 * last scores from the  last games 
-	 * @return
-	 */
-	public static PacmanController CreateInstance() {
-		try {
- 			if (instance == null) {
-				model = ModelLogic.CreateInstance();
-			 	model.loadQuestionsFromJsonFile();
-			  	model.inputSerialize();
-				instance = new PacmanController();
-				 
-				return instance;
-			}  
-		} catch (Exception e) { 
+    //singleton
+    private static PacmanController instance;
 
-			e.printStackTrace(); 
-		}
-		return instance;
+    //ModelLogic reference pointer
+    private static InterModel model;
 
- 	}
- 
-	
-	public static void SetInstance() {
-    	instance=null;
+    /**
+     * PacmanController Constructor
+     */
+    private PacmanController() {
+        model = new ModelLogic();
     }
-	
-	public static PacmanController getInstance() {
-		return instance;
-	}
-	public boolean addPacman(String Name, int score){
-		return model.AddPacman(score, Name);
-	} 
 
+    /**
+     * creates instance of PacmanController that also loading the questions and the
+     * last scores from the  last games
+     *
+     * @return
+     */
+    public static PacmanController CreateInstance() {
+        try {
+            if (instance == null) {
+                model = ModelLogic.CreateInstance();
+                model.loadQuestionsFromJsonFile();
+                model.inputSerialize();
+                instance = new PacmanController();
+
+                return instance;
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        return instance;
+    }
 }

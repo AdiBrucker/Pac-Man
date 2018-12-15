@@ -11,15 +11,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Maze{
+/**
+ * class that holds the model of the maze. Contains the walls, candies, ghosts, etc.
+ */
+public class Maze {
 
+    //width and height represents the dimensions of the maze
     public int width;
     public int height;
+    //array the contains the walls in the maze
     public Walls[][] walls;
+    //list the contains the candies in the maze
     public List<Candy> candy;
+    //list the contains the ghosts in the maze
     public List<Ghost> ghosts;
-    public static boolean level2 =false;
-    public Maze(String path){
+    public static boolean level2 = false;
+
+    /**
+     * Constructor
+     * Responsible to build the maze by reading the pixels from the source map which is imported in the constructor
+     * by reading the map the walls, candies and ghosts are sorted into the relevant array/list and later are drawn on games map.
+     * @param path
+     */
+    public Maze(String path) {
         candy = new ArrayList();
         ghosts = new ArrayList();
         int getCandy = 0;
@@ -34,51 +48,44 @@ public class Maze{
             walls = new Walls[width][height];
             map.getRGB(0, 0, width, height, pixels, 0, width);
 
-            for (int xx = 0; xx < width; xx++){
-                for (int yy = 0; yy < height; yy++){
+            for (int xx = 0; xx < width; xx++) {
+                for (int yy = 0; yy < height; yy++) {
                     int val = pixels[xx + (yy * width)];
                     int n = rand.nextInt(10) + 1;
-                    if (val == 0xFF000000){
+                    if (val == 0xFF000000) {
                         //Wall
-                        walls[xx][yy] = new Walls(xx * 32, yy *32);
-                    }
-                    else if (val == 0xFF0000FF){
+                        walls[xx][yy] = new Walls(xx * 32, yy * 32);
+                    } else if (val == 0xFF0000FF) {
                         //pacman
                         Game.pacmans.get(Game.getPlayerIndex()).x = xx * 32;
                         Game.pacmans.get(Game.getPlayerIndex()).y = yy * 32;
-                    }
-                    else if (val == 0xFFFF0000){
+                    } else if (val == 0xFFFF0000) {
                         //Ghost
                         ghosts.add(new Ghost(xx * 32, yy * 32));
-                    }
-                    else {
+                    } else {
                         //Candy
-                    	// if its a gold candy 
-                    	
-                    	if (level2 ) {// if the player pass the first level 
-                    		level2=false;
-                    		ScoreCandy gold =new ScoreCandy(xx * 32, yy * 32, "Gold");
-                    		gold.setnewLifeBonus(new isLife());
+                        // if its a gold candy
+
+                        if (level2) {// if the player pass the first level
+                            level2 = false;
+                            ScoreCandy gold = new ScoreCandy(xx * 32, yy * 32, "Gold");
+                            gold.setnewLifeBonus(new isLife());
                             candy.add(gold);
 
-                    	}
-                        if(getCandy < 10){
+                        }
+                        if (getCandy < 10) {
                             candy.add(new ScoreCandy(xx * 32, yy * 32, "Yellow"));
                             getCandy++;
-                        }
-                        else if (getSilverCandy <5 && n%5 == 0)
-                        {
+                        } else if (getSilverCandy < 5 && n % 5 == 0) {
                             candy.add(new ScoreCandy(xx * 32, yy * 32, "Silver"));
                             getSilverCandy++;
 
-                        }
-                        else if(!candyPoisonAppeared){
+                        } else if (!candyPoisonAppeared) {
                             candy.add(new PoisonCandy(xx * 32, yy * 32));
                             candyPoisonAppeared = true;
-                        }
-                        else{
+                        } else {
                             candy.add(new QuestionCandy(xx * 32, yy * 32));
-                            getCandy =0;
+                            getCandy = 0;
 
                         }
                     }
@@ -91,32 +98,32 @@ public class Maze{
     }
 
 
-    public void tick(){
-        for (int i = 0; i < ghosts.size(); i++){
+    /**
+     * Manages the movements of the ghosts on the map
+     */
+    public void tick() {
+        for (int i = 0; i < ghosts.size(); i++) {
             ghosts.get(i).tick();
         }
     }
 
-
-    public void render(Graphics g){
-        for (int x = 0; x < width; x++){
-            for (int y = 0; y < height; y++){
-                if (walls[x][y] != null){
+    /**
+     * draws the walls, candies and ghosts on the game's map
+     * @param g
+     */
+    public void render(Graphics g) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                if (walls[x][y] != null) {
                     walls[x][y].render(g);
                 }
             }
         }
-        for (int i = 0; i < candy.size(); i++){
+        for (int i = 0; i < candy.size(); i++) {
             candy.get(i).render(g);
         }
-        for (int i = 0; i < ghosts.size(); i++){
+        for (int i = 0; i < ghosts.size(); i++) {
             ghosts.get(i).render(g);
         }
     }
-
-
-    public boolean canMove(int nextx, int nexty){
-        return false;
-    }
-
 }

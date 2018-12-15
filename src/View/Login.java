@@ -1,6 +1,5 @@
 package View;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
@@ -9,16 +8,16 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 import javafx.scene.image.Image;
 
 import javafx.scene.control.ComboBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.GridPane;
-import javafx.scene.Node;
 
+/**
+ * view of the login screen to the game
+ */
 public class Login  {
 
 
@@ -89,7 +88,7 @@ public class Login  {
         pane.getChildren().addAll(comboBox,button,nameText);
         Scene scene = new Scene(pane, 550,600);
         stage.setScene(scene);
-    	Image icon =new Image("pacnanIm.png");////   src//pacnanIm.jpg
+    	Image icon =new Image("res/pacnanIm.png");////   src//pacnanIm.jpg
     	stage.getIcons().add(icon);
     	stage.setTitle("PACMAN");
         stage.show();

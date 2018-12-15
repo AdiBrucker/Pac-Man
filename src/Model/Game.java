@@ -9,28 +9,44 @@ import java.util.ArrayList;
 import View.PacmanAnimation;
 import View.PopUpLogic;
 
+/**
+ * Class which is responsible to hold the game objects such as pacman, maze, game etc.
+ */
 public class Game extends Canvas implements Runnable, KeyListener {
 
-	public boolean isRunning = false;
+
+    public boolean isRunning = false;
+    //defines the dimensions of the game
     public static final int WIDTH = 1120, HEIGHT = 800;
     public static final String TITLE = "PACMAN";
+    //An array that holds pacman instances for multiple players.
     public static ArrayList<Pacman> pacmans;
+    //An array that holds maze instances for multiple players.
     public static ArrayList<Maze> mazes;
+    //An array that holds spriteshets instances for multiple players.
     public static ArrayList<SpriteSheet> spriteSheets;
-    private  static ArrayList<Game> instances;
-	public static boolean  flag= false;
+    //An array that holds game instances for multiple players.
+    private static ArrayList<Game> instances;
+    //uses to indicate when to stop the watch and when th game is running
+    public static boolean flag = false;
+    //Counts how many players there are in the game
     public static int playerCount = 0;
     private static Thread thread;
+    //Responsible for the pop up messages
     static PopUpLogic popInctance = PopUpLogic.getInstance();
-    private static int playerIndex = 0; // set the game turn with the relevant player
+    // set the game turn with the relevant player
+    private static int playerIndex = 0;
 
-    public Game(){
+    /**
+     * Class constructor. initiates the arrays, build the game boards with its contents.
+     */
+    public Game() {
 
-            if (playerCount ==1) {
-                pacmans = new ArrayList<>();
-                mazes = new ArrayList<>();
-                spriteSheets = new ArrayList<>();
-            }
+        if (playerCount == 1) {
+            pacmans = new ArrayList<>();
+            mazes = new ArrayList<>();
+            spriteSheets = new ArrayList<>();
+        }
 
         setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
         setMinimumSize(new Dimension(Game.WIDTH, Game.HEIGHT));
@@ -39,59 +55,63 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         addKeyListener(this);
         new PacmanAnimation();
-        if(playerCount ==1) {
+        if (playerCount == 1) {
             pacmans.add(new Pacman(Game.WIDTH / 2, Game.HEIGHT / 2, popInctance.getPlayer1()));
-        }
-
-        else if(playerCount ==2) {
+        } else if (playerCount == 2) {
             pacmans.add(new Pacman(Game.WIDTH / 2, Game.HEIGHT / 2, popInctance.getPlayer2()));
-            playerIndex=1;
+            playerIndex = 1;
         }
 
         mazes.add(new Maze("/res/map/map.png"));
         spriteSheets.add(new SpriteSheet("/res/sprites/spritesheet.png"));
-
     }
 
-    public synchronized void start(){
+    /**
+     * Starting the game
+     */
+    public synchronized void start() {
 
-        if (isRunning){
+        if (isRunning) {
             return;
         }
         isRunning = true;
         thread = new Thread(this);
         thread.start();
-
-
     }
 
-    public synchronized void stop(){
-        if (!isRunning){
+    /**
+     * Stops the game
+     */
+    public synchronized void stop() {
+        if (!isRunning) {
             return;
         }
         isRunning = false;
-        try{
+        try {
             thread.join();
-        }
-        catch (InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
 
         }
     }
 
-    public void tick(){
+    /**
+     * Handling the movement of the pacman character
+     */
+    public void tick() {
         pacmans.get(playerIndex).tick();
         mazes.get(playerIndex).tick();
     }
 
-
-    private void render(){
+    /**
+     * Responsible to render the game's board
+     */
+    private void render() {
         BufferStrategy bs = getBufferStrategy();
-        if (bs == null){
+        if (bs == null) {
             createBufferStrategy(3);
             return;
         }
-
 
         Graphics g = bs.getDrawGraphics();
 
@@ -103,52 +123,49 @@ public class Game extends Canvas implements Runnable, KeyListener {
         bs.show();
     }
 
+    /**
+     * A method which is responsible to run the game and define the speed of the characters.
+     * Manages their movements and their speed.
+     */
     @Override
     public void run() {
-		try {
-	        requestFocus();
-	        int fps = 0;
-	        double timer = System.currentTimeMillis();
-	        long lastTime = System.nanoTime();
-	        double targetTick = 60.0;
-	        double delta = 0;
-	        double ns = 1000000000 / targetTick;
+        try {
+            requestFocus();
+            double timer = System.currentTimeMillis();
+            long lastTime = System.nanoTime();
+            double targetTick = 60.0;
+            double delta = 0;
+            double ns = 1000000000 / targetTick;
 
-	        while (isRunning){
-	            long now = System.nanoTime();
-	            delta += (now - lastTime) / ns;
-	            lastTime = now;
-	            while (delta >= 1){
+            while (isRunning) {
+                long now = System.nanoTime();
+                delta += (now - lastTime) / ns;
+                lastTime = now;
+                while (delta >= 1) {
 
-	            	if( flag) {
-	            		 synchronized (this) {
-	            			 try {
-								getInstance().wait();
-							} catch (Exception e) {//InterruptedException
-								// TODO Auto-generated catch block
-							//	e.printStackTrace();
-								this.notify();
-							}
-	            			 flag=false;
-	            		 }
-	            	}
-	                tick();
-	                render();
-	                fps++;
-	                delta=0;
-	            }
-	            if (System.currentTimeMillis() - timer >= 1000){
-	                 fps = 0;
-	                timer += 1000;
-	            }
-	        }
+                    if (flag) {
+                        synchronized (this) {
+                            try {
+                                getInstance().wait();
+                            } catch (Exception e) {
+                                this.notify();
+                            }
+                            flag = false;
+                        }
+                    }
+                    tick();
+                    render();
+                    delta = 0;
+                }
+                if (System.currentTimeMillis() - timer >= 1000) {
+                    timer += 1000;
+                }
+            }
 
-	        stop();
-			}
-		catch (Exception e){
-		     e.printStackTrace();
-
-		}
+            stop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -156,6 +173,11 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
     }
 
+    /**
+     * listens to the keyboard types. controls pacman movements and decides whether is should go left/right/up/down
+     * according to the key typed
+     * @param e
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) pacmans.get(playerIndex).right = true;
@@ -163,10 +185,14 @@ public class Game extends Canvas implements Runnable, KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_UP) pacmans.get(playerIndex).up = true;
         if (e.getKeyCode() == KeyEvent.VK_DOWN) pacmans.get(playerIndex).down = true;
 
-        if(e.getKeyCode() == KeyEvent.VK_SPACE)// when pressing space
-        	PopUpLogic.getInstance().pauseGame();
+        if (e.getKeyCode() == KeyEvent.VK_SPACE)// when pressing space
+            PopUpLogic.getInstance().pauseGame();
     }
 
+    /**
+     * When a key is release the method is responsible to stop pacman's movement.
+     * @param e
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) pacmans.get(playerIndex).right = false;
@@ -175,8 +201,12 @@ public class Game extends Canvas implements Runnable, KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) pacmans.get(playerIndex).down = false;
     }
 
+    /**
+     * Getter for the game instance
+     * @return
+     */
     public static Game getInstance() {
-        if (instances == null){
+        if (instances == null) {
             instances = new ArrayList<>();
         }
         while (playerCount < popInctance.getNumOfPlayers()) {
@@ -184,21 +214,67 @@ public class Game extends Canvas implements Runnable, KeyListener {
             instances.add(new Game());
         }
 
-        return  instances.get(playerIndex);
-    }
-    /// need to check this one
-    public void SetInstance() {
-    	instances.remove(instances.get(playerIndex));
-    	instances=null;
-    	playerIndex = 0;
-    	playerCount=0;
+        return instances.get(playerIndex);
     }
 
+    /**
+     * Setter for instance
+     */
+    public void SetInstance() {
+        instances.remove(instances.get(playerIndex));
+        instances = null;
+        playerIndex = 0;
+        playerCount = 0;
+    }
+
+    /**
+     * Gets for the player index.
+     * @return
+     */
     public static int getPlayerIndex() {
         return playerIndex;
     }
 
+    /**
+     * Sets the player index.
+     * @param playerIndex
+     */
     public static void setPlayerIndex(int playerIndex) {
         Game.playerIndex = playerIndex;
+    }
+
+    /**
+     * A method that checks if in the next step of pacman or the ghosts exists a wall. If a wall exists the method returns false and doesn't
+     * allow pacman or the ghost to continue it the same direction.
+     * @param nextx
+     * @param nexty
+     * @param width
+     * @param height
+     * @return
+     */
+    public static boolean canMove(int nextx, int nexty, int width, int height){
+        Rectangle bounds = new Rectangle(nextx, nexty, width,  height);
+        Maze maze = Game.mazes.get(Game.getPlayerIndex());
+
+        for (int xx = 0; xx < maze.walls.length; xx++){
+            for (int yy = 0; yy < maze.walls[0].length; yy++){
+                if (maze.walls[xx][yy] != null){
+                    if (bounds.intersects(maze.walls[xx][yy])){
+
+                        for (int x = 0; x < maze.walls.length; x++){
+                            for (int y = 0; y < maze.walls[0].length; y++){
+                                if (maze.walls[x][y] != null){
+                                    if (bounds.intersects(maze.walls[x][y])){
+
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

@@ -15,10 +15,12 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
+/**
+ * The view for adding a question to the game
+ */
 public class AddQuestion {
 
 
-        // Image image = new Image("res/first.PNG");
         Button button;
         Label Difficulty;
         Label l_Quest_Num;

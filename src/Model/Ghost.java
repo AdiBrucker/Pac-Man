@@ -3,7 +3,10 @@ package Model;
 import java.awt.*;
 import java.util.Random;
 
-public class Ghost extends Rectangle implements IMovable{
+/**
+ * Ghost class holds the model of the ghosts in the game
+ */
+public class Ghost extends Rectangle implements IMovable {
     private int random = 0;
     private int smart = 1;
     private int state = random;
@@ -11,97 +14,70 @@ public class Ghost extends Rectangle implements IMovable{
     private int left = 1;
     private int up = 2;
     private int down = 3;
-    public Random  randomGen = new Random();
-    private int time = 0;
-    private int targetTime = 240;
+    public Random randomGen = new Random();
     private int speed = 2;
     private int dir = randomGen.nextInt(4);
-    private Location location;
 
-    public Ghost(int x, int y){
-        
-        location = new Location(x,y);
-
-        setBounds(x, y, 32, 32 );
+    /**
+     * Constructor of Ghosts. Responsible to create and locate on the game's board
+     * @param x
+     * @param y
+     */
+    public Ghost(int x, int y) {
+        new Location(x, y);
+        setBounds(x, y, 32, 32);
     }
-	public void setLocation(Location location) {
-		this.location = location;
-	}
 
+    /**
+     * Method which run the movement of the ghosts in the game.
+     */
+    public void tick() {
+        ghostsAI();
 
-    public void tick(){
+    }
 
-
-
-        if (state == random){
-            if (dir == right){
-                if (canMove(x + speed, y)){
+    /**
+     * The AI for the ghost movement. When a ghost intersects with a wall the directions of its movement is changed.
+     */
+    private void ghostsAI() {
+        if (state == random) {
+            if (dir == right) {
+                if (Game.canMove(x + speed, y, width, height)) {
                     x += speed;
-                }
-                else {
+                } else {
                     dir = randomGen.nextInt(4);
                 }
-            }
-            else if (dir == left){
-                if (canMove(x - speed, y)){
+            } else if (dir == left) {
+                if (Game.canMove(x - speed, y, width, height)) {
                     x -= speed;
-                }
-                else {
+                } else {
                     dir = randomGen.nextInt(4);
                 }
-            }
-            else if (dir == up){
-                if (canMove(x, y - speed)){
+            } else if (dir == up) {
+                if (Game.canMove(x, y - speed, width, height)) {
                     y -= speed;
-                }
-                else {
+                } else {
                     dir = randomGen.nextInt(4);
                 }
-            }
-            else if (dir == down){
-                if (canMove(x, y + speed)){
+            } else if (dir == down) {
+                if (Game.canMove(x, y + speed, width, height)) {
                     y += speed;
-                }
-                else {
+                } else {
                     dir = randomGen.nextInt(4);
                 }
             }
-           
-        }
-        else if (state == smart){
 
         }
+        else if (state == smart) {
 
+        }
     }
 
-
-    public boolean canMove(int nextx, int nexty){
-        Rectangle bounds = new Rectangle(nextx, nexty, width, height);
-        Maze maze = Game.mazes.get(Game.getPlayerIndex());
-
-        for (int xx = 0; xx < maze.walls.length; xx++){
-            for (int yy = 0; yy < maze.walls[0].length; yy++){
-                if (maze.walls[xx][yy] != null){
-                    if (bounds.intersects(maze.walls[xx][yy])){
-
-                        for (int x = 0; x < maze.walls.length; x++){
-                            for (int y = 0; y < maze.walls[0].length; y++){
-                                if (maze.walls[x][y] != null){
-                                    if (bounds.intersects(maze.walls[x][y])){
-
-                                        return false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
-    public void render(Graphics g){
+    /**
+     * Draws the ghosts image.
+     * @param g
+     */
+    public void render(Graphics g) {
         SpriteSheet sheet = Game.spriteSheets.get(Game.getPlayerIndex());
         g.drawImage(sheet.getSprite(0, 16), x, y, 32, 32, null);
     }

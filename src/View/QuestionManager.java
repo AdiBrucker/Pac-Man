@@ -19,6 +19,9 @@ import Model.Question;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Question manager view
+ */
 public class QuestionManager {
 
     // Image image = new Image("res/first.PNG");
