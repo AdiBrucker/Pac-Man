@@ -35,6 +35,7 @@ public class StartGame {
     Button button;
     Button button1;
     Button button2;
+    Button button5;
     Image image = new Image("res/Startgame.PNG");
     StackPane pane;
 
@@ -86,6 +87,19 @@ public class StartGame {
             button1.setTranslateY(23);
             button1.setStyle("-fx-background-color:transparent; -fx-text-fill:transparent ");
             button1.setOnAction(e-> new QuestionManager(stage));
+
+
+            button5 = new Button("Score");
+            pane.getChildren().add(button5);
+            button5.setMaxSize(300, 30);
+            button5.setTranslateX(-60);
+            button5.setTranslateY(-38);
+            button5.setStyle("-fx-background-color:transparent; -fx-text-fill:transparent ");
+            button5.setOnAction(e-> new ScoreHistory(stage));
+
+
+
+
 
             button2 = new Button("LogOut");
             pane.getChildren().add(button2);

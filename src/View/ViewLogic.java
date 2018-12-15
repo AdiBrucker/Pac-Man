@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class ViewLogic {
 
-	private static Label lScore;
+    private static Label lScore;
     private static Label lifeScore;
     public static Label timer;
     private static Label nickname;
@@ -18,16 +18,16 @@ public class ViewLogic {
     private    int TimerCounting = 0;// counting seconds
     private  int saveCountingToContinue = 0;// counting seconds
 
-    private static String timeResults="";/// 
-     private  TimerTask task;
+    private static String timeResults="";///
+    private  TimerTask task;
     public static boolean restart= false;
 
-    
+
     public static void SetInstance() {
-    	instance=null;
+        instance=null;
     }
     public   String GetTimeResults() {
-    	return timeResults;
+        return timeResults;
     }
 
     public static Label getNickname() {
@@ -37,7 +37,7 @@ public class ViewLogic {
     public static ViewLogic getInstance() {
         if (instance == null) {
             instance = new ViewLogic();
-         //   game = Game.getInstance();
+            //   game = Game.getInstance();
             nickname = new Label(Game.pacmans.get(Game.getPlayerIndex()).getPacmanName());
 
             nickname.setPreferredSize(new Dimension(400,70));
@@ -75,8 +75,8 @@ public class ViewLogic {
         lScore.setText("SCORE: " + Game.pacmans.get(Game.getPlayerIndex()).getScore());
     }
     public void setTimerCounting() {
-    	 TimerCounting = 0;
-    	 }
+        TimerCounting = 0;
+    }
     public Label getlScoreForPacman(){
         return lScore;
     }
@@ -85,79 +85,72 @@ public class ViewLogic {
         lifeScore.setText("LIFE SCORE: " + Game.pacmans.get(Game.getPlayerIndex()).getLifeScore());
     }
     public Label getLifeScoreForPacman(){
-    	
+
         return lifeScore;
     }
-    
-<<<<<<< HEAD
-    public Label getTimer() {
-        s=0;
-        Timer timer1=new Timer();
-        TimerTask task =new TimerTask() {
-=======
+
     /**
      * cancel timer when there are a pause at the game
-     * the func save the time and cancel the timer 
+     * the func save the time and cancel the timer
      */
     public  void CancelTimer() {
-    	saveCountingToContinue=TimerCounting;
-    	restart=true;
+        saveCountingToContinue=TimerCounting;
+        restart=true;
     }
     /**
      * init the timer
      * @return
      */
     public void getTimer() {
-    	
-    	Timer timer1=new Timer();
-          task =new TimerTask() {
->>>>>>> 4516c66bc4e2c6ec2a9b4d5969605a8f85342685
-    	    	public void run () {
-    	    		
-    	        	if( restart) {
-    	        		TimerCounting=saveCountingToContinue;
-	            		 task.cancel();
-	            		 timer1.cancel(); //In order to gracefully terminate the timer thread
-	            	     restart=false;
-	            	}   
-    	        	TimerCounting++;
-    	            int minutes1 = (int) Math.floor(TimerCounting / 60F);
-    	            int second1 = (int) Math.floor(TimerCounting - minutes1 * 60);
-    	            
-    	            if(second1%10 == 0){//// if 40 second passed its replace with the other users 
-                        setPacmanTurn();
-    	            }
-    	            // checking if the second is less then 10 its will add a 0 at the begging of the second view
-    	            if(second1<10) {
-    	            	if(minutes1<10) { // checking if the minutes is less then 10 its will add a 0 at the begging of the second view
-    	            		timeResults="0"+minutes1+":0"+second1;
-        	            	timer.setText("Timer: " + timeResults) ;
-    	            	}
-    	            	else {
-    	            		timeResults=""+minutes1+":0"+second1;
-        	            	timer.setText("Timer: " + timeResults) ;
 
-    	            	}
-    	            }
-    	            else {
-     	            	if(minutes1<10) {
-        	            	timeResults="0"+minutes1+":"+second1;
-         	            	timer.setText("Timer: " + timeResults) ;
-    	            	}
-    	            	else {
-        	            	timeResults=""+minutes1+":"+second1;
-         	            	timer.setText("Timer: " + timeResults) ;
-    	            	}
-    	            } 
-    	            
-     
-    	         	
-    	    	}
-    	   };
-    	timer1.scheduleAtFixedRate(task,1000,1000);/// the time will work the same as a regular timer
+        Timer timer1=new Timer();
+        task =new TimerTask() {
+            public void run () {
 
-     }
-    
+                if( restart) {
+                    TimerCounting=saveCountingToContinue;
+                    task.cancel();
+                    timer1.cancel(); //In order to gracefully terminate the timer thread
+                    restart=false;
+                }
+                TimerCounting++;
+                int minutes1 = (int) Math.floor(TimerCounting / 60F);
+                int second1 = (int) Math.floor(TimerCounting - minutes1 * 60);
+
+                if(second1%10 == 0){//// if 40 second passed its replace with the other users
+                    setPacmanTurn();
+                }
+                // checking if the second is less then 10 its will add a 0 at the begging of the second view
+                if(second1<10) {
+                    if(minutes1<10) { // checking if the minutes is less then 10 its will add a 0 at the begging of the second view
+                        timeResults="0"+minutes1+":0"+second1;
+                        timer.setText("Timer: " + timeResults) ;
+                    }
+                    else {
+                        timeResults=""+minutes1+":0"+second1;
+                        timer.setText("Timer: " + timeResults) ;
+
+                    }
+                }
+                else {
+                    if(minutes1<10) {
+                        timeResults="0"+minutes1+":"+second1;
+                        timer.setText("Timer: " + timeResults) ;
+                    }
+                    else {
+                        timeResults=""+minutes1+":"+second1;
+                        timer.setText("Timer: " + timeResults) ;
+                    }
+                }
+
+
+
+            }
+        };
+        timer1.scheduleAtFixedRate(task,1000,1000);/// the time will work the same as a regular timer
+
+    }
+
 
     public static void setPacmanTurn(){
         if(Game.getPlayerIndex() == 0 && PopUpLogic.getNumOfPlayers() >1) {
@@ -177,4 +170,4 @@ public class ViewLogic {
     public static void setNickname() {
         ViewLogic.nickname.setText(Game.pacmans.get(Game.getPlayerIndex()).getPacmanName());
     }
- }
+}

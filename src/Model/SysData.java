@@ -72,7 +72,7 @@ public class SysData implements Serializable{
 		BufferedReader br = null;
 		
 		try {///src\\res\\questions.json
-				br = new BufferedReader(new FileReader(new File("res/questions.json").getAbsolutePath()));
+				br = new BufferedReader(new FileReader(new File("src\\res\\questions.json").getAbsolutePath()));
 				QuestionResultsFromJSON questionsResults = gson.fromJson(br, QuestionResultsFromJSON.class);
 				questions = questionsResults.getQuestions();
 				
@@ -102,7 +102,7 @@ public class SysData implements Serializable{
 		FileWriter writer = null;
 		
 		try {
-			writer = new FileWriter ("res/questions.json");
+			writer = new FileWriter ("src\\res\\questions.json");
 			writer.write(strJson);
 
 		} catch (IOException e) {

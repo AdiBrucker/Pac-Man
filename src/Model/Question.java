@@ -25,7 +25,7 @@ public class Question implements Serializable{
 	 */
 	@SerializedName("answers")
 	@Expose
-	private List<String> answers = null;
+	public List<String> answers = null;
 	/**
 	 * correct_ans for a question.  
 	 */

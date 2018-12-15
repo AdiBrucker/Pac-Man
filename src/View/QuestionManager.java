@@ -2,6 +2,8 @@ package View;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,7 +21,7 @@ import Model.Question;
 import java.util.List;
 import java.util.Random;
 
-public class QuestionManager {
+public class QuestionManager implements EventHandler {
 
     // Image image = new Image("res/first.PNG");
     Button button;
@@ -33,13 +35,24 @@ public class QuestionManager {
     Label l_Answer4;
    Label l_curect_Ans;
     GridPane grid;
+    TextField Text_Difficulty;
+    TextField Text_Team;
     TextField QuestText;
     TextField Text_Answer1;
     TextField Text_Answer2;
     TextField Text_Answer3;
     TextField Text_Answer4;
-   TextField Text_cureectAns;
-   HBox bar;
+     TextField Text_cureectAns;
+     String answer1;
+     String answer2;
+      String answer3;
+      String answer4;
+      Stage stage;
+      Scene scene;
+       HBox bar;
+       static int index = 0;
+    Button knapp3 = new Button(">>");
+    Button knapp1 = new Button("<<");
 
 
     ComboBox<String> comboBox;
@@ -58,7 +71,6 @@ public class QuestionManager {
 
     public void initQuestionManager(Stage stage) throws Exception{
 
-
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(10,10,10,10));
         pane.setVgap(10);
@@ -69,112 +81,53 @@ public class QuestionManager {
                 BackgroundSize.DEFAULT);
                  pane.setBackground(new Background(myB));
 
-                 Label l_Difficulty = new Label("Difficulty:");
+
+        Label l_Difficulty = new Label("Difficulty:");
         l_Difficulty.setMaxSize(60,35);
         l_Difficulty.setMinSize(60,35);
         l_Difficulty.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Difficulty,3,13);
 
 
-        ObservableList<String> options = FXCollections.observableArrayList("Easy","Hard");
-        comboBox = new ComboBox<>(options);
-        comboBox.setPromptText("Choose Difficulty");
-        comboBox.setMaxSize(350,35);
-        comboBox.setMinSize(350,35);
-        comboBox.setStyle("-fx-background-color: yellow; -fx-text-fill: white ; -fx-font-weight: bold; -fx-font-size: 18 " );
-        GridPane.setConstraints(comboBox,4,13);
+//
+        Text_Difficulty = new TextField(""+ SysData.instance.getQuestions().get(index).getlevel());
+        Text_Difficulty.setMaxSize(350,35);
+        Text_Difficulty.setMinSize(350,35);
+        Text_Difficulty.setStyle("-fx-background-color: yellow");
+        GridPane.setConstraints(Text_Difficulty,4,13);
 
+        Text_Team = new TextField(""+ SysData.instance.getQuestions().get(index).getTeam());
+        Text_Team.setMaxSize(350,35);
+        Text_Team.setMinSize(350,35);
+        Text_Team.setStyle("-fx-background-color: yellow");
+        GridPane.setConstraints(Text_Team,4,14);
 
-        Label l_Quest_Num = new Label("Question Num:");
-        l_Quest_Num.setMaxSize(60,35);
-        l_Quest_Num.setMinSize(60,35);
-        l_Quest_Num.setStyle("-fx-background-color: yellow");
-        GridPane.setConstraints(l_Quest_Num,3,14);
+        QuestText = new TextField(SysData.instance.getQuestions().get(index).getquestion());
+        QuestText.setMaxSize(350,35);
+        QuestText.setMinSize(350,35);
+        QuestText.setStyle("-fx-background-color: yellow");
+        GridPane.setConstraints(QuestText,4,16);
 
+        Text_cureectAns = new TextField(SysData.instance.getQuestions().get(index).getCorrect_ans());
+        Text_cureectAns.setMaxSize(100,35);
+        Text_cureectAns.setMinSize(100,35);
+        Text_cureectAns.setStyle("-fx-background-color: yellow");
+        GridPane.setConstraints(Text_cureectAns,4,21);
 
-        ObservableList<String> options1 = FXCollections.observableArrayList("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14");
-    //    String chosenNum = comboBox_num.getValue();
-
-       // if(chosenNum=="0")
-
-       // if(chosenNum=="1")
-       //     index=1;
-
-
-        //////////////
-      //  Random rand = new Random();
-      //  int indexOfQuestion = rand.nextInt(Model.SysData.createInstance().getQuestions().size());
-      //  for(int i=0; i <= Model.SysData.instance.getQuestions().size();i++);
-      //  {
-
-      //  }
-     //   String s = ""+ Model.SysData.instance.getQuestions().size();
-     //   ObservableList<String> options1 = FXCollections.observableArrayList(s);
-
-
-
-
-        ////////////////////
-        comboBox_num = new ComboBox<>(options1);
-        comboBox_num.setPromptText("Question number");
-        comboBox_num.setMaxSize(350,35);
-        comboBox_num.setMinSize(350,35);
-        comboBox_num.setStyle("-fx-background-color: yellow; -fx-text-fill: white ; -fx-font-weight: bold; -fx-font-size: 18 " );
-        GridPane.setConstraints(comboBox_num,4,14);
-      //  comboBox_num.setOnAction(e->System.out.println(comboBox_num.getValue()));
-
-    //    String  s = comboBox_num.getValue();
-     //   int index;
-     //   if(s!=null&& s=="1")
-     //       index=1;
-     //   else index=0;
-
-
-
-
-
-
-
-
+        getAnswerByIndex(0);
 
 
         Label l_Team = new Label("Team:");
         l_Team.setMaxSize(60,35);
         l_Team.setMinSize(60,35);
         l_Team.setStyle("-fx-background-color: yellow");
-        GridPane.setConstraints(l_Team,3,15);
-
-
-        ObservableList<String> options2 = FXCollections.observableArrayList("Zebra","Hedgehog","Giraff");
-        comboBox_team = new ComboBox<>(options2);
-        comboBox_team.setPromptText("Team Name");
-        comboBox_team.setMaxSize(350,35);
-        comboBox_team.setMinSize(350,35);
-        comboBox_team.setStyle("-fx-background-color: yellow; -fx-text-fill: white ; -fx-font-weight: bold; -fx-font-size: 18 " );
-        GridPane.setConstraints(comboBox_team,4,15);
-
+        GridPane.setConstraints(l_Team,3,14);
 
         Label l_Question = new Label("Question:");
         l_Question.setMaxSize(60,35);
         l_Question.setMinSize(60,35);
         l_Question.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Question,3,16);
-
-        TextField QuestText = new TextField(SysData.instance.getQuestions().get(0).getquestion());
-        QuestText.setMaxSize(350,35);
-        QuestText.setMinSize(350,35);
-        QuestText.setStyle("-fx-background-color: yellow");
-        GridPane.setConstraints(QuestText,4,16);
-
-
-
-        List<String> a= SysData.instance.getQuestions().get(0).getAnswers();
-        String answer1= a.get(0);
-        String answer2= a.get(1);
-        String answer3=	 a.get(2);
-        String answer4=	a.get(3);
-
-
 
 
         Label l_Answer1 = new Label("Answer 1:");
@@ -183,7 +136,7 @@ public class QuestionManager {
         l_Answer1.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer1,3,17);
 
-        TextField Text_Answer1 = new TextField(answer1);
+        Text_Answer1 = new TextField(answer1);
         Text_Answer1.setMaxSize(350,35);
         Text_Answer1.setMinSize(350,35);
         Text_Answer1.setStyle("-fx-background-color: yellow");
@@ -195,7 +148,7 @@ public class QuestionManager {
         l_Answer2.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer2,3,18);
 
-        TextField Text_Answer2 = new TextField(answer2);
+        Text_Answer2 = new TextField(answer2);
         Text_Answer2.setMaxSize(350,35);
         Text_Answer2.setMinSize(350,35);
         Text_Answer2.setStyle("-fx-background-color: yellow");
@@ -207,7 +160,7 @@ public class QuestionManager {
         l_Answer3.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer3,3,19);
 
-        TextField Text_Answer3 = new TextField(answer3);
+        Text_Answer3 = new TextField(answer3);
         Text_Answer3.setMaxSize(350,35);
         Text_Answer3.setMinSize(350,35);
         Text_Answer3.setStyle("-fx-background-color: yellow");
@@ -219,7 +172,7 @@ public class QuestionManager {
         l_Answer4.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer4,3,20);
 
-        TextField Text_Answer4 = new TextField(answer4);
+        Text_Answer4 = new TextField(answer4);
         Text_Answer4.setMaxSize(350,35);
         Text_Answer4.setMinSize(350,35);
         Text_Answer4.setStyle("-fx-background-color: yellow");
@@ -231,25 +184,22 @@ public class QuestionManager {
         l_curect_Ans.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_curect_Ans,3,21);
 
-        TextField Text_cureectAns = new TextField("");
-        Text_cureectAns.setMaxSize(100,35);
-        Text_cureectAns.setMinSize(100,35);
-        Text_cureectAns.setStyle("-fx-background-color: yellow");
-        GridPane.setConstraints(Text_cureectAns,4,21);
-
         HBox bar = new HBox();
-        Button knapp1 = new Button("Save");
+     //   Button knapp1 = new Button("<<");
      //   knapp1.setStyle("-fx-background-color: white");
         knapp1.setMaxSize(65,35 );
         knapp1.setMinSize(65,35);
+        knapp1.setOnAction(this);
         Button knapp2 = new Button("Edit");
       //  knapp2.setStyle("-fx-background-color: white");
         knapp2.setMaxSize(65,35 );
         knapp2.setMinSize(65,35);
-        Button knapp3 = new Button("Delete");
+
+     //   Button knapp3 = new Button("Next");
        // knapp3.setStyle("-fx-background-color: white");
         knapp3.setMaxSize(65,35 );
         knapp3.setMinSize(65,35);
+        knapp3.setOnAction(this);
 
         Button knapp4 = new Button("Add");
       //  knapp4.setStyle("-fx-background-color: white");
@@ -258,53 +208,98 @@ public class QuestionManager {
         knapp4.setOnAction(e->new AddQuestion(stage) );
 
 
-        Button knapp5 = new Button("Back");
-       // knapp5.setStyle("-fx-background-color: white");
-        knapp5.setMaxSize(65,35 );
-        knapp5.setMinSize(65,35);
-        knapp5.setOnAction(e->new StartGame(stage) );
-        bar.getChildren().addAll(knapp1, knapp2,knapp3,knapp4,knapp5);
+        Button B_back = new Button("Back");
+        B_back.setMinSize(47,30);
+        B_back.setMaxSize(47, 30);
+        B_back.setTranslateX(-60);
+        B_back.setTranslateY(-38);
+        B_back.setStyle("-fx-background-color: White");
+        GridPane.setConstraints(B_back,4,13);
+        B_back.setOnAction(e->new StartGame(stage) );
 
+        Button knapp6 = new Button("Undo");
+        knapp6.setMaxSize(65,35 );
+        knapp6.setMinSize(65,35);
+        knapp6.setOnAction(e->new StartGame(stage) );
+
+        Button knapp7 = new Button("Redo");
+        knapp7.setMaxSize(65,35 );
+        knapp7.setMinSize(65,35);
+        knapp7.setOnAction(e->new StartGame(stage) );
+
+        bar.getChildren().addAll(knapp1, knapp2,knapp3,knapp4,knapp6,knapp7);
 
         GridPane.setConstraints(bar,4,23);
 
+        pane.getChildren().addAll(B_back,Text_Team,Text_Difficulty,l_Difficulty, l_Team,l_Question,QuestText,l_Answer1,Text_Answer1,l_Answer2,Text_Answer2,l_Answer3,Text_Answer3,l_Answer4,Text_Answer4,l_curect_Ans,Text_cureectAns,bar);
 
 
-
-
-          //  int indexOfQuestion = rand.nextInt(SysData.createInstance().getQuestions().size());
-         //   List<String> a= SysData.instance.getQuestions().get(indexOfQuestion).getAnswers();
-         //   String answer= a.get(0);
-          //  String answer1= a.get(1);
-         //   String answer2=	 a.get(2);
-         //   String answer3=	"";
-        //    if(a.size()==4) {
-        //        answer3="4. "+a.get(3);
-        //    }
-
-
-
-
-
-
-
-
-
-
-        pane.getChildren().addAll(l_Difficulty,comboBox,l_Quest_Num,comboBox_num, l_Team,comboBox_team,l_Question,QuestText,l_Answer1,Text_Answer1,l_Answer2,Text_Answer2,l_Answer3,Text_Answer3,l_Answer4,Text_Answer4,l_curect_Ans,Text_cureectAns,bar);
-
-
-
-        // GridPane.setConstraints(comboBox,4,21);
-
-     //   pane.getChildren().addAll(comboBox,button,nameText);
-        Scene scene = new Scene(pane, 550,600);
+        scene = new Scene(pane, 550,600);
         stage.setScene(scene);
 
         stage.show();
 
+    }
+
+    private void getAnswerByIndex(int index) {
+        List<String> a= SysData.instance.getQuestions().get(index).getAnswers();
+        answer1= a.get(0);
+        answer2= a.get(1);
+        answer3=	"";
+        if(a.size()!=1)
+            answer3 =a.get(2);
+        answer4=	"";
+        if(a.size()==4) {
+            answer4 = a.get(3);
+        }
+    }
+    private void changeIndex(int index) {
+        Text_Team.setText("" + SysData.instance.getQuestions().get(index).getTeam());
+        QuestText.setText(SysData.instance.getQuestions().get(index).getquestion());
+        Text_Difficulty.setText(""+ SysData.instance.getQuestions().get(index).getlevel());
+        this.getAnswerByIndex(index);
+        Text_Answer1.setText(answer1);
+        Text_Answer2.setText(answer2);
+        Text_Answer3.setText(answer3);
+        Text_Answer4.setText(answer4);
+        Text_cureectAns.setText(SysData.instance.getQuestions().get(index).getCorrect_ans());
+    }
+
+    @Override
+    public void handle(Event event) {
+
+        if(event.getSource()==knapp3){
+
+            if(index<SysData.instance.getQuestions().size()-1) {
+                index++;
+                this.changeIndex(index);
 
 
+
+            }
+            else{
+                index=index;
+                this.changeIndex(index);
+
+            }
+
+
+        }
+
+        if(event.getSource()==knapp1){
+            if(index!=0) {
+                index = index - 1;
+                this.changeIndex(index);
+
+            }
+            else
+            {
+                index = index;
+                this.changeIndex(index);
+
+            }
+
+        }
 
 
     }
