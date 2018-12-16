@@ -2,6 +2,9 @@ package Model;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import View.PopUpLogic;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -10,7 +13,7 @@ import java.io.IOException;
  * Holds the temporary ghosts which appear when a candy question is eaten
  */
 public class TmpGhost extends Ghost{
-
+	public int index =0;
     private BufferedImage icon;
     private static int tmpIndex = 1; // index for know who is the answer that tmpghost holds
 
@@ -23,8 +26,7 @@ public class TmpGhost extends Ghost{
      * @param g
      */
     public void render(Graphics g){
-
-        try {
+         try {
             if (tmpIndex ==1) {
                 icon = ImageIO.read(getClass().getResource("/res/sprites/tmpGhost1.png"));
                 g.drawImage(icon, x+tmpIndex, y-tmpIndex, width, height, null, null);
@@ -44,13 +46,24 @@ public class TmpGhost extends Ghost{
         } catch (IOException e) {
             e.printStackTrace();
         }
-       // g.drawImage(icon, x, y, width, height, null, null);
-        tmpIndex++;
-        if(tmpIndex == 5){
-            tmpIndex = 1;
-        }
-    }
+     	index=tmpIndex;
 
+        tmpIndex++;
+    	if (Game.getPlayerIndex()==1) {
+    		 if(tmpIndex  > PopUpLogic.getInstance().getPlayer1SizeArra ()){
+    	            tmpIndex = 1;
+    	        }    	}
+    	else {
+    		 if(tmpIndex  > PopUpLogic.getInstance().getPlayer2SizeArra ()){
+    	            tmpIndex = 1;
+    	        }
+    	}
+
+       
+    }
+    public     int getIndex() {
+        return  index;
+    }
     public static int getTmpIndex() {
         return tmpIndex;
     }

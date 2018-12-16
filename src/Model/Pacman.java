@@ -110,13 +110,16 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                     break;
                 }
                 else{ // set the tmpGhost score and remove all the tmp ghost from the board
-                    maze.ghosts.removeAll(removeTmp());
+                    Ghost g = maze.ghosts.get(j);
+
+                	int level = popUpInstance.showQuestionResult((TmpGhost)g);
+
+                	maze.ghosts.removeAll(removeTmp());
                     System.out.println( maze.ghosts.size());
                     right = false;
                     left = false;
                     up = false;
                     down = false;
-                    int level = popUpInstance.showQuestionResult();
                     right = false;
                     left = false;
                     up = false;
@@ -254,7 +257,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
             animationIndexImage++;
         }
     }
-public ArrayList<Ghost> removeTmp(){
+    public ArrayList<Ghost> removeTmp(){
         ArrayList<Ghost> g = new ArrayList<>();
              for (int i = 0; i < maze.ghosts.size(); i++) {
                  if (maze.ghosts.get(i) instanceof TmpGhost) {
@@ -279,9 +282,7 @@ public ArrayList<Ghost> removeTmp(){
             c.open(ais); //Clip opens AudioInputStream
             c.start(); //Start playing audio
 
-            //sleep thread for length of the song
-            // Thread.sleep((int)(c.getMicrosecondLength() * 0.001));
-        } catch (Exception e) {
+          } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -298,6 +299,16 @@ public ArrayList<Ghost> removeTmp(){
      */
     public void ShowGameOver() {
         PopUpLogic.getInstance().ShowGameOver(score);
+        
+       	if(Game.pacmans.size() == 1) {
+    		SysData.instance.AddPacman(Game.pacmans.get(0).getScore(), Game.pacmans.get(0).getPacmanName());
+       	}
+       	else {
+    		SysData.instance.AddPacman(Game.pacmans.get(0).getScore(), Game.pacmans.get(0).getPacmanName());
+    		SysData.instance.AddPacman(Game.pacmans.get(1).getScore(), Game.pacmans.get(1).getPacmanName());
+
+       	}
+
         GameView.closewindow();
     }
 
@@ -323,6 +334,7 @@ public ArrayList<Ghost> removeTmp(){
      */
     @Override
     public void render(Graphics g) {
+    	 
         if (lastDir == 1) {
             g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2], x, y, width, height, null);
         }
