@@ -2,6 +2,7 @@ package View;
 
 import Model.Game;
 import Model.SysData;
+import Model.TmpGhost;
 import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,6 +30,10 @@ public class PopUpLogic {
 	static JFXTextField player1; // name of player 1
 	static JFXTextField player2; // name of player 2
 	static int numOfPlayers = 0; // field that will say how many players are participate in the game
+	static boolean isAnswerCorrect = false; //flag to know how to update the score for pacman
+	static String correctAnswer;
+	static int indexOfQuestion;
+
 
     public static PopUpLogic getInstance() {
     	
@@ -64,8 +69,34 @@ public class PopUpLogic {
         JOptionPane.showMessageDialog(null,label,"Question",JOptionPane.QUESTION_MESSAGE,icon);
 	 	   ViewLogic.getInstance().getTimer();
 
-
+	 	   if(!Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared()) {
+			   for (int i = 0; i < a.size(); i++) {
+				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost(Game.mazes.get(Game.getPlayerIndex()).getGhostWidth(), Game.mazes.get(Game.getPlayerIndex()).getGhostHeigh()));
+			   }
+			   Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared(true);
+		   }
     }
+
+    public static int showQuestionResult(){
+    	if(SysData.instance.getQuestions().get(indexOfQuestion).getCorrect_ans().equals(TmpGhost.getTmpIndex())){
+			UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
+			JOptionPane.showMessageDialog(null, "Correct Answer!","Correct",JOptionPane.INFORMATION_MESSAGE);
+			isAnswerCorrect = true;
+			return SysData.instance.getQuestions().get(indexOfQuestion).getlevel();
+		}
+		else
+		{
+			UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
+			JOptionPane.showMessageDialog(null, "Wrong Answer!","Wrong",JOptionPane.INFORMATION_MESSAGE);
+			isAnswerCorrect = false;
+			return SysData.instance.getQuestions().get(indexOfQuestion).getlevel();
+		}
+	}
+
+	public static boolean isAnswerCorrect(){
+    	return isAnswerCorrect;
+	}
+
 /**
  * pop up that show that the game is over 
  * @param score
@@ -73,10 +104,19 @@ public class PopUpLogic {
     public void ShowGameOver(int score){
        	ViewLogic.getInstance().CancelTimer();
 
-        UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
-     	JOptionPane.showMessageDialog(null, "                       Game over!!! \n"+
-       		 " You are final score is "+score+ " at "+ViewLogic.getInstance().GetTimeResults()+" minutes","Game over",JOptionPane.INFORMATION_MESSAGE);
-		 ViewLogic.getInstance().setTimerCounting();
+       	if(Game.pacmans.size() == 1) {
+			UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
+			JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
+					" Your final score is " + score + " at " + ViewLogic.getInstance().GetTimeResults() + " minutes", "Game over", JOptionPane.INFORMATION_MESSAGE);
+			ViewLogic.getInstance().setTimerCounting();
+		}
+
+		else if(Game.pacmans.size() == 2){
+			UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
+			JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
+					"Player 1: Your final score is " + Game.pacmans.get(0).getScore() + " \n " + "Player 2: Your final score is " + Game.pacmans.get(1).getScore(), "Game over", JOptionPane.INFORMATION_MESSAGE);
+			ViewLogic.getInstance().setTimerCounting();
+		}
 
 
     }
@@ -162,6 +202,8 @@ public class PopUpLogic {
 				else {
 					gridPane.getChildren().removeAll();
 					content.setBody(new Text("Please wait..."));
+					button.setDisable(true);
+
 					Timer timer = new Timer();
 
 					timer.schedule(new TimerTask() {

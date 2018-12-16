@@ -25,8 +25,9 @@ public class Maze {
     public List<Candy> candy;
     //list the contains the ghosts in the maze
     public List<Ghost> ghosts;
-    public static boolean level2 = false;
-
+    public static boolean level2 =false;
+    public static int goodx = 0; // it will determine the location of the tmp ghosts
+    public static int goody = 0;
     /**
      * Constructor
      * Responsible to build the maze by reading the pixels from the source map which is imported in the constructor
@@ -62,6 +63,8 @@ public class Maze {
                     } else if (val == 0xFFFF0000) {
                         //Ghost
                         ghosts.add(new Ghost(xx * 32, yy * 32));
+                        goodx = xx*32;
+                        goody = yy*32;
                     } else {
                         //Candy
                         // if its a gold candy
@@ -125,5 +128,12 @@ public class Maze {
         for (int i = 0; i < ghosts.size(); i++) {
             ghosts.get(i).render(g);
         }
+    }
+    public static int getGhostWidth() {
+        return goodx;
+    }
+
+    public static int getGhostHeigh() {
+        return goody;
     }
 }

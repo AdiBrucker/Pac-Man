@@ -8,6 +8,7 @@ import View.ViewLogic;
 import java.awt.*;
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -29,12 +30,15 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
     public int lifeScore = 3;
     public int score = 0;
     public static ViewLogic viewInstance;
+    public static PopUpLogic popUpInstance;
     public String PacmanNane;
     private int animationTime = 0;
     //variables which are responsible for the animation of pacman
     private int targetAnimationTime = 10;
     private int animationIndexImage = 0;
     private int lastDir = 1;
+    private Maze maze;
+    private boolean isQuestionAppeared = false; //flag that says when the temp ghosts appears
 
     /**
      * Constructor creates the instance of pacman
@@ -59,6 +63,10 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         PacmanNane = name;
         score1 = score2;
     }
+    
+    public void setScore(int score) {
+		this.score = score;
+	}
 
     /**
      * Responsible for the movements of the pacman and handles the cases when pacman is eating a candy or intersects with a ghost.
@@ -66,8 +74,9 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
      */
     @Override
     public void tick() {
-        Maze maze = Game.mazes.get(Game.getPlayerIndex());
+        maze = Game.mazes.get(Game.getPlayerIndex());
         viewInstance = ViewLogic.getInstance();
+        popUpInstance = PopUpLogic.getInstance();
         animatePacman();
         eatingCandies(maze);
         pacmansMovements();
@@ -84,22 +93,74 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
      * @param maze
      */
     private void ghostIntersections(Maze maze) {
-        for (int j = 0; j < maze.ghosts.size(); j++) {
+        for (int j = 0; j < maze.ghosts.size(); j++){
             if (this.intersects(maze.ghosts.get(j))) {
-                maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
-                Music("\\src\\res\\pacmandeath.wav");
+                if (!(maze.ghosts.get(j) instanceof TmpGhost)) {
+                    maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
+                    Music("\\pacmandeath.wav");
 
-                if (lifeScore > 1) {
-                    lifeScore--;
-                    viewInstance.setLifeScoreForPacman();
-                } else {
-                    SysData.instance.AddPacman(score, PacmanNane);// when we will add a name
-                    // its will add to pacman list that will be the winner at scores table
-                    ShowGameOver();
+                    if (lifeScore > 1) {
+                        lifeScore--;
+                        viewInstance.setLifeScoreForPacman();
+                    } else {
+                        SysData.instance.AddPacman(score, PacmanNane);// when we will add a name
+                        // its will add to pacman list that will be the winner at scores table
+                        ShowGameOver();
+                    }
+                    break;
                 }
-                break;
+                else{ // set the tmpGhost score and remove all the tmp ghost from the board
+                    maze.ghosts.removeAll(removeTmp());
+                    System.out.println( maze.ghosts.size());
+                    right = false;
+                    left = false;
+                    up = false;
+                    down = false;
+                    int level = popUpInstance.showQuestionResult();
+                    right = false;
+                    left = false;
+                    up = false;
+                    down = false;
+                    boolean  isAnswerCorrect = popUpInstance.isAnswerCorrect();
+                    right = false;
+                    left = false;
+                    up = false;
+                    down = false;
+                    switch (level){
+                        case 0: {
+                            if (isAnswerCorrect)
+                                score += Scores.EASY_CORRECT.getScore();
+                            else
+                                score += Scores.EASY_WRONG.getScore();
+                            break;
+                        }
+                        case 1: {
+                            if (isAnswerCorrect)
+                                score += Scores.INTERMEDIATE_CORRECT.getScore();
+                            else
+                                score += Scores.INTERMEDIATE_WRONG.getScore();
+                            break;
+                        }
+                        case 2: {
+                            if (isAnswerCorrect)
+                                score += Scores.HARD_CORRECT.getScore();
+                            else
+                                score += Scores.HARD_WRONG.getScore();
+                            break;
+                        }
+                    }
+
+                    viewInstance.setScoreForPacman();
+                    isQuestionAppeared = false;
+                    //popUpInstance.setIsQuestionAppeared(false);
+                    right = false;
+                    left = false;
+                    up = false;
+                    down = false;
+                }
             }
         }
+
     }
 
     /**
@@ -146,18 +207,20 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                     viewInstance.setLifeScoreForPacman();
 
                 } else if (maze.candy.get(i).getType() == "QuestionCandy") {
-                    right = false;
-                    left = false;
-                    up = false;
-                    down = false;
-                    Music("\\src\\res\\Question-SOUND.wav");
+                    if(!isQuestionAppeared) {
+                        right = false;
+                        left = false;
+                        up = false;
+                        down = false;
+                        Music("\\src\\res\\Question-SOUND.wav");
 
-                    showQuestion();
-                    right = false;
-                    left = false;
-                    up = false;
-                    down = false;
-                    maze.candy.remove(i);
+                        showQuestion();
+                        right = false;
+                        left = false;
+                        up = false;
+                        down = false;
+                        maze.candy.remove(i);
+                    }
                 } else if (maze.candy.get(i).getType() == "PoisonCandy") {
                     right = false;
                     left = false;
@@ -191,7 +254,16 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
             animationIndexImage++;
         }
     }
-
+public ArrayList<Ghost> removeTmp(){
+        ArrayList<Ghost> g = new ArrayList<>();
+             for (int i = 0; i < maze.ghosts.size(); i++) {
+                 if (maze.ghosts.get(i) instanceof TmpGhost) {
+                    g.add(maze.ghosts.get(i));
+                 }
+             }
+             System.out.println(g.size());
+             return g;
+    }
     /**
      * Plays the game's music
      * @param path2
@@ -302,6 +374,12 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
     public String toString() {
         return "Pacman [PacmanNane=" + PacmanNane + ", score=" + score1 + "]";
     }
+    public void isQuestionAppeared(boolean isAppears) {
+        isQuestionAppeared = isAppears;
+    }
 
+    public boolean isQuestionAppeared() {
+        return isQuestionAppeared;
+    }
 
 }
