@@ -18,24 +18,16 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-public class AddQuestion   {
-=======
+
 /**
  * The view for adding a question to the game
  */
 public class AddQuestion {
->>>>>>> 1139e891e6cf4d727d250e7b8c54177c0ecfab75
 
  
 
-<<<<<<< HEAD
         Button undoBut,redoBut,saveBut ;
          Label Difficulty;
-=======
-        Button button;
-        Label Difficulty;
->>>>>>> 1139e891e6cf4d727d250e7b8c54177c0ecfab75
         Label l_Quest_Num;
         Label l_Team;
         Label l_Question;
