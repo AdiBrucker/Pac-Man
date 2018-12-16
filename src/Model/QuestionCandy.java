@@ -3,14 +3,19 @@ package Model;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
-public class QuestionCandy extends Candy{
+/**
+ * Holds and connect between question to the question candies.
+ */
+public class QuestionCandy extends Candy {
     private BufferedImage redCandy;
 
-
+    /**
+     * Constructor- Creates a question candy
+     * @param x
+     * @param y
+     */
     public QuestionCandy(int x, int y) {
         super(x, y, "QuestionCandy");
 
@@ -21,13 +26,11 @@ public class QuestionCandy extends Candy{
         }
     }
 
-    public void render(Graphics g){
-        g.drawImage(redCandy, x, y, width+10, height+10, null, null);
-
+    /**
+     * Draws a question candy on the map
+     * @param g
+     */
+    public void render(Graphics g) {
+        g.drawImage(redCandy, x, y, width + 10, height + 10, null, null);
     }
-
-    public boolean isQuestionCandy(){
-        return true;
-    }
-
 }

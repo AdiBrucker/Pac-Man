@@ -7,6 +7,9 @@ import java.util.TimerTask;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Manages the view logic between the different screens.
+ */
 public class ViewLogic {
 
     private static Label lScore;

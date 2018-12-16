@@ -8,136 +8,239 @@ import View.ViewLogic;
 import java.awt.*;
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class Pacman extends Rectangle implements IMovable, Comparable,Serializable{
-	 
-	//for Serialization
-	private static final long serialVersionUID = 1L;
+/**
+ * Holds the pacman model.
+ */
+public class Pacman extends Rectangle implements IMovable, Comparable, Serializable {
 
+    //for Serialization
+    private static final long serialVersionUID = 1L;
+
+    //Boolean which indicates to which direction the pacman is heading
     public boolean right, left, up, down;
+    //defines pacmans speed
     public int speed = 4;
-    private Location location;
-
-    public  int score1=0  ;
+    public int score1 = 0;
     public int lifeScore = 3;
     public int score = 0;
     public static ViewLogic viewInstance;
+    public static PopUpLogic popUpInstance;
     public String PacmanNane;
     private int animationTime = 0;
+    //variables which are responsible for the animation of pacman
     private int targetAnimationTime = 10;
     private int animationIndexImage = 0;
     private int lastDir = 1;
+    private Maze maze;
+    private boolean isQuestionAppeared = false; //flag that says when the temp ghosts appears
 
-
-    public Pacman(int x, int y,String nickname){
+    /**
+     * Constructor creates the instance of pacman
+     * @param x
+     * @param y
+     * @param nickname
+     */
+    public Pacman(int x, int y, String nickname) {
         setBounds(x, y, 26, 26);
-        location = new Location(x,y);
+        new Location(x, y);
         score = 0;
         lifeScore = 3;
         PacmanNane = nickname;
     }
 
-    public Pacman(int score2 ,String name){
-    	  PacmanNane=name;
-    	  score1=score2;
+    /**
+     * Constructor creates the players name and his score
+     * @param score2
+     * @param name
+     */
+    public Pacman(int score2, String name) {
+        PacmanNane = name;
+        score1 = score2;
     }
     
     public void setScore(int score) {
 		this.score = score;
 	}
 
-	@Override
-    public void tick(){
-        Maze maze = Game.mazes.get(Game.getPlayerIndex());
-         viewInstance = ViewLogic.getInstance();
+    /**
+     * Responsible for the movements of the pacman and handles the cases when pacman is eating a candy or intersects with a ghost.
+     * The method is also responsible to delete the the ghosts are the candies when pacman intersects with them.
+     */
+    @Override
+    public void tick() {
+        maze = Game.mazes.get(Game.getPlayerIndex());
+        viewInstance = ViewLogic.getInstance();
+        popUpInstance = PopUpLogic.getInstance();
         animatePacman();
-        for (int i = 0; i < maze.candy.size(); i++){
-            if (this.intersects(maze.candy.get(i))){
-                if(maze.candy.get(i).getType() == "Yellow" && maze.candy.get(i) instanceof ScoreCandy){
-                    ScoreCandy s = (ScoreCandy)maze.candy.get(i);
-                    score += s.getYellowCandyScore();
-                    maze.candy.remove(i);
-                    viewInstance.setScoreForPacman();
-                }
-                else if(maze.candy.get(i).getType() == "Silver" && maze.candy.get(i) instanceof ScoreCandy){
-                    ScoreCandy s = (ScoreCandy)maze.candy.get(i);
-                    score += s.getSilverCandyScore();
-                    maze.candy.remove(i);
-                    viewInstance.setScoreForPacman();
+        eatingCandies(maze);
+        pacmansMovements();
+        ghostIntersections(maze);
+        //when there are no more candies the game is finished
+        if (maze.candy.size() == 0) {
+            System.exit(1);
+        }
+    }
 
-                }
-                else if(maze.candy.get(i).getType() == "Gold" && maze.candy.get(i) instanceof ScoreCandy){
-                    lifeScore++;
-                    maze.candy.remove(i);
-                    viewInstance.setLifeScoreForPacman();
+    /**
+     * Handles what happens when pacman intersects with a ghost.
+     * LifeScore-- and the ghost is removed.
+     * @param maze
+     */
+    private void ghostIntersections(Maze maze) {
+        for (int j = 0; j < maze.ghosts.size(); j++){
+            if (this.intersects(maze.ghosts.get(j))) {
+                if (!(maze.ghosts.get(j) instanceof TmpGhost)) {
+                    maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
+                    Music("\\pacmandeath.wav");
 
+                    if (lifeScore > 1) {
+                        lifeScore--;
+                        viewInstance.setLifeScoreForPacman();
+                    } else {
+                        SysData.instance.AddPacman(score, PacmanNane);// when we will add a name
+                        // its will add to pacman list that will be the winner at scores table
+                        ShowGameOver();
+                    }
+                    break;
                 }
-                else if(maze.candy.get(i).getType() == "QuestionCandy"){
+                else{ // set the tmpGhost score and remove all the tmp ghost from the board
+                    maze.ghosts.removeAll(removeTmp());
+                    System.out.println( maze.ghosts.size());
                     right = false;
                     left = false;
                     up = false;
+<<<<<<< HEAD
                     down=false;
                     Music("/src/Question-SOUND.wav");
 
                     showQuestion();
+=======
+                    down = false;
+                    int level = popUpInstance.showQuestionResult();
+>>>>>>> 1c49d1335c49de68d88ee547b1d749e30d496c83
                     right = false;
                     left = false;
                     up = false;
-                    down=false;
-                    maze.candy.remove(i);
-                } 
-                else if(maze.candy.get(i).getType() == "PoisonCandy")
-                {
+                    down = false;
+                    boolean  isAnswerCorrect = popUpInstance.isAnswerCorrect();
                     right = false;
                     left = false;
                     up = false;
-                    down=false;
-                    if (lifeScore > 1) {
-                        lifeScore--;
-                        viewInstance.setLifeScoreForPacman();
-                      //  setBounds(x, y, 32, 32);
-                    }
-                    else
-                    {
-                     //	SysData.instance.AddPacman(score, "shai");// when we will add a name 
-                    	// its will add to pacman list that will be the winner at scores table
-                        ShowGameOver();
+                    down = false;
+                    switch (level){
+                        case 0: {
+                            if (isAnswerCorrect)
+                                score += Scores.EASY_CORRECT.getScore();
+                            else
+                                score += Scores.EASY_WRONG.getScore();
+                            break;
+                        }
+                        case 1: {
+                            if (isAnswerCorrect)
+                                score += Scores.INTERMEDIATE_CORRECT.getScore();
+                            else
+                                score += Scores.INTERMEDIATE_WRONG.getScore();
+                            break;
+                        }
+                        case 2: {
+                            if (isAnswerCorrect)
+                                score += Scores.HARD_CORRECT.getScore();
+                            else
+                                score += Scores.HARD_WRONG.getScore();
+                            break;
+                        }
                     }
 
+                    viewInstance.setScoreForPacman();
+                    isQuestionAppeared = false;
+                    //popUpInstance.setIsQuestionAppeared(false);
                     right = false;
                     left = false;
                     up = false;
-                    down=false;
-                    maze.candy.remove(i);
+                    down = false;
                 }
-                break;
             }
         }
 
-        if (right && canMove(x+ speed,y)){
+    }
+
+    /**
+     * This methods manages pacman's movements and makes sure it can move only in the maze's boundaries.
+     */
+    private void pacmansMovements() {
+        if (right && Game.canMove(x + speed, y, width, height)) {
             x += speed;
             lastDir = 1;
-        }
-        else if (left && canMove(x-speed,y)){
+        } else if (left && Game.canMove(x - speed, y, width, height)) {
             x -= speed;
             lastDir = -1;
-        }
-        else if (up && canMove(x,y-speed)){
+        } else if (up && Game.canMove(x, y - speed, width, height)) {
             y -= speed;
             lastDir = 2;
-        }
-        else  if (down && canMove(x,y+speed)){
+        } else if (down && Game.canMove(x, y + speed, width, height)) {
             y += speed;
             lastDir = -2;
         }
+    }
 
+    /**
+     * Handles what happens when pacman eats the different types of the candies.
+     * adding to pacman's score and remove the candies from the game.
+     * @param maze
+     */
+    private void eatingCandies(Maze maze) {
+        for (int i = 0; i < maze.candy.size(); i++) {
+            if (this.intersects(maze.candy.get(i))) {
+                if (maze.candy.get(i).getType() == "Yellow" && maze.candy.get(i) instanceof ScoreCandy) {
+                    ScoreCandy s = (ScoreCandy) maze.candy.get(i);
+                    score += s.getYellowCandyScore();
+                    maze.candy.remove(i);
+                    viewInstance.setScoreForPacman();
+                } else if (maze.candy.get(i).getType() == "Silver" && maze.candy.get(i) instanceof ScoreCandy) {
+                    ScoreCandy s = (ScoreCandy) maze.candy.get(i);
+                    score += s.getSilverCandyScore();
+                    maze.candy.remove(i);
+                    viewInstance.setScoreForPacman();
 
+                } else if (maze.candy.get(i).getType() == "Gold" && maze.candy.get(i) instanceof ScoreCandy) {
+                    lifeScore++;
+                    maze.candy.remove(i);
+                    viewInstance.setLifeScoreForPacman();
 
+                } else if (maze.candy.get(i).getType() == "QuestionCandy") {
+                    if(!isQuestionAppeared) {
+                        right = false;
+                        left = false;
+                        up = false;
+                        down = false;
+                        Music("\\src\\res\\Question-SOUND.wav");
 
+                        showQuestion();
+                        right = false;
+                        left = false;
+                        up = false;
+                        down = false;
+                        maze.candy.remove(i);
+                    }
+                } else if (maze.candy.get(i).getType() == "PoisonCandy") {
+                    right = false;
+                    left = false;
+                    up = false;
+                    down = false;
+                    if (lifeScore > 1) {
+                        lifeScore--;
+                        viewInstance.setLifeScoreForPacman();
+                    } else {
+                        ShowGameOver();
+                    }
+
+<<<<<<< HEAD
         for (int j = 0; j < maze.ghosts.size(); j++){
             if (this.intersects(maze.ghosts.get(j))){
                 maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
@@ -146,31 +249,44 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
                 if (lifeScore > 1) {
                     lifeScore--;
                     viewInstance.setLifeScoreForPacman();
+=======
+                    right = false;
+                    left = false;
+                    up = false;
+                    down = false;
+                    maze.candy.remove(i);
+>>>>>>> 1c49d1335c49de68d88ee547b1d749e30d496c83
                 }
-                else
-                {
-                  	SysData.instance.AddPacman(score,PacmanNane);// when we will add a name 
-                	// its will add to pacman list that will be the winner at scores table
-                    ShowGameOver();                 }
-                	break;
+                break;
             }
         }
-
-        ///if 
-        if (maze.candy.size() == 0){
-            System.exit(1);
-        } 
     }
 
+    /**
+     * Responsible for the animation of pacman's mouth.
+     */
     private void animatePacman() {
         animationTime++;
-        if (animationTime == targetAnimationTime){
+        if (animationTime == targetAnimationTime) {
             animationTime = 0;
             animationIndexImage++;
         }
     }
-
-    public void  Music(String path2) {
+public ArrayList<Ghost> removeTmp(){
+        ArrayList<Ghost> g = new ArrayList<>();
+             for (int i = 0; i < maze.ghosts.size(); i++) {
+                 if (maze.ghosts.get(i) instanceof TmpGhost) {
+                    g.add(maze.ghosts.get(i));
+                 }
+             }
+             System.out.println(g.size());
+             return g;
+    }
+    /**
+     * Plays the game's music
+     * @param path2
+     */
+    public void Music(String path2) {
         String path = new File("").getAbsolutePath() + path2;
         //Make a File object with a path to the audio file.
         File sound = new File(path);
@@ -182,97 +298,106 @@ public class Pacman extends Rectangle implements IMovable, Comparable,Serializab
             c.start(); //Start playing audio
 
             //sleep thread for length of the song
-           // Thread.sleep((int)(c.getMicrosecondLength() * 0.001));
+            // Thread.sleep((int)(c.getMicrosecondLength() * 0.001));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-	}
-
-    public void showQuestion(){
-      
-       PopUpLogic.getInstance().ShowQuestion();
     }
 
-    public void ShowGameOver(){
+    /**
+     * Shows a question as a popup window when pacman eats a question candy
+     */
+    public void showQuestion() {
+        PopUpLogic.getInstance().ShowQuestion();
+    }
+
+    /**
+     * shows a popup when the game is over
+     */
+    public void ShowGameOver() {
         PopUpLogic.getInstance().ShowGameOver(score);
         GameView.closewindow();
     }
-    public int getScore(){
+
+    /**
+     * Get the game's score
+     * @return
+     */
+    public int getScore() {
         return score;
     }
-    
 
-    public int getScoreResult(){
+    /**
+     * Gets the final's game score
+     * @return
+     */
+    public int getScoreResult() {
         return score1;
     }
 
+    /**
+     * Draws the pacman and its animation.
+     * @param g
+     */
     @Override
-    public boolean canMove(int nextx, int nexty){
-        Rectangle bounds = new Rectangle(nextx, nexty, width,  height);
-        Maze maze = Game.mazes.get(Game.getPlayerIndex());
-
-        for (int xx = 0; xx < maze.walls.length; xx++){
-            for (int yy = 0; yy < maze.walls[0].length; yy++){
-                if (maze.walls[xx][yy] != null){
-                    if (bounds.intersects(maze.walls[xx][yy])){
-
-                        for (int x = 0; x < maze.walls.length; x++){
-                            for (int y = 0; y < maze.walls[0].length; y++){
-                                if (maze.walls[x][y] != null){
-                                    if (bounds.intersects(maze.walls[x][y])){
-
-                                        return false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+    public void render(Graphics g) {
+        if (lastDir == 1) {
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2], x, y, width, height, null);
         }
-        return true;
-    }
-
-    @Override
-    public void render(Graphics g){
-        if (lastDir == 1){
-            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2], x, y, width, height, null);
+        if (lastDir == -1) {
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2], x + 32, y, -width, height, null);
         }
-        if (lastDir == -1){
-            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2], x + 32, y, -width, height, null);
+        if (lastDir == 2) {
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2 + 2], x, y, width, height, null);
         }
-        if (lastDir == 2){
-            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2+2], x, y, width, height, null);
-        }
-        if (lastDir == -2){
-            g.drawImage(PacmanAnimation.pacman[animationIndexImage%2+4], x, y, width, height, null);
+        if (lastDir == -2) {
+            g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2 + 4], x, y, width, height, null);
         }
     }
 
-    public int getLifeScore(){
+    /**
+     * Gets the life score
+     * @return
+     */
+    public int getLifeScore() {
         return lifeScore;
     }
-    @Override
-	/**
-	 * when we need to only one parameter
-	 * sorting by score
-	 * descending order
-	 * @param o
-	 * @return
-	 */
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return ((Pacman) o).getScoreResult()-this.getScoreResult() ;
-	}
 
+    @Override
+    /**
+     * when we need only one parameter
+     * sorting by score
+     * descending order
+     * @param o
+     * @return
+     */
+    public int compareTo(Object o) {
+        // TODO Auto-generated method stub
+        return ((Pacman) o).getScoreResult() - this.getScoreResult();
+    }
+
+    /**
+     * Gets pacman's name
+     * @return
+     */
     public String getPacmanName() {
         return PacmanNane;
     }
 
-	@Override
-	public String toString() {
-		return "Pacman [PacmanNane=" + PacmanNane + ", score=" + score1 + "]";
-	}
+    /**
+     * Strings the pacman's player name and its score
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Pacman [PacmanNane=" + PacmanNane + ", score=" + score1 + "]";
+    }
+    public void isQuestionAppeared(boolean isAppears) {
+        isQuestionAppeared = isAppears;
+    }
 
- 
+    public boolean isQuestionAppeared() {
+        return isQuestionAppeared;
+    }
+
 }

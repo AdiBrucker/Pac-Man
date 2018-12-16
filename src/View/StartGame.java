@@ -1,26 +1,18 @@
 package View;
  
-import javax.swing.JFrame;
-
 import Model.ModelLogic;
-import Controller.MainClass;
-import  com.jfoenix.controls.*;
- import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 
-
+/**
+ * Initiates the view of the entire GUI of the program
+ */
 public class StartGame {
 
     public StartGame(Stage stage) {
@@ -57,7 +49,7 @@ public class StartGame {
             iv.setPreserveRatio(true);
             stage.setScene(scene);
             button = new Button("Start");
-        	Image icon =new Image("pacnanIm.png");////   src//pacnanIm.jpg
+        	Image icon =new Image("res/pacnanIm.png");////   src//pacnanIm.jpg
         	stage.getIcons().add(icon);
         	stage.setTitle("PACMAN");
             pane.getChildren().add(button);

@@ -2,10 +2,12 @@ package Model;
 
 import java.awt.*;
 
+/**
+ * Interface which represents the movement of the characters in the games and its drawings.
+ */
 public interface IMovable {
 
-    public void tick();
-    public boolean canMove(int nextx, int nexty);
-    public void render(Graphics g);
+    void tick();
+    void render(Graphics g);
 
 }

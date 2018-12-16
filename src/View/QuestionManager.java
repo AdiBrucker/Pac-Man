@@ -190,6 +190,10 @@ public class QuestionManager implements EventHandler {
         knapp1.setMaxSize(65,35 );
         knapp1.setMinSize(65,35);
         knapp1.setOnAction(this);
+<<<<<<< HEAD
+=======
+        knapp1.setDisable(true);
+>>>>>>> 1c49d1335c49de68d88ee547b1d749e30d496c83
         Button knapp2 = new Button("Edit");
       //  knapp2.setStyle("-fx-background-color: white");
         knapp2.setMaxSize(65,35 );
@@ -209,6 +213,7 @@ public class QuestionManager implements EventHandler {
 
 
         Button B_back = new Button("Back");
+<<<<<<< HEAD
         B_back.setMinSize(47,30);
         B_back.setMaxSize(47, 30);
         B_back.setTranslateX(-60);
@@ -221,12 +226,24 @@ public class QuestionManager implements EventHandler {
         knapp6.setMaxSize(65,35 );
         knapp6.setMinSize(65,35);
         knapp6.setOnAction(e->new StartGame(stage) );
+=======
+        B_back.setMaxSize(65,35);
+        B_back.setMinSize(65,35);
+        B_back.setOnAction(e->new StartGame(stage) );
+
+        bar.getChildren().addAll(B_back,knapp1, knapp2,knapp3,knapp4 );
+
+        GridPane.setConstraints(bar,4,23);
+
+        pane.getChildren().addAll( Text_Team,Text_Difficulty,l_Difficulty, l_Team,l_Question,QuestText,l_Answer1,Text_Answer1,l_Answer2,Text_Answer2,l_Answer3,Text_Answer3,l_Answer4,Text_Answer4,l_curect_Ans,Text_cureectAns,bar);
+>>>>>>> 1c49d1335c49de68d88ee547b1d749e30d496c83
 
         Button knapp7 = new Button("Redo");
         knapp7.setMaxSize(65,35 );
         knapp7.setMinSize(65,35);
         knapp7.setOnAction(e->new StartGame(stage) );
 
+<<<<<<< HEAD
         bar.getChildren().addAll(knapp1, knapp2,knapp3,knapp4,knapp6,knapp7);
 
         GridPane.setConstraints(bar,4,23);
@@ -273,16 +290,62 @@ public class QuestionManager implements EventHandler {
             if(index<SysData.instance.getQuestions().size()-1) {
                 index++;
                 this.changeIndex(index);
+=======
+        scene = new Scene(pane, 550,600);
+        stage.setScene(scene);
 
+        stage.show();
+
+    }
+
+    private void getAnswerByIndex(int index) {
+        List<String> a= SysData.instance.getQuestions().get(index).getAnswers();
+        answer1= a.get(0);
+        answer2= a.get(1);
+        answer3=	"";
+        if(a.size()!=1)
+            answer3 =a.get(2);
+        answer4=	"";
+        if(a.size()==4) {
+            answer4 = a.get(3);
+        }
+    }
+    private void changeIndex(int index) {
+        Text_Team.setText("" + SysData.instance.getQuestions().get(index).getTeam());
+        QuestText.setText(SysData.instance.getQuestions().get(index).getquestion());
+        Text_Difficulty.setText(""+ SysData.instance.getQuestions().get(index).getlevel());
+        this.getAnswerByIndex(index);
+        Text_Answer1.setText(answer1);
+        Text_Answer2.setText(answer2);
+        Text_Answer3.setText(answer3);
+        Text_Answer4.setText(answer4);
+        Text_cureectAns.setText(SysData.instance.getQuestions().get(index).getCorrect_ans());
+    }
+
+    @Override
+    public void handle(Event event) {
+
+        if(event.getSource()==knapp3){
+>>>>>>> 1c49d1335c49de68d88ee547b1d749e30d496c83
+
+            if(index<SysData.instance.getQuestions().size()-1) {
+                index++;
+                this.changeIndex(index);
+                knapp1.setDisable(false); // will  able the Button
 
 
             }
             else{
                 index=index;
                 this.changeIndex(index);
+<<<<<<< HEAD
+=======
+                knapp3.setDisable(true); // will disable the Button
+>>>>>>> 1c49d1335c49de68d88ee547b1d749e30d496c83
 
             }
 
+<<<<<<< HEAD
 
         }
 
@@ -294,6 +357,22 @@ public class QuestionManager implements EventHandler {
             }
             else
             {
+=======
+            }
+
+
+        }
+
+        if(event.getSource()==knapp1){
+            if(index!=0) {
+                index = index - 1;
+                this.changeIndex(index);
+                knapp3.setDisable(false); // will  able the Button
+            }
+            else
+            {
+            	knapp1.setDisable(true); // will disable the Button
+>>>>>>> 1c49d1335c49de68d88ee547b1d749e30d496c83
                 index = index;
                 this.changeIndex(index);
 

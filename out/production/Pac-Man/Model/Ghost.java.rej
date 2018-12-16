@@ -1,9 +1,0 @@
-diff a/src/Model/Ghost.java b/src/Model/Ghost.java	(rejected hunks)
-@@ -3,6 +3,7 @@
- import java.awt.*;
- import java.util.Random;
- 
-+public class Ghost extends Rectangle implements IMovable{
- 
-     private int random = 0;
-     private int smart = 1;

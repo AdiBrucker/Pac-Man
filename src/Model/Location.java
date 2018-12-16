@@ -1,28 +1,20 @@
 package Model;
 
+/**
+ * Define the location of the object in the game
+ */
 public class Location {
 
     private float Longitude;
     private float Latitude;
 
+    /**
+     * constructs the location of an object on the game's board.
+     * @param longitude
+     * @param latitude
+     */
     public Location(float longitude, float latitude) {
         Longitude = longitude;
-        Latitude = latitude;
-    }
-
-    public float getLongitude() {
-        return Longitude;
-    }
-
-    public void setLongitude(float longitude) {
-        Longitude = longitude;
-    }
-
-    public float getLatitude() {
-        return Latitude;
-    }
-
-    public void setLatitude(float latitude) {
         Latitude = latitude;
     }
 }
