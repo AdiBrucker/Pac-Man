@@ -139,6 +139,8 @@ public class PopUpLogic {
 	 	   ViewLogic.getInstance().getTimer();
 
     } 
+    
+    
 	public void showGameType(StackPane pane){
         javafx.scene.control.Label field = new Label("Please choose how many players");
 		GridPane gridPane = new GridPane();
@@ -224,4 +226,26 @@ public class PopUpLogic {
 	public static int getNumOfPlayers() {
 		return numOfPlayers;
 	}
+	
+	
+/**
+ * pop up that show that there are a mistake
+ */
+    public void QuestionMistake(){
+    	
+        UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
+      
+     	JOptionPane.showMessageDialog(null, "you didnt fill all the fields correctly ","Error",JOptionPane.ERROR_MESSAGE);
+ 
+    } 
+/**
+ * pop up that show that the question was added
+ */
+    public void QuestionAdded(){
+    	
+        UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
+      
+     	JOptionPane.showMessageDialog(null, "you added the question ","Error",JOptionPane.INFORMATION_MESSAGE);
+ 
+    } 
 }

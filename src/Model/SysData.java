@@ -19,6 +19,9 @@ public class SysData implements Serializable{
 	
 	///Stores all questions from the class that imports the JSON 
 	public static List<Question> questions;
+	
+	public static List<Question> UndoRedo;/// list of Question  to Memento design-pattern 
+
 	//all the pacman results after the game finish;
 	/// can be a hash map right now i cant see why 
 	// i think that at the table scores same player can be appear more then one time ;
@@ -33,7 +36,7 @@ public class SysData implements Serializable{
  		
  		questions = new ArrayList<Question>();
  		Pacman=new ArrayList<Pacman>();
- 
+ 		UndoRedo= new ArrayList<Question>();
 	}
 	
   
@@ -62,6 +65,10 @@ public class SysData implements Serializable{
 
 	public  List<Question> getQuestions() {
 		return questions;
+	}
+	
+	public  List<Question> getUndoRedo() {
+		return UndoRedo;
 	}
 	/**
 	 * this method loads the questions data from the JSON file
@@ -118,7 +125,7 @@ public class SysData implements Serializable{
 		}
 	}
 	/**
-	 * adding Question to json file 
+	 * adding Question to list 
 	 * at the end of the game we will update json file 
 	 * we will call writeQuestionsToJsonFile(); to update
 	 * @param question
@@ -137,18 +144,35 @@ public class SysData implements Serializable{
 				hasntBeenWritenYet=false;
 			}
 		}
-		
-		if(question!=null && level>=0 && level<=2 && team!=null && answers!=null && hasntBeenWritenYet==true) {
+		for(Question q1: getUndoRedo()) {////////////////ask shai 
+			if (q1.getquestion().equals(question)) {
+				hasntBeenWritenYet=false;
+			}
+		}
+		if( question!=null&&!question.isEmpty()  && level>=0 && level<=2 && team!=null&&!team.isEmpty() && answers.size()>=2 && hasntBeenWritenYet==true) {
 			Question newQ = new Question ();
  			newQ.setquestion(question);
 			newQ.setlevel(level);
 			newQ.setTeam(team);
 			newQ.setAnswers(answers);
 			newQ.setCorrect_ans(correct_ans);
-			getQuestions().add(newQ);
+			getUndoRedo().add(newQ);
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * marge UndoRedo array with Questions() array
+	 * @param number
+	 */
+	public void UpdateQuestionArray (int number ) {
+		for(int i=0; i<number;i++) {
+			getQuestions().add(getUndoRedo().get(i));
+		}
+		
+ 		UndoRedo= new ArrayList<Question>();
+
 	}
 	/**
 	 * remove Question from json files
