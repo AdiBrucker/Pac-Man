@@ -5,10 +5,18 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Represents the walls on the game maze
+ */
 public class Walls extends Rectangle {
 
     private BufferedImage blueBrick;
 
+    /**
+     * Constructor- Creates the walls in the game
+     * @param x
+     * @param y
+     */
     public Walls(int x, int y){
         setBounds(x, y, 32, 32);
         try {
@@ -18,6 +26,10 @@ public class Walls extends Rectangle {
         }
     }
 
+    /**
+     * Draws the walls in the game
+     * @param g
+     */
     public void render(Graphics g){
         g.drawImage(blueBrick, x, y, width, height, null, null);
     }

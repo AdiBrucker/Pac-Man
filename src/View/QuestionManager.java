@@ -21,7 +21,14 @@ import Model.Question;
 import java.util.List;
 import java.util.Random;
 
+<<<<<<< HEAD
 public class QuestionManager implements EventHandler {
+=======
+/**
+ * Question manager view
+ */
+public class QuestionManager {
+>>>>>>> 1139e891e6cf4d727d250e7b8c54177c0ecfab75
 
     // Image image = new Image("res/first.PNG");
     Button button;
