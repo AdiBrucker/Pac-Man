@@ -18,13 +18,12 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * The view for adding a question to the game
  */
 public class AddQuestion {
 
- 
+
 
         Button undoBut,redoBut,saveBut ;
          Label Difficulty;
@@ -81,7 +80,7 @@ public class AddQuestion {
             comboBox.setMinSize(350,35);
             comboBox.setStyle("-fx-background-color: yellow; -fx-text-fill: white ; -fx-font-weight: bold; -fx-font-size: 18 " );
             GridPane.setConstraints(comboBox,4,13);
- 
+
 
             Label l_Team = new Label("Team:");
             l_Team.setMaxSize(60,35);
@@ -95,7 +94,7 @@ public class AddQuestion {
              teamName.setMinSize(350,35);
              teamName.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(teamName,4,15);
- 
+
 
             Label l_Question = new Label("Question:");
             l_Question.setMaxSize(60,35);
@@ -108,8 +107,8 @@ public class AddQuestion {
             QuestText.setMinSize(350,35);
             QuestText.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(QuestText,4,16);
-  
-            
+
+
             Label l_Answer1 = new Label("Answer 1:");
             l_Answer1.setMaxSize(60,35);
             l_Answer1.setMinSize(60,35);
@@ -134,7 +133,7 @@ public class AddQuestion {
             Text_Answer2.setMinSize(350,35);
             Text_Answer2.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(Text_Answer2,4,18);
- 
+
             Label l_Answer3 = new Label("Answer 3:");
             l_Answer3.setMaxSize(60,35);
             l_Answer3.setMinSize(60,35);
@@ -146,7 +145,7 @@ public class AddQuestion {
             Text_Answer3.setMinSize(350,35);
             Text_Answer3.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(Text_Answer3,4,19);
- 
+
             Label l_Answer4 = new Label("Answer 4:");
             l_Answer4.setMaxSize(60,35);
             l_Answer4.setMinSize(60,35);
@@ -158,14 +157,14 @@ public class AddQuestion {
             Text_Answer4.setMinSize(350,35);
             Text_Answer4.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(Text_Answer4,4,20);
- 
+
             Label l_curect_Ans = new Label("curect Ans");
             l_curect_Ans.setMaxSize(60,35);
             l_curect_Ans.setMinSize(60,35);
             l_curect_Ans.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(l_curect_Ans,3,21);
 
- 
+
              ObservableList<String> Text_cureectAns = FXCollections.observableArrayList("1","2","3","4");
 
               cureectAns = new ComboBox<>(Text_cureectAns);
@@ -175,7 +174,7 @@ public class AddQuestion {
               cureectAns.setStyle("-fx-background-color: yellow; -fx-text-fill: white ; -fx-font-weight: bold; -fx-font-size: 18 " );
 
              GridPane.setConstraints(cureectAns,4,21);
- 
+
             HBox bar = new HBox();
 
 
@@ -189,14 +188,14 @@ public class AddQuestion {
             saveBut.setMaxSize(100,35 );
             saveBut.setMinSize(100,35);
             saveBut.setOnAction(e->handleAddQuestions("Add"));
-             
+
             undoBut = new Button("Undo");
             undoBut.setMaxSize(65,35 );
             undoBut.setMinSize(65,35);
             undoBut.setOnAction(e->new StartGame(stage) );
             undoBut.setOnAction(e->handleAddQuestions("Undo"));
             undoBut.setDisable(true); // will disable the Button
-           
+
             redoBut = new Button("Redo");
             redoBut.setMaxSize(65,35 );
             redoBut.setMinSize(65,35);
@@ -204,7 +203,7 @@ public class AddQuestion {
             redoBut.setOnAction(e->handleAddQuestions("Redo"));
             redoBut.setDisable(true); // will disable the Button
 
-             
+
 
             bar.getChildren().addAll(knapp5,saveBut,undoBut,redoBut);
 
@@ -218,21 +217,21 @@ public class AddQuestion {
             stage.show();
 
         }
-        
+
         /**
-         * checking the validation of the question 
-         * and add it to the Question list 
-         * get pop up depend if the added success or not 
+         * checking the validation of the question
+         * and add it to the Question list
+         * get pop up depend if the added success or not
          */
         public void handleAddQuestions(String choose) {
-        	
-        	
+
+
         	if(choose.equals("Add")) {
 	        	int level = 0;
 	            List<String> in_answers = new ArrayList<>() ;
 	            if (comboBox.getValue()!=null&&cureectAns.getValue()!=null) {/// check first if the user choose from the comboBox
-		 	
-	            		switch (comboBox.getValue()) {//convert from text to number 
+
+	            		switch (comboBox.getValue()) {//convert from text to number
 							case "Normal":
 								level = 1;
 								break;
@@ -242,26 +241,26 @@ public class AddQuestion {
 							case "Hard":
 								level = 2;
 								break;
-						 
+
 						}
-	            
-	           
-		  	            if (!Text_Answer1.getText().isEmpty()) {///adding the answer to the list 
+
+
+		  	            if (!Text_Answer1.getText().isEmpty()) {///adding the answer to the list
 		 	 	           in_answers.add(Text_Answer1.getText());
-		
+
 		 	            }
-		 	           if (!Text_Answer2.getText().isEmpty()) {///adding the answer to the list 
+		 	           if (!Text_Answer2.getText().isEmpty()) {///adding the answer to the list
 		 	 	           in_answers.add(Text_Answer2.getText());
-		
-		 	            }if (!Text_Answer3.getText().isEmpty()) {///adding the answer to the list 
+
+		 	            }if (!Text_Answer3.getText().isEmpty()) {///adding the answer to the list
 		  	 	           in_answers.add(Text_Answer3.getText());
-		
-		  	            }if (!Text_Answer4.getText().isEmpty()) {///adding the answer to the list 
+
+		  	            }if (!Text_Answer4.getText().isEmpty()) {///adding the answer to the list
 		  	 	           in_answers.add(Text_Answer4.getText());
-		
-		  	            } 
-		  	            
-		  	            boolean flag=true;//checking if there are a answer to the answer number that the user choose 
+
+		  	            }
+
+		  	            boolean flag=true;//checking if there are a answer to the answer number that the user choose
 		  	          switch (cureectAns.getValue()) {
 						case "1":
 							if (Text_Answer1.getText().isEmpty())
@@ -279,21 +278,21 @@ public class AddQuestion {
 							if (Text_Answer4.getText().isEmpty())
 								flag=false;
 							break;
-						}  	            
-		  	            
-		  	       
-		 	      	
-		 	      	
-			       if( flag	&& SysData.instance.addQuestion(QuestText.getText(), 
+						}
+
+
+
+
+			       if( flag	&& SysData.instance.addQuestion(QuestText.getText(),
 			    		   level, teamName.getText(), in_answers,  cureectAns.getValue()))
-			       {	   
+			       {
 			    	   PopUpLogic.instance.QuestionAdded();
 			    	   Text_Answer1.setText("");
 			    	   Text_Answer2.setText("");
 			    	   Text_Answer3.setText("");
 			    	   Text_Answer4.setText("");
 			    	   QuestText.setText("");
-			    	   teamName.setText("");	
+			    	   teamName.setText("");
 			    	// saveFiles monitors how many articles are saved
 			       // currentArticle monitors the current article displayed
 
@@ -306,42 +305,42 @@ public class AddQuestion {
 			       else {
 			    	   PopUpLogic.instance.QuestionMistake();
 			       }
-			       
+
 	            }else {
 	 	    	   PopUpLogic.instance.QuestionMistake();
 	             }
 	        }
- 
+
         else if (choose.equals("Undo")) {
-            if(currentArticle >=1){//  
+            if(currentArticle >=1){//
             	// Decrement to the current question displayed
             		currentArticle--;
                // Get the older question saved and display it in JTextArea
             		  Question q= SysData.instance.UndoRedo.get(currentArticle);
-              		// Get the newer question saved and display it 
-              		  SetVisibleQuestion(q);             
-            	
+              		// Get the newer question saved and display it
+              		  SetVisibleQuestion(q);
 
-            		
-            		
+
+
+
             redoBut.setDisable(false);// will enable it again
            } else {
-            
+
              // Don't allow user to click Undo
               undoBut.setDisable(true); // will disable the Button
-              
+
 
            }
-            	
+
         }
         else if (choose.equals("Redo")) {
         	  if((saveFiles-1 ) > currentArticle){
         		// Increment to the current article displayed
 
         		  currentArticle++;
-        		  
+
         		  Question q= SysData.instance.UndoRedo.get(currentArticle);
-        		// Get the newer question saved and display it 
+        		// Get the newer question saved and display it
         		  SetVisibleQuestion(q);
         		  undoBut.setDisable(false);// will enable it again
 
@@ -352,16 +351,16 @@ public class AddQuestion {
         	  }
         }
 
-		 
+
      }
-        
+
         /**
          * set the question on the screen
          * @param q
          */
         public void SetVisibleQuestion(Question q) {
-        	
-    		switch (q.getlevel()) {//convert from number  to text 
+
+    		switch (q.getlevel()) {//convert from number  to text
 			case 1:
 				comboBox.setValue("Normal");
 				break;
@@ -371,14 +370,14 @@ public class AddQuestion {
 			case 3:
 				comboBox.setValue("Hard");
 				break;
-		 
+
     		}
-    		QuestText.setText(q.getquestion());	
+    		QuestText.setText(q.getquestion());
     		teamName.setText(q.getTeam());
     		cureectAns.setValue(q.getCorrect_ans());
     		List<String> answer=new ArrayList<String>();
     		answer= q.getAnswers();
-    	
+
     		 Text_Answer1.setText(answer.get(0));
 	    	 Text_Answer2.setText(answer.get(1));
 	    	 if(answer.size()==3) {
@@ -399,5 +398,3 @@ public class AddQuestion {
             new QuestionManager(SameStage);
        }
 }
-
-

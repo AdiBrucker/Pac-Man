@@ -20,11 +20,8 @@ import Model.Question;
 
 import java.util.List;
 import java.util.Random;
-/**
- * Question manager view
- */
-public class QuestionManager implements EventHandler {
 
+public class QuestionManager implements EventHandler {
 
     // Image image = new Image("res/first.PNG");
     Button button;
