@@ -1,87 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="450d62db-f77a-4081-9305-f632443c737e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/Serializable.ser" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Serializable.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/res/questions.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/res/questions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pacman_hedgehog/View/AddQuestion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pacman_hedgehog/View/GameView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pacman_hedgehog/View/Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pacman_hedgehog/View/PacmanAnimation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pacman_hedgehog/View/QuestionManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pacman_hedgehog/View/StartGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/SysData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SysData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/AddQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/QuestionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QuestionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/StartGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ViewLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ViewLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/res/questions.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/questions.json" afterDir="false" />
-    </list>
+    <list default="true" id="450d62db-f77a-4081-9305-f632443c737e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Model/Question.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="289">
-                    <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" selection-end-column="39" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="3">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Model/SysData.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-419">
-                    <caret line="105" column="34" lean-forward="true" selection-start-line="105" selection-start-column="34" selection-end-line="105" selection-end-column="34" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/res/questions.json">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-2382">
-                    <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
@@ -118,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/QuestionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1445">
-              <caret line="254" column="5" selection-start-line="254" selection-start-column="5" selection-end-line="254" selection-end-column="5" />
+            <state relative-caret-position="102">
+              <caret line="220" column="11" selection-start-line="219" selection-start-column="8" selection-end-line="227" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -225,7 +151,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-5" />
     <option name="width" value="1938" />
     <option name="height" value="1029" />
@@ -288,7 +214,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544905773252" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544905786205" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../iMonopoly-v2" />
   </component>
@@ -375,18 +301,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543238828986</updated>
-      <workItem from="1544785790852" duration="40647000" />
+      <workItem from="1544785790852" duration="41513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40647000" />
+    <option name="totallyTimeSpent" value="41513000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1380" height="743" extended-state="6" />
+    <frame x="-7" y="-7" width="1380" height="743" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14924243" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14924243" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -397,7 +323,7 @@
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22258593" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22258593" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.27659574" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -723,8 +649,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/QuestionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="254" column="5" selection-start-line="254" selection-start-column="5" selection-end-line="254" selection-end-column="5" />
+        <state relative-caret-position="102">
+          <caret line="220" column="11" selection-start-line="219" selection-start-column="8" selection-end-line="227" selection-end-column="53" />
         </state>
       </provider>
     </entry>
