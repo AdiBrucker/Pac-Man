@@ -114,7 +114,7 @@ public class SysData implements Serializable{
 		FileWriter writer = null;
 
 		try {
-			writer = new FileWriter ("res/questions.json");
+			writer = new FileWriter ("src/res/questions.json");
 			writer.write(strJson);
 
 		} catch (IOException e) {
