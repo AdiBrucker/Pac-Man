@@ -14,53 +14,53 @@ import java.util.Collections;
  * holds the data of the played games
  */
 
-	public class SysData implements Serializable{
+public class SysData implements Serializable{
 
-		//for Serialization
-		private static final long serialVersionUID = 1L;
-		///Singleton
-		public static SysData instance;
-
-
-		///Stores all questions from the class that imports the JSON
-		public static List<Question> questions;
-
-		public static List<Question> UndoRedo;/// list of Question  to Memento design-pattern
-
-		//all the pacman results after the game finish;
-		/// can be a hash map right now i cant see why
-		// i think that at the table scores same player can be appear more then one time ;
-		public  ArrayList< Pacman>Pacman;
-		/**The path to which the data will be stored*/
-		public static String route="Serializable.ser";
-
-		/**
-		 * Full constructor
-		 */
-		private SysData(){
-
-			questions = new ArrayList<Question>();
-			Pacman=new ArrayList<Pacman>();
-			UndoRedo= new ArrayList<Question>();
-		}
+	//for Serialization
+	private static final long serialVersionUID = 1L;
+	///Singleton
+	public static SysData instance;
 
 
-		/**
-		 *(singleton).
-		 * @return reference to this class's only instance (singleton).
-		 */
-		public static SysData createInstance() {
+	///Stores all questions from the class that imports the JSON
+	public static List<Question> questions;
 
-			if(instance == null){
-				instance = new SysData();
-				return instance;
-			}
+	public static List<Question> UndoRedo;/// list of Question  to Memento design-pattern
+
+	//all the pacman results after the game finish;
+	/// can be a hash map right now i cant see why
+	// i think that at the table scores same player can be appear more then one time ;
+	public  ArrayList< Pacman>Pacman;
+	/**The path to which the data will be stored*/
+	public static String route="Serializable.ser";
+
+	/**
+	 * Full constructor
+	 */
+	private SysData(){
+
+		questions = new ArrayList<Question>();
+		Pacman=new ArrayList<Pacman>();
+		UndoRedo= new ArrayList<Question>();
+	}
+
+
+	/**
+	 *(singleton).
+	 * @return reference to this class's only instance (singleton).
+	 */
+	public static SysData createInstance() {
+
+		if(instance == null){
+			instance = new SysData();
 			return instance;
+		}
+		return instance;
 	}
 
 	public void SetPacman(ArrayList< Pacman> A) {
 		Pacman=A;
-		}
+	}
 	/**
 	 * @return the pacman DB.
 	 */
@@ -84,12 +84,12 @@ import java.util.Collections;
 		BufferedReader br = null;
 
 		try {///src\\res\\questions.json
-				br = new BufferedReader(new FileReader(new File("res/questions.json").getAbsolutePath()));
-				QuestionResultsFromJSON questionsResults = gson.fromJson(br, QuestionResultsFromJSON.class);
-				questions = questionsResults.getQuestions();
+			br = new BufferedReader(new FileReader(new File("res/questions.json").getAbsolutePath()));
+			QuestionResultsFromJSON questionsResults = gson.fromJson(br, QuestionResultsFromJSON.class);
+			questions = questionsResults.getQuestions();
 
 		} catch (FileNotFoundException e) {
- 				e.printStackTrace();
+			e.printStackTrace();
 
 		} finally {
 
@@ -108,7 +108,7 @@ import java.util.Collections;
 	 */
 	public void writeQuestionsToJsonFile() {
 
- 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String strJson = "{\n    \"questions\":"+gson.toJson(getQuestions())+"}";
 
 		FileWriter writer = null;
@@ -156,7 +156,7 @@ import java.util.Collections;
 		}
 		if( question!=null&&!question.isEmpty()  && level>=0 && level<=2 && team!=null&&!team.isEmpty() && answers.size()>=2 && hasntBeenWritenYet==true) {
 			Question newQ = new Question ();
- 			newQ.setquestion(question);
+			newQ.setquestion(question);
 			newQ.setlevel(level);
 			newQ.setTeam(team);
 			newQ.setAnswers(answers);
@@ -176,7 +176,7 @@ import java.util.Collections;
 			getQuestions().add(getUndoRedo().get(i));
 		}
 
- 		UndoRedo= new ArrayList<Question>();
+		UndoRedo= new ArrayList<Question>();
 
 	}
 	/**
@@ -191,9 +191,8 @@ import java.util.Collections;
 			Question questionToRemove = getQuestions().get(index);
 			if (questionToRemove != null) {
 				getQuestions().remove(questionToRemove);
- 				return true;
+				return true;
 			}
-			return false;
 		}
 		return false;
 	}
@@ -208,12 +207,12 @@ import java.util.Collections;
 	 * @return
 	 */
 	public boolean AddPacman(int score, String name) {
- 		if (name!=null&& score>0) {
-		 	Pacman.add(new Pacman(score, name));
- 			 	Collections.sort(getPacman());
- 				System.out.println(getPacman()+"after adding ");
+		if (name!=null&& score>0) {
+			Pacman.add(new Pacman(score, name));
+			Collections.sort(getPacman());
+			System.out.println(getPacman()+"after adding ");
 
- 				return true;
+			return true;
 
 		}
 		return false;
@@ -225,18 +224,18 @@ import java.util.Collections;
 	 */
 	public static SysData inputSerialize(){
 		try{
- 			FileInputStream inputFile= new FileInputStream(route);
+			FileInputStream inputFile= new FileInputStream(route);
 			ObjectInputStream inputStream = new ObjectInputStream(inputFile);
 			SysData input = (SysData)inputStream.readObject();
- 			inputStream.close();
- 			inputFile.close();
+			inputStream.close();
+			inputFile.close();
 
- 			return input;
+			return input;
 		}
 		catch (Exception e){
 			e.getMessage();
- 			e.printStackTrace();
- 		 	return new SysData();
+			e.printStackTrace();
+			return new SysData();
 		}
 	}
 
@@ -246,30 +245,17 @@ import java.util.Collections;
 	 */
 	public static void Serialize(Object Obj) throws IllegalPathStateException{
 		try{
- 			FileOutputStream OutPutFile= new FileOutputStream(route);
+			FileOutputStream OutPutFile= new FileOutputStream(route);
 			ObjectOutputStream OutPutStream = new ObjectOutputStream(OutPutFile);
 			OutPutStream.writeObject(Obj);
- 			OutPutStream.close();
+			OutPutStream.close();
 			OutPutFile.close();
 
 		}
-
-		/**
-		 * this method writes new data   to the serialized DB
-		 * so that everything new that inserted to the system will be saved.
-		 */
-		public static void Serialize(Object Obj) throws IllegalPathStateException{
-			try{
-				FileOutputStream OutPutFile= new FileOutputStream(route);
-				ObjectOutputStream OutPutStream = new ObjectOutputStream(OutPutFile);
-				OutPutStream.writeObject(Obj);
-				OutPutStream.close();
-				OutPutFile.close();
-
-			}
-			catch (IOException e){
-				e.printStackTrace();
-			}
+		catch (IOException e){
+			e.printStackTrace();
 		}
+	}
 
 }
+

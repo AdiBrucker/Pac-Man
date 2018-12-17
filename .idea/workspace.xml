@@ -3,19 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="450d62db-f77a-4081-9305-f632443c737e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serializable.ser" beforeDir="false" afterPath="$PROJECT_DIR$/Serializable.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/AddQuestion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/AddQuestion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Pacman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/ScoreHistory.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/SysData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SysData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/AddQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/QuestionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QuestionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ScoreHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ScoreHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/res/questions.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/questions.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,17 +23,11 @@
         <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="262">
-              <caret line="384" column="1" selection-start-line="384" selection-start-column="1" selection-end-line="384" selection-end-column="1" />
+              <caret line="396" column="1" selection-start-line="396" selection-start-column="1" selection-end-line="396" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1796#1797#0" expanded="true" />
                 <element signature="e#1830#1831#0" expanded="true" />
-                <element signature="e#10303#10304#0" expanded="true" />
-                <element signature="e#10358#10359#0" expanded="true" />
-                <element signature="e#10631#10632#0" expanded="true" />
-                <element signature="e#10659#10660#0" expanded="true" />
-                <element signature="e#10760#10761#0" expanded="true" />
-                <element signature="e#10789#10790#0" expanded="true" />
                 <element signature="e#11585#11586#0" expanded="true" />
                 <element signature="e#11617#11618#0" expanded="true" />
                 <element signature="e#12016#12017#0" expanded="true" />
@@ -88,21 +75,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/SysData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+            <state relative-caret-position="378">
+              <caret line="261" lean-forward="true" selection-start-line="261" selection-end-line="261" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6484#6485#0" expanded="true" />
-                <element signature="e#6501#6502#0" expanded="true" />
-                <element signature="e#6583#6584#0" expanded="true" />
-                <element signature="e#6605#6606#0" expanded="true" />
-                <element signature="e#6648#6649#0" expanded="true" />
-                <element signature="e#6673#6674#0" expanded="true" />
-                <element signature="e#6715#6716#0" expanded="true" />
-                <element signature="e#6739#6740#0" expanded="true" />
+                <element signature="e#1406#1407#0" expanded="true" />
+                <element signature="e#1421#1422#0" expanded="true" />
+                <element signature="e#1499#1500#0" expanded="true" />
+                <element signature="e#1519#1520#0" expanded="true" />
+                <element signature="e#1561#1562#0" expanded="true" />
+                <element signature="e#1584#1585#0" expanded="true" />
+                <element signature="e#1625#1626#0" expanded="true" />
+                <element signature="e#1647#1648#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,10 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/ScoreHistory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="1309">
               <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -205,8 +192,8 @@
         <option value="$PROJECT_DIR$/src/Controller/MainClass.java" />
         <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
         <option value="$PROJECT_DIR$/src/Model/Question.java" />
-        <option value="$PROJECT_DIR$/src/Model/SysData.java" />
         <option value="$PROJECT_DIR$/src/View/ScoreHistory.java" />
+        <option value="$PROJECT_DIR$/src/Model/SysData.java" />
       </list>
     </option>
   </component>
@@ -240,18 +227,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -262,7 +237,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545040958944" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545041850989" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -289,9 +264,9 @@
       </method>
     </configuration>
     <configuration name="MainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="Controller.MainClass" />
-      <module name="pacman_hedgehog" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="Pac-Man" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Controller.*" />
@@ -347,15 +322,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543238828986</updated>
-      <workItem from="1544978917768" duration="6928000" />
+      <workItem from="1544978917768" duration="7120000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6928000" />
+    <option name="totallyTimeSpent" value="7120000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22326307" />
@@ -369,7 +344,7 @@
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3088737" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3088737" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -377,7 +352,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.2156013" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.21501707" />
       <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -505,17 +480,11 @@
     <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
-          <caret line="384" column="1" selection-start-line="384" selection-start-column="1" selection-end-line="384" selection-end-column="1" />
+          <caret line="396" column="1" selection-start-line="396" selection-start-column="1" selection-end-line="396" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1796#1797#0" expanded="true" />
             <element signature="e#1830#1831#0" expanded="true" />
-            <element signature="e#10303#10304#0" expanded="true" />
-            <element signature="e#10358#10359#0" expanded="true" />
-            <element signature="e#10631#10632#0" expanded="true" />
-            <element signature="e#10659#10660#0" expanded="true" />
-            <element signature="e#10760#10761#0" expanded="true" />
-            <element signature="e#10789#10790#0" expanded="true" />
             <element signature="e#11585#11586#0" expanded="true" />
             <element signature="e#11617#11618#0" expanded="true" />
             <element signature="e#12016#12017#0" expanded="true" />
@@ -567,24 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/SysData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6484#6485#0" expanded="true" />
-            <element signature="e#6501#6502#0" expanded="true" />
-            <element signature="e#6583#6584#0" expanded="true" />
-            <element signature="e#6605#6606#0" expanded="true" />
-            <element signature="e#6648#6649#0" expanded="true" />
-            <element signature="e#6673#6674#0" expanded="true" />
-            <element signature="e#6715#6716#0" expanded="true" />
-            <element signature="e#6739#6740#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/AddQuestion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -615,11 +566,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/ScoreHistory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="1309">
           <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1545025698432" expanded="true" signature="1597:1598" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/SysData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="261" lean-forward="true" selection-start-line="261" selection-end-line="261" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1406#1407#0" expanded="true" />
+            <element signature="e#1421#1422#0" expanded="true" />
+            <element signature="e#1499#1500#0" expanded="true" />
+            <element signature="e#1519#1520#0" expanded="true" />
+            <element signature="e#1561#1562#0" expanded="true" />
+            <element signature="e#1584#1585#0" expanded="true" />
+            <element signature="e#1625#1626#0" expanded="true" />
+            <element signature="e#1647#1648#0" expanded="true" />
           </folding>
         </state>
       </provider>
