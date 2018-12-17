@@ -83,7 +83,7 @@ public class SysData implements Serializable{
 		Gson gson = new Gson();
 		BufferedReader br = null;
 		
-		try {///src\\res\\questions.json
+		try {
 				br = new BufferedReader(new FileReader(new File("src/res/questions.json").getAbsolutePath()));
 				QuestionResultsFromJSON questionsResults = gson.fromJson(br, QuestionResultsFromJSON.class);
 				questions = questionsResults.getQuestions();
