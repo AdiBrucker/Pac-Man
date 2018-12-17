@@ -97,7 +97,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
             if (this.intersects(maze.ghosts.get(j))) {
                 if (!(maze.ghosts.get(j) instanceof TmpGhost)) {
                     maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
-                    Music("\\pacmandeath.wav");
+                    Music("\\src\\res\\pacmandeath.wav");
 
                     if (lifeScore > 1) {
                         lifeScore--;
