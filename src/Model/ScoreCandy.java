@@ -16,7 +16,6 @@ public class ScoreCandy extends Candy{
      */
     public ScoreCandy(int x, int y, String type) {
         super(x, y, type);
-         LifeBonus=new isntLife();/// set this when there are a gold silver !! 
     }
 
     /**

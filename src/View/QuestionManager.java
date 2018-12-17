@@ -232,10 +232,10 @@ public class QuestionManager implements EventHandler {
         List<String> a= SysData.instance.getQuestions().get(index).getAnswers();
         answer1= a.get(0);
         answer2= a.get(1);
-        answer3=	"";
-        if(a.size()!=1)
-            answer3 =a.get(2);
-        answer4=	"";
+        answer3="";
+        if(a.size()>=3)
+        answer3 =a.get(2);
+        answer4="";
         if(a.size()==4) {
             answer4 = a.get(3);
         }
