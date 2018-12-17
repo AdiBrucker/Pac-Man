@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class MainClass extends Application {
 
     /**
-     * stat games method. A main class method which is responsible of creating the first instance of the game.
+     * start games method. A main class method which is responsible of creating the first instance of the game.
      * Creates an instance of the opening screen.
      *
      * @param stage

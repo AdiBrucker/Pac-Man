@@ -10,8 +10,7 @@ import java.io.IOException;
  */
 public class Candy extends Rectangle {
 
-    public LifeBonus LifeBonus;
-    //holdes the type of the candy to be created
+     //holdes the type of the candy to be created
     private String type;
     private BufferedImage yellowCandy;
     private BufferedImage goldCandy;
@@ -62,13 +61,4 @@ public class Candy extends Rectangle {
         return type;
     }
 
-    /**
-     * Setter for a new life bonus
-     *
-     * @param newLifeBonus
-     */
-    public void setnewLifeBonus(LifeBonus newLifeBonus) {
-
-        LifeBonus = newLifeBonus;
-    }
 }

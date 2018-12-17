@@ -56,187 +56,202 @@ import java.util.Collections;
 				return instance;
 			}
 			return instance;
-		}
+	}
 
-		public void SetPacman(ArrayList< Pacman> A) {
-			Pacman=A;
+	public void SetPacman(ArrayList< Pacman> A) {
+		Pacman=A;
 		}
-		/**
-		 * @return the pacman DB.
-		 */
-		public ArrayList< Pacman> getPacman() {
-			return Pacman;
-		}
+	/**
+	 * @return the pacman DB.
+	 */
+	public ArrayList< Pacman> getPacman() {
+		return Pacman;
+	}
 
-		public  List<Question> getQuestions() {
-			return questions;
-		}
+	public  List<Question> getQuestions() {
+		return questions;
+	}
 
-		public  List<Question> getUndoRedo() {
-			return UndoRedo;
-		}
-		/**
-		 * this method loads the questions data from the JSON file
-		 */
-		public void loadQuestionsFromJsonFile () {
+	public  List<Question> getUndoRedo() {
+		return UndoRedo;
+	}
+	/**
+	 * this method loads the questions data from the JSON file
+	 */
+	public void loadQuestionsFromJsonFile () {
 
-			Gson gson = new Gson();
-			BufferedReader br = null;
+		Gson gson = new Gson();
+		BufferedReader br = null;
 
-			try {///src\\res\\questions.json
-				br = new BufferedReader(new FileReader(new File("src\\res\\questions.json").getAbsolutePath()));
+		try {///src\\res\\questions.json
+				br = new BufferedReader(new FileReader(new File("res/questions.json").getAbsolutePath()));
 				QuestionResultsFromJSON questionsResults = gson.fromJson(br, QuestionResultsFromJSON.class);
 				questions = questionsResults.getQuestions();
 
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+		} catch (FileNotFoundException e) {
+ 				e.printStackTrace();
 
-			} finally {
+		} finally {
 
-				if (br != null) {
-					try {
-						br.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 			}
 		}
+	}
 
-		/**
-		 * this method writes the questions data to the JSON file
-		 */
-		public void writeQuestionsToJsonFile() {
+	/**
+	 * this method writes the questions data to the JSON file
+	 */
+	public void writeQuestionsToJsonFile() {
 
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			String strJson = "{\n    \"questions\":"+gson.toJson(getQuestions())+"}";
+ 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String strJson = "{\n    \"questions\":"+gson.toJson(getQuestions())+"}";
 
-			FileWriter writer = null;
+		FileWriter writer = null;
 
-			try {
-				writer = new FileWriter ("src\\res\\questions.json");
-				writer.write(strJson);
+		try {
+			writer = new FileWriter ("res/questions.json");
+			writer.write(strJson);
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
-				if(writer!=null) {
-					try {
-						writer.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if(writer!=null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 			}
 		}
-		/**
-		 * adding Question to list
-		 * at the end of the game we will update json file
-		 * we will call writeQuestionsToJsonFile(); to update
-		 * @param question
-		 * @param level
-		 * @param team
-		 * @param answers
-		 * @param correct_ans
-		 * @return
-		 */
-		public boolean addQuestion(String question, int level,   String team, List<String> answers,String correct_ans ) {
+	}
+	/**
+	 * adding Question to list
+	 * at the end of the game we will update json file
+	 * we will call writeQuestionsToJsonFile(); to update
+	 * @param question
+	 * @param level
+	 * @param team
+	 * @param answers
+	 * @param correct_ans
+	 * @return
+	 */
+	public boolean addQuestion(String question, int level,   String team, List<String> answers,String correct_ans ) {
 
-			int id = getQuestions().size()+1;
-			boolean hasntBeenWritenYet = true;
-			for(Question q: getQuestions()) {
-				if (q.getquestion().equals(question)) {
-					hasntBeenWritenYet=false;
-				}
+		int id = getQuestions().size()+1;
+		boolean hasntBeenWritenYet = true;
+		for(Question q: getQuestions()) {
+			if (q.getquestion().equals(question)) {
+				hasntBeenWritenYet=false;
 			}
-			for(Question q1: getUndoRedo()) {////////////////ask shai
-				if (q1.getquestion().equals(question)) {
-					hasntBeenWritenYet=false;
-				}
+		}
+		for(Question q1: getUndoRedo()) {////////////////ask shai
+			if (q1.getquestion().equals(question)) {
+				hasntBeenWritenYet=false;
 			}
-			if( question!=null&&!question.isEmpty()  && level>=0 && level<=2 && team!=null&&!team.isEmpty() && answers.size()>=2 && hasntBeenWritenYet==true) {
-				Question newQ = new Question ();
-				newQ.setquestion(question);
-				newQ.setlevel(level);
-				newQ.setTeam(team);
-				newQ.setAnswers(answers);
-				newQ.setCorrect_ans(correct_ans);
-				getUndoRedo().add(newQ);
-				return true;
+		}
+		if( question!=null&&!question.isEmpty()  && level>=0 && level<=2 && team!=null&&!team.isEmpty() && answers.size()>=2 && hasntBeenWritenYet==true) {
+			Question newQ = new Question ();
+ 			newQ.setquestion(question);
+			newQ.setlevel(level);
+			newQ.setTeam(team);
+			newQ.setAnswers(answers);
+			newQ.setCorrect_ans(correct_ans);
+			getUndoRedo().add(newQ);
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * marge UndoRedo array with Questions() array
+	 * @param number
+	 */
+	public void UpdateQuestionArray (int number ) {
+		for(int i=0; i<number;i++) {
+			getQuestions().add(getUndoRedo().get(i));
+		}
+
+ 		UndoRedo= new ArrayList<Question>();
+
+	}
+	/**
+	 * remove Question from json files
+	 * we update the list and when we finished the game and we close the screen
+	 * we will call the mathode  	writeQuestionsToJsonFile();
+	 * @param index
+	 * @return
+	 */
+	public boolean removeQuestion(Integer index) {
+		if(index!=null) {
+			Question questionToRemove = getQuestions().get(index);
+			if (questionToRemove != null) {
+				getQuestions().remove(questionToRemove);
+ 				return true;
 			}
 			return false;
 		}
+		return false;
+	}
 
-		/**
-		 * marge UndoRedo array with Questions() array
-		 * @param number
-		 */
-		public void UpdateQuestionArray (int number ) {
-			for(int i=0; i<number;i++) {
-				getQuestions().add(getUndoRedo().get(i));
-			}
 
-			UndoRedo= new ArrayList<Question>();
+
+	/**
+	 * adding  pacman results  to the PacmanResults list and sort by scores
+	 *
+	 * @param score
+	 * @param name
+	 * @return
+	 */
+	public boolean AddPacman(int score, String name) {
+ 		if (name!=null&& score>0) {
+		 	Pacman.add(new Pacman(score, name));
+ 			 	Collections.sort(getPacman());
+ 				System.out.println(getPacman()+"after adding ");
+
+ 				return true;
 
 		}
-		/**
-		 * remove Question from json files
-		 * we update the list and when we finished the game and we close the screen
-		 * we will call the mathode  	writeQuestionsToJsonFile();
-		 * @param index
-		 * @return
-		 */
-		public boolean removeQuestion(Integer index) {
-			if(index!=null) {
-				Question questionToRemove = getQuestions().get(index);
-				if (questionToRemove != null) {
-					getQuestions().remove(questionToRemove);
-					return true;
-				}
-			}
-			return false;
+		return false;
+	}
+
+	/**
+	 * this method loads game objects that has already been
+	 * created and saved into the system.
+	 */
+	public static SysData inputSerialize(){
+		try{
+ 			FileInputStream inputFile= new FileInputStream(route);
+			ObjectInputStream inputStream = new ObjectInputStream(inputFile);
+			SysData input = (SysData)inputStream.readObject();
+ 			inputStream.close();
+ 			inputFile.close();
+
+ 			return input;
 		}
-
-
-
-		/**
-		 * adding  pacman results  to the PacmanResults list and sort by scores
-		 *
-		 * @param score
-		 * @param name
-		 * @return
-		 */
-		public boolean AddPacman(int score, String name) {
-			if (name!=null&& score>0) {
-				Pacman.add(new Pacman(score, name));
-				Collections.sort(getPacman());
-				System.out.println(getPacman()+"after adding ");
-
-				return true;
-
-			}
-			return false;
+		catch (Exception e){
+			e.getMessage();
+ 			e.printStackTrace();
+ 		 	return new SysData();
 		}
+	}
 
-		/**
-		 * this method loads game objects that has already been
-		 * created and saved into the system.
-		 */
-		public static SysData inputSerialize(){
-			try{
-				FileInputStream inputFile= new FileInputStream(route);
-				ObjectInputStream inputStream = new ObjectInputStream(inputFile);
-				SysData input = (SysData)inputStream.readObject();
-				inputStream.close();
-				inputFile.close();
+	/**
+	 * this method writes new data   to the serialized DB
+	 * so that everything new that inserted to the system will be saved.
+	 */
+	public static void Serialize(Object Obj) throws IllegalPathStateException{
+		try{
+ 			FileOutputStream OutPutFile= new FileOutputStream(route);
+			ObjectOutputStream OutPutStream = new ObjectOutputStream(OutPutFile);
+			OutPutStream.writeObject(Obj);
+ 			OutPutStream.close();
+			OutPutFile.close();
 
-				return input;
-			}
-			catch (Exception e){
-				e.getMessage();
-				e.printStackTrace();
-				return new SysData();
-			}
 		}
 
 		/**
@@ -257,7 +272,4 @@ import java.util.Collections;
 			}
 		}
 
-
-
-
-	}
+}

@@ -68,26 +68,45 @@ public class Maze {
                     } else {
                         //Candy
                         // if its a gold candy
+                    	Candy c = null;
 
                         if (level2) {// if the player pass the first level
                             level2 = false;
-                            ScoreCandy gold = new ScoreCandy(xx * 32, yy * 32, "Gold");
-                            gold.setnewLifeBonus(new isLife());
-                            candy.add(gold);
+                      //       candy.add(new ScoreCandy(xx * 32, yy * 32, "Gold"));
+                             c=CandyFactory.makeCandy("Gold",xx * 32,  yy * 32);
+//                            c.setLocation();
+                            candy.add(c);
 
                         }
                         if (getCandy < 10) {
-                            candy.add(new ScoreCandy(xx * 32, yy * 32, "Yellow"));
+//                             candy.add(new ScoreCandy(xx * 32, yy * 32, "Yellow"));
+
+                        	c=CandyFactory.makeCandy("Yellow",xx * 32,  yy * 32);
+                        //    c.setLocation(xx * 32,  yy * 32);
+                            candy.add(c);
                             getCandy++;
                         } else if (getSilverCandy < 5 && n % 5 == 0) {
-                            candy.add(new ScoreCandy(xx * 32, yy * 32, "Silver"));
+                        	c=CandyFactory.makeCandy("Silver",xx * 32,  yy * 32);
+                        //    c.setLocation(xx * 32,  yy * 32);
+                           candy.add(c);
+                      //      candy.add(new ScoreCandy(xx * 32, yy * 32, "Silver"));
+                            
                             getSilverCandy++;
 
                         } else if (!candyPoisonAppeared) {
-                            candy.add(new PoisonCandy(xx * 32, yy * 32));
+                        	c=CandyFactory.makeCandy("PoisonCandy",xx * 32,  yy * 32);
+                         //   c.setLocation(xx * 32,  yy * 32);
+                        	 candy.add(c);
+                            
+                         //   candy.add(new PoisonCandy(xx * 32, yy * 32));
+                           
                             candyPoisonAppeared = true;
                         } else {
-                            candy.add(new QuestionCandy(xx * 32, yy * 32));
+                        	
+                        	c=CandyFactory.makeCandy("QuestionCandy",xx * 32,  yy * 32);
+                     //       c.setLocation(xx * 32,  yy * 32);
+                            candy.add(c);
+//                           candy.add(new QuestionCandy(xx * 32, yy * 32));
                             getCandy = 0;
 
                         }

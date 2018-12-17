@@ -65,14 +65,9 @@ public class GameView{
 		
 	 	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.dispose();
-		game.isRunning=false;//false shahar
-//		game.pacmans.remove(game.pacmans.get(game.getPlayerIndex()));
-//		game.mazes.get(game.getPlayerIndex()).ghosts=null;
-//		game.mazes.get(game.getPlayerIndex()).candy=null;
-//		game.mazes.remove(game.mazes.get(game.getPlayerIndex()));
+		game.isRunning=false;
   		game.SetInstance();
  		instance.SetInstance();
-//	 	controller.SetInstance();
 	    
 
  	}

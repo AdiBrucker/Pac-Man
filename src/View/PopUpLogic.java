@@ -1,6 +1,7 @@
 package View;
 
 import Model.Game;
+import Model.Ghost;
 import Model.SysData;
 import Model.TmpGhost;
 import com.jfoenix.controls.*;
@@ -16,6 +17,7 @@ import javafx.scene.text.Text;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
@@ -33,6 +35,8 @@ public class PopUpLogic {
 	static boolean isAnswerCorrect = false; //flag to know how to update the score for pacman
 	static String correctAnswer;
 	static int indexOfQuestion;
+ 	boolean flag= false;
+ 	static int Player1SizeArray=0,Player2SizeArray=0;
 
 
     public static PopUpLogic getInstance() {
@@ -50,14 +54,22 @@ public class PopUpLogic {
 
     	ImageIcon icon =new ImageIcon("src\\res\\download.jpg");
      	Random rand = new Random();
- 		int indexOfQuestion = rand.nextInt(SysData.createInstance().getQuestions().size());
-    	List<String> a= SysData.instance.getQuestions().get(indexOfQuestion).getAnswers();
+ 		  indexOfQuestion = rand.nextInt(SysData.createInstance().getQuestions().size());
+ 		List<String> a=new ArrayList<>();
+ 		  a= SysData.instance.getQuestions().get(indexOfQuestion).getAnswers();
      	String answer= a.get(0);
     	String answer1= a.get(1);
     	String answer2=	 a.get(2);
     	String answer3=	"";
     	if(a.size()==4) {
     	  answer3="4. "+a.get(3);
+    	}
+    	if (Game.getPlayerIndex()==1) {
+    		Player1SizeArray=a.size();
+    	}
+    	else {
+    		Player2SizeArray=a.size();
+
     	}
     	JLabel label = new JLabel("<html>Question Candy: <br>"  +  SysData.instance.getQuestions().get(indexOfQuestion).getquestion()+" <br>"+" <br>" +"1. "+ answer+
     			" <br>"+" <br>"+"2. "+ answer1+
@@ -71,14 +83,16 @@ public class PopUpLogic {
 
 	 	   if(!Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared()) {
 			   for (int i = 0; i < a.size(); i++) {
-				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost(Game.mazes.get(Game.getPlayerIndex()).getGhostWidth(), Game.mazes.get(Game.getPlayerIndex()).getGhostHeigh()));
+				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost( 32*(i+4), 32*(i+4)));
+
 			   }
 			   Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared(true);
+			   
 		   }
     }
 
-    public static int showQuestionResult(){
-    	if(SysData.instance.getQuestions().get(indexOfQuestion).getCorrect_ans().equals(TmpGhost.getTmpIndex())){
+    public static int showQuestionResult(TmpGhost ghost){
+    	if(SysData.instance.getQuestions().get(indexOfQuestion).getCorrect_ans().equals(String.valueOf(ghost.index))){
 			UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
 			JOptionPane.showMessageDialog(null, "Correct Answer!","Correct",JOptionPane.INFORMATION_MESSAGE);
 			isAnswerCorrect = true;
@@ -110,11 +124,10 @@ public class PopUpLogic {
 					" Your final score is " + score + " at " + ViewLogic.getInstance().GetTimeResults() + " minutes", "Game over", JOptionPane.INFORMATION_MESSAGE);
 			ViewLogic.getInstance().setTimerCounting();
 		}
-
 		else if(Game.pacmans.size() == 2){
 			UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
 			JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
-					"Player 1: Your final score is " + Game.pacmans.get(0).getScore() + " \n " + "Player 2: Your final score is " + Game.pacmans.get(1).getScore(), "Game over", JOptionPane.INFORMATION_MESSAGE);
+					 Game.pacmans.get(0).getPacmanName()+": Your final score is " + Game.pacmans.get(0).getScore() + " \n " +   Game.pacmans.get(1).getPacmanName()+" : Your final score is " + Game.pacmans.get(1).getScore(), "Game over", JOptionPane.INFORMATION_MESSAGE);
 			ViewLogic.getInstance().setTimerCounting();
 		}
 
@@ -131,7 +144,8 @@ public class PopUpLogic {
     public int ShowEXit(boolean freeze ){
     	int g=4;
     	if (!freeze) {
-          	Game.flag=true;
+          	Game.getInstance().setFlag(true);
+          	System.out.println(	Game.getInstance().flag);
            	ViewLogic.getInstance().CancelTimer();
  			 g =  JOptionPane.showConfirmDialog(null, "Would you like to exit from the game?", "Exit?", JOptionPane.YES_NO_OPTION);
  			synchronized ( Game.getInstance()) {
@@ -162,11 +176,13 @@ public class PopUpLogic {
     public void pauseGame(){
     	
         UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
-      	Game.flag=true;
+        Game g=Game.getInstance();
+    //    System.err.println(g+"           pause game");
+      	g.setFlag(true);
        	ViewLogic.getInstance().CancelTimer();
      	JOptionPane.showMessageDialog(null, "you stop the game ,press ok to continue  ","Pause",JOptionPane.INFORMATION_MESSAGE);
-     	 synchronized ( Game.getInstance()) {
-			   Game.getInstance().notify();
+     	 synchronized ( g) {
+			   g.notify();
      	 }
 	 	   ViewLogic.getInstance().getTimer();
 
@@ -197,11 +213,16 @@ public class PopUpLogic {
 		button.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+
 				if(gameType.getValue() == null) {
+					if (!flag) {
                     GridPane.setConstraints(field, 0, 0);
                     gridPane.getChildren().addAll(field);
+                    flag=true;
+					}
                 }
 				else {
+					flag= false;
 					gridPane.getChildren().removeAll();
 					content.setBody(new Text("Please wait..."));
 					button.setDisable(true);
@@ -252,6 +273,7 @@ public class PopUpLogic {
 	public static String getPlayer1() {
 		return player1.getText();
 	}
+	 
 
 	public static String getPlayer2() {
 		return player2.getText();
@@ -279,7 +301,15 @@ public class PopUpLogic {
     	
         UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
       
-     	JOptionPane.showMessageDialog(null, "you added the question ","Error",JOptionPane.INFORMATION_MESSAGE);
+     	JOptionPane.showMessageDialog(null, "you added the question ","Add",JOptionPane.INFORMATION_MESSAGE);
  
     } 
+    
+
+ 	public static int getPlayer1SizeArra() {
+ 		return Player1SizeArray;
+ 	}
+ 	public static int getPlayer2SizeArra() {
+ 		return Player2SizeArray;
+ 	}
 }
