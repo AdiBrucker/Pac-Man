@@ -63,10 +63,10 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         PacmanNane = name;
         score1 = score2;
     }
-    
+
     public void setScore(int score) {
-		this.score = score;
-	}
+        this.score = score;
+    }
 
     /**
      * Responsible for the movements of the pacman and handles the cases when pacman is eating a candy or intersects with a ghost.
@@ -115,15 +115,8 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                     right = false;
                     left = false;
                     up = false;
-<<<<<<< HEAD
-                    down=false;
-                    Music("/src/Question-SOUND.wav");
-
-                    showQuestion();
-=======
                     down = false;
                     int level = popUpInstance.showQuestionResult();
->>>>>>> 1c49d1335c49de68d88ee547b1d749e30d496c83
                     right = false;
                     left = false;
                     up = false;
@@ -240,22 +233,11 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                         ShowGameOver();
                     }
 
-<<<<<<< HEAD
-        for (int j = 0; j < maze.ghosts.size(); j++){
-            if (this.intersects(maze.ghosts.get(j))){
-                maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
-                Music("/src/pacmandeath.wav");
-                
-                if (lifeScore > 1) {
-                    lifeScore--;
-                    viewInstance.setLifeScoreForPacman();
-=======
                     right = false;
                     left = false;
                     up = false;
                     down = false;
                     maze.candy.remove(i);
->>>>>>> 1c49d1335c49de68d88ee547b1d749e30d496c83
                 }
                 break;
             }
@@ -272,15 +254,15 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
             animationIndexImage++;
         }
     }
-public ArrayList<Ghost> removeTmp(){
+    public ArrayList<Ghost> removeTmp(){
         ArrayList<Ghost> g = new ArrayList<>();
-             for (int i = 0; i < maze.ghosts.size(); i++) {
-                 if (maze.ghosts.get(i) instanceof TmpGhost) {
-                    g.add(maze.ghosts.get(i));
-                 }
-             }
-             System.out.println(g.size());
-             return g;
+        for (int i = 0; i < maze.ghosts.size(); i++) {
+            if (maze.ghosts.get(i) instanceof TmpGhost) {
+                g.add(maze.ghosts.get(i));
+            }
+        }
+        System.out.println(g.size());
+        return g;
     }
     /**
      * Plays the game's music
