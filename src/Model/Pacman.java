@@ -97,7 +97,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
             if (this.intersects(maze.ghosts.get(j))) {
                 if (!(maze.ghosts.get(j) instanceof TmpGhost)) {
                     maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
-                    Music("\\pacmandeath.wav");
+                    Music("\\src\\res\\pacmandeath.wav");
 
                     if (lifeScore > 1) {
                         lifeScore--;
@@ -172,16 +172,16 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
     private void pacmansMovements() {
         if (right && Game.canMove(x + speed, y, width, height)) {
             x += speed;
-            lastDir = 1;
+            lastDir = CONSTS.RIGHT;
         } else if (left && Game.canMove(x - speed, y, width, height)) {
             x -= speed;
-            lastDir = -1;
+            lastDir = CONSTS.LEFT;
         } else if (up && Game.canMove(x, y - speed, width, height)) {
             y -= speed;
-            lastDir = 2;
+            lastDir = CONSTS.UP;
         } else if (down && Game.canMove(x, y + speed, width, height)) {
             y += speed;
-            lastDir = -2;
+            lastDir = CONSTS.DOWN;
         }
     }
 
@@ -335,16 +335,16 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
     @Override
     public void render(Graphics g) {
     	 
-        if (lastDir == 1) {
+        if (lastDir == CONSTS.RIGHT) {
             g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2], x, y, width, height, null);
         }
-        if (lastDir == -1) {
+        if (lastDir == CONSTS.LEFT) {
             g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2], x + 32, y, -width, height, null);
         }
-        if (lastDir == 2) {
+        if (lastDir == CONSTS.UP) {
             g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2 + 2], x, y, width, height, null);
         }
-        if (lastDir == -2) {
+        if (lastDir == CONSTS.DOWN) {
             g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2 + 4], x, y, width, height, null);
         }
     }
