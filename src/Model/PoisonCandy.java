@@ -19,7 +19,6 @@ public class PoisonCandy extends Candy {
      */
     public PoisonCandy(int x, int y) {
         super(x, y, "PoisonCandy");
-        LifeBonus = new isntLife();
 
         try {
             poisonCandy = ImageIO.read(getClass().getResource("/res/sprites/poisonCandy.png"));

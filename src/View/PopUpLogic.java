@@ -83,7 +83,7 @@ public class PopUpLogic {
 
 	 	   if(!Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared()) {
 			   for (int i = 0; i < a.size(); i++) {
-				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost(Game.mazes.get(Game.getPlayerIndex()).getGhostWidth(), Game.mazes.get(Game.getPlayerIndex()).getGhostHeigh()));
+				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost( 32*(i+4), 32*(i+4)));
 
 			   }
 			   Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared(true);
@@ -144,7 +144,8 @@ public class PopUpLogic {
     public int ShowEXit(boolean freeze ){
     	int g=4;
     	if (!freeze) {
-          	Game.flag=true;
+          	Game.getInstance().setFlag(true);
+          	System.out.println(	Game.getInstance().flag);
            	ViewLogic.getInstance().CancelTimer();
  			 g =  JOptionPane.showConfirmDialog(null, "Would you like to exit from the game?", "Exit?", JOptionPane.YES_NO_OPTION);
  			synchronized ( Game.getInstance()) {
@@ -175,11 +176,13 @@ public class PopUpLogic {
     public void pauseGame(){
     	
         UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
-      	Game.flag=true;
+        Game g=Game.getInstance();
+    //    System.err.println(g+"           pause game");
+      	g.setFlag(true);
        	ViewLogic.getInstance().CancelTimer();
      	JOptionPane.showMessageDialog(null, "you stop the game ,press ok to continue  ","Pause",JOptionPane.INFORMATION_MESSAGE);
-     	 synchronized ( Game.getInstance()) {
-			   Game.getInstance().notify();
+     	 synchronized ( g) {
+			   g.notify();
      	 }
 	 	   ViewLogic.getInstance().getTimer();
 
@@ -298,7 +301,7 @@ public class PopUpLogic {
     	
         UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
       
-     	JOptionPane.showMessageDialog(null, "you added the question ","Error",JOptionPane.INFORMATION_MESSAGE);
+     	JOptionPane.showMessageDialog(null, "you added the question ","Add",JOptionPane.INFORMATION_MESSAGE);
  
     } 
     

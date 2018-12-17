@@ -1,6 +1,8 @@
 package View;
 
 import Model.Game;
+
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -116,7 +118,7 @@ public class ViewLogic {
 	            		 timer1.cancel(); //In order to gracefully terminate the timer thread
 	            	     restart=false;
 	            	}   
-    	        	TimerCounting++;
+     	        	TimerCounting++;
     	            int minutes1 = (int) Math.floor(TimerCounting / 60F);
     	            int second1 = (int) Math.floor(TimerCounting - minutes1 * 60);
     	            
@@ -151,18 +153,32 @@ public class ViewLogic {
     	    	}
     	   };
     	timer1.scheduleAtFixedRate(task,1000,1000);/// the time will work the same as a regular timer
-
-     }
+      }
     
 
     public static void setPacmanTurn(){
+    	
+    	ArrayList<Game>GameList= Game.getInstanceList();
+//    	Game g0=GameList.get(0);
+//    	Game g1=GameList.get(1);
+
         if(Game.getPlayerIndex() == 0 && PopUpLogic.getNumOfPlayers() >1) {
+//        	synchronized (g0) {
+//       		 g0.notify();
+//      	 }
+//        	g1.setFlag(true);
             Game.setPlayerIndex(1);
             setNickname();
             setLifeScoreForPacman();
             setScoreForPacman();
         }
         else {
+//        	
+//        	 synchronized (g1) {
+//        		 g1.notify();
+//       	 }
+//         	g0.setFlag(true);
+
             Game.setPlayerIndex(0);
             setNickname();
             setLifeScoreForPacman();
