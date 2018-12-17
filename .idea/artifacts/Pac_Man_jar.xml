@@ -3,11 +3,11 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Pac_Man_jar</output-path>
     <root id="archive" name="Pac-Man.jar">
       <element id="module-output" name="Pac-Man" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/src/View/gson-2.6.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/out/production/pacman_hedgehog/gson-2.6.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/out/production/pacman_hedgehog/View/gson-2.6.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/src/gson-2.6.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/src/jfoenix-8.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/production/pacman_hedgehog/gson-2.6.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/production/pacman_hedgehog/View/gson-2.6.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/View/gson-2.6.2.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

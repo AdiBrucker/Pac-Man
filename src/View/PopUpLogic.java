@@ -52,7 +52,8 @@ public class PopUpLogic {
     public void ShowQuestion(){
        	ViewLogic.getInstance().CancelTimer();
 
-    	ImageIcon icon =new ImageIcon("src\\res\\download.jpg");
+		java.net.URL imgURL = getClass().getResource("/res/download.jpg");
+    	ImageIcon icon =new ImageIcon(imgURL);
      	Random rand = new Random();
  		  indexOfQuestion = rand.nextInt(SysData.createInstance().getQuestions().size());
  		List<String> a=new ArrayList<>();
@@ -106,6 +107,7 @@ public class PopUpLogic {
 			return SysData.instance.getQuestions().get(indexOfQuestion).getlevel();
 		}
 	}
+
 
 	public static boolean isAnswerCorrect(){
     	return isAnswerCorrect;
