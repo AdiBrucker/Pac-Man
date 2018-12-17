@@ -10,6 +10,8 @@ import com.google.gson.GsonBuilder;
 
 import java.util.Collections;
 
+import static com.sun.org.apache.xalan.internal.utils.SecuritySupport.getResourceAsStream;
+
 /**
  * holds the data of the played games
  */
@@ -83,24 +85,10 @@ public class SysData implements Serializable{
 		Gson gson = new Gson();
 		BufferedReader br = null;
 
-		try {
-				br = new BufferedReader(new FileReader(new File("src/res/questions.json").getAbsolutePath()));
+			br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/res/questions.json")));
 				QuestionResultsFromJSON questionsResults = gson.fromJson(br, QuestionResultsFromJSON.class);
 				questions = questionsResults.getQuestions();
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-
-		} finally {
-
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 
 	/**
