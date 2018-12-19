@@ -142,13 +142,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
                 delta += (now - lastTime) / ns;
                 lastTime = now;
                 while (delta >= 1) {                   
-               	System.err.println(flag+"   "+getInstanceList().get(playerIndex)+"                    game");
-               	if (flag) {
-                    	System.out.println(flag);
-                        synchronized (getInstanceList().get(playerIndex)) {
+                	if (flag) {
+                         synchronized (getInstanceList().get(playerIndex)) {
                             try {
-                            	System.out.println("bamba");
-                            	getInstanceList().get(playerIndex).wait();
+                             	getInstanceList().get(playerIndex).wait();
                             } catch (Exception e) {
                             	getInstanceList().get(playerIndex).notify();
                             }

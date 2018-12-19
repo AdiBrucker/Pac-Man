@@ -52,8 +52,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         score = 0;
         lifeScore = 3;
         PacmanNane = nickname;
-    }
-
+    } 
     /**
      * Constructor creates the players name and his score
      * @param score2
@@ -96,8 +95,14 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         for (int j = 0; j < maze.ghosts.size(); j++){
             if (this.intersects(maze.ghosts.get(j))) {
                 if (!(maze.ghosts.get(j) instanceof TmpGhost)) {
-                    maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
                     Music("\\src\\res\\pacmandeath.wav");
+
+                	if(!isQuestionAppeared) {
+                 		setBounds(160,160,  26, 26);
+                	}
+                	else {
+                		maze.ghosts.remove(j); 
+                	}
 
                     if (lifeScore > 1) {
                         lifeScore--;
@@ -115,7 +120,6 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                 	int level = popUpInstance.showQuestionResult((TmpGhost)g);
 
                 	maze.ghosts.removeAll(removeTmp());
-                    System.out.println( maze.ghosts.size());
                     right = false;
                     left = false;
                     up = false;
@@ -223,6 +227,10 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                         up = false;
                         down = false;
                         maze.candy.remove(i);
+                    }
+                    else {
+                        maze.candy.remove(i);
+
                     }
                 } else if (maze.candy.get(i).getType() == "PoisonCandy") {
                     right = false;

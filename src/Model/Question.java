@@ -83,6 +83,7 @@ public class Question implements Serializable {
      */
     public void setquestion(String question) {
         this.question = question;
+        
     }
 
     /**
@@ -115,7 +116,7 @@ public class Question implements Serializable {
      */
     public void setAnswers(List<String> answers) {
         this.answers = answers;
-    }
+     }
 
     /**
      * Strings the questions according to the format

@@ -159,26 +159,16 @@ public class ViewLogic {
     public static void setPacmanTurn(){
     	
     	ArrayList<Game>GameList= Game.getInstanceList();
-//    	Game g0=GameList.get(0);
-//    	Game g1=GameList.get(1);
-
+ 
         if(Game.getPlayerIndex() == 0 && PopUpLogic.getNumOfPlayers() >1) {
-//        	synchronized (g0) {
-//       		 g0.notify();
-//      	 }
-//        	g1.setFlag(true);
+ 
             Game.setPlayerIndex(1);
             setNickname();
             setLifeScoreForPacman();
             setScoreForPacman();
         }
         else {
-//        	
-//        	 synchronized (g1) {
-//        		 g1.notify();
-//       	 }
-//         	g0.setFlag(true);
-
+ 
             Game.setPlayerIndex(0);
             setNickname();
             setLifeScoreForPacman();

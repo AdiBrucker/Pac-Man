@@ -55,9 +55,9 @@ public class PopUpLogic {
 		java.net.URL imgURL = getClass().getResource("/res/download.jpg");
     	ImageIcon icon =new ImageIcon(imgURL);
      	Random rand = new Random();
- 		  indexOfQuestion = rand.nextInt(SysData.createInstance().getQuestions().size());
+     	indexOfQuestion = rand.nextInt(SysData.createInstance().getQuestions().size());
  		List<String> a=new ArrayList<>();
- 		  a= SysData.instance.getQuestions().get(indexOfQuestion).getAnswers();
+ 		a= SysData.instance.getQuestions().get(indexOfQuestion).getAnswers();
      	String answer= a.get(0);
     	String answer1= a.get(1);
     	String answer2=	 a.get(2);
@@ -176,11 +176,9 @@ public class PopUpLogic {
      */
 
     public void pauseGame(){
-    	
         UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
         Game g=Game.getInstance();
-    //    System.err.println(g+"           pause game");
-      	g.setFlag(true);
+       	g.setFlag(true);
        	ViewLogic.getInstance().CancelTimer();
      	JOptionPane.showMessageDialog(null, "you stop the game ,press ok to continue  ","Pause",JOptionPane.INFORMATION_MESSAGE);
      	 synchronized ( g) {
@@ -198,13 +196,9 @@ public class PopUpLogic {
 		gridPane.setVgap(20);
 		gridPane.setHgap(20);
 		ObservableList<String> options = FXCollections.observableArrayList("One Player","Two Players");
-
-
 		JFXDialogLayout content = new JFXDialogLayout();
 		content.setHeading(new Text("Let's start!"));
-		// content.setBody(gridPane);
-		//StackPane stackPane = new StackPane();
-		pane.autosize();
+ 		pane.autosize();
 		JFXDialog dialog = new JFXDialog(pane,content, JFXDialog.DialogTransition.CENTER );
 		JFXComboBox gameType=new JFXComboBox(options);
 		gameType.setPromptText("How many players?");
@@ -243,8 +237,7 @@ public class PopUpLogic {
 		});
 
 		GridPane.setConstraints(button,0,1);
-		//gridPane.getChildren().addAll(gameType, button);
-		content.setBody(gridPane);
+ 		content.setBody(gridPane);
 		content.setActions(button);
 		dialog.show();
 	}
@@ -306,6 +299,30 @@ public class PopUpLogic {
      	JOptionPane.showMessageDialog(null, "you added the question ","Add",JOptionPane.INFORMATION_MESSAGE);
  
     } 
+    
+    /**
+     * pop up that show that the question was  Edit
+     */
+        public void QuestionEdit(){
+        	
+            UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
+          
+         	JOptionPane.showMessageDialog(null, "you Edit the question ","Edit",JOptionPane.INFORMATION_MESSAGE);
+     
+        } 
+        
+        
+        /**
+         * pop up that show that the question was  remove
+         */
+            public void QuestionRemove(){
+            	
+                UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
+              
+             	JOptionPane.showMessageDialog(null, "you Removed the question ","Remove",JOptionPane.INFORMATION_MESSAGE);
+         
+            } 
+        
     
 
  	public static int getPlayer1SizeArra() {
