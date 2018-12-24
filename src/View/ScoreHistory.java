@@ -28,7 +28,7 @@ public class ScoreHistory {
     Label l_Name;
     Label l_rank;
     TextField Score4_Text,Score5_Text,Rank1_Text,Score1_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text,Rank3_Text,Rank4_Text,Rank5_Text,Name3_Text,Name4_Text,Name5_Text;
-
+    Button B_back;
 
 
     TableView table;
@@ -262,19 +262,17 @@ public class ScoreHistory {
             Name5_Text.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints( Name5_Text,18,20);
 
-//            for(int i=0;i<5;i++)
-//            {
-//                if(SysData.instance.getPacman().size()>=i)
-//                {
-//
-//                }
-//            }
+             Button B_back = new Button("Back");
+              B_back.setMaxSize(90,90);
+              B_back.setOnAction(e->new StartGame(stage) );
+            B_back.setStyle("-fx-background-color: white");
+            GridPane.setConstraints( B_back,3,30);
 
 
 
 
 
-            pane.getChildren().addAll(Score4_Text,Score5_Text,Name3_Text,Name4_Text,Name5_Text,l_Score,l_rank,l_Name,Rank1_Text,Score1_Text,Rank3_Text,Rank4_Text,Rank5_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text );
+            pane.getChildren().addAll(B_back, Score4_Text,Score5_Text,Name3_Text,Name4_Text,Name5_Text,l_Score,l_rank,l_Name,Rank1_Text,Score1_Text,Rank3_Text,Rank4_Text,Rank5_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text );
 
 
 

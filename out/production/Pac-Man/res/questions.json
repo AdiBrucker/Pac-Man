@@ -166,17 +166,5 @@
     "correct_ans": "4",
     "level": 1,
     "team": "hedgehog"
-  },
-  {
-    "question": "how are you",
-    "answers": [
-      "great",
-      "fine",
-      "10",
-      "good"
-    ],
-    "correct_ans": "1",
-    "level": 0,
-    "team": "dog"
   }
 ]}
