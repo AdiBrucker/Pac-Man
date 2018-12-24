@@ -88,7 +88,7 @@ public class PopUpLogic {
 
 			   }
 			   Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared(true);
-			   
+
 		   }
     }
 
@@ -140,7 +140,7 @@ public class PopUpLogic {
      * if the param is true its mean get out from all of the game 
      * if false its  just go out from the board game and 
      *	we need to freeze the ghosts before the popup
-     * @param exitMain
+     * @param
      * @return
      */
     public int ShowEXit(boolean freeze ){
