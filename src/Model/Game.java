@@ -28,7 +28,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     //An array that holds game instances for multiple players.
     private static ArrayList<Game> instances;
     //uses to indicate when to stop the watch and when the game is running
-    public   boolean flag = false;
+    public static  boolean flag = false;
     //Counts how many players there are in the game
     public static int playerCount = 0;
     private static Thread thread;
@@ -141,17 +141,13 @@ public class Game extends Canvas implements Runnable, KeyListener {
                 long now = System.nanoTime();
                 delta += (now - lastTime) / ns;
                 lastTime = now;
-                while (delta >= 1) {
-           //     	System.err.println(this+"                    game");
-                    if (flag) {
-                    	System.out.println(flag);
-                    	System.out.println(this);
-                        synchronized (this) {
+                while (delta >= 1) {                   
+                	if (flag) {
+                         synchronized (getInstanceList().get(playerIndex)) {
                             try {
-                            	System.out.println("bamba");
-                                this.wait();
+                             	getInstanceList().get(playerIndex).wait();
                             } catch (Exception e) {
-                                this.notify();
+                            	getInstanceList().get(playerIndex).notify();
                             }
                             flag = false;
                         }
@@ -243,7 +239,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     }
 
     
-    public void setFlag(boolean a) {
+    public static void setFlag(boolean a) {
     	flag=a;
     }
     /**
