@@ -108,7 +108,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                         lifeScore--;
                         viewInstance.setLifeScoreForPacman();
                     } else {
-                        SysData.instance.AddPacman(score, PacmanNane);// when we will add a name
+                 //       SysData.instance.AddPacman(score, PacmanNane);// when we will add a name
                         // its will add to pacman list that will be the winner at scores table
                         ShowGameOver();
                     }

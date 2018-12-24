@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="450d62db-f77a-4081-9305-f632443c737e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/AddQuestion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/AddQuestion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/ScoreHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/ScoreHistory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ScoreHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ScoreHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/res/questions.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/questions.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Pacman.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="110" column="96" lean-forward="true" selection-start-line="110" selection-start-column="96" selection-end-line="110" selection-end-column="96" />
+            <state relative-caret-position="34">
+              <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
               <folding>
                 <element signature="e#1796#1797#0" expanded="true" />
                 <element signature="e#1830#1831#0" expanded="true" />
@@ -49,10 +42,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/ScoreHistory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
+            <state relative-caret-position="1324">
               <caret line="278" lean-forward="true" selection-start-line="278" selection-end-line="278" />
             </state>
           </provider>
@@ -151,16 +144,16 @@
         <option value="$PROJECT_DIR$/src/Model/Game.java" />
         <option value="$PROJECT_DIR$/src/View/ViewLogic.java" />
         <option value="$PROJECT_DIR$/src/Model/TmpGhost.java" />
-        <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
         <option value="$PROJECT_DIR$/src/Controller/MainClass.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/View/PopUpLogic.java" />
         <option value="$PROJECT_DIR$/src/View/AddQuestion.java" />
         <option value="$PROJECT_DIR$/src/View/ScoreHistory.java" />
+        <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-11" />
     <option name="y" value="-11" />
     <option name="width" value="2070" />
@@ -300,12 +293,12 @@
       <option name="presentableId" value="Default" />
       <updated>1543238828986</updated>
       <workItem from="1545054090458" duration="18120000" />
-      <workItem from="1545421862498" duration="2096000" />
+      <workItem from="1545421862498" duration="2150000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20216000" />
+    <option name="totallyTimeSpent" value="20270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1380" height="743" extended-state="6" />
@@ -643,19 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="110" column="96" lean-forward="true" selection-start-line="110" selection-start-column="96" selection-end-line="110" selection-end-column="96" />
-          <folding>
-            <element signature="e#1796#1797#0" expanded="true" />
-            <element signature="e#1830#1831#0" expanded="true" />
-            <element signature="e#11140#11141#0" expanded="true" />
-            <element signature="e#11169#11170#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/QuestionManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -682,8 +662,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/ScoreHistory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
+        <state relative-caret-position="1324">
           <caret line="278" lean-forward="true" selection-start-line="278" selection-end-line="278" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+          <folding>
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#1830#1831#0" expanded="true" />
+            <element signature="e#11140#11141#0" expanded="true" />
+            <element signature="e#11169#11170#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
