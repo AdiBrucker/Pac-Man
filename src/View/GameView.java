@@ -18,6 +18,7 @@ public class GameView{
 	public GameView()
     {
         try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             initGame();
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,7 +56,7 @@ public class GameView{
  
     	}
         });
-
+       // StartGame.closeMain();
     }
  /***update all the instance to null 
   * in favor to open the game again

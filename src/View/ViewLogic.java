@@ -111,13 +111,13 @@ public class ViewLogic {
     	Timer timer1=new Timer();
           task =new TimerTask() {
     	    	public void run () {
-    	    		
-    	        	if( restart) {
+
+                    if(restart) {
     	        		TimerCounting=saveCountingToContinue;
 	            		 task.cancel();
 	            		 timer1.cancel(); //In order to gracefully terminate the timer thread
 	            	     restart=false;
-	            	}   
+	            	}
      	        	TimerCounting++;
     	            int minutes1 = (int) Math.floor(TimerCounting / 60F);
     	            int second1 = (int) Math.floor(TimerCounting - minutes1 * 60);

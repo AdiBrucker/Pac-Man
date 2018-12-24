@@ -30,6 +30,7 @@ public class StartGame {
     Button button5;
     Image image = new Image("res/Startgame.PNG");
     StackPane pane;
+    static Stage sstage;
 
 
     public void initStartGame(Stage stage) {
@@ -42,6 +43,7 @@ public class StartGame {
             Scene scene = new Scene(pane, 550, 600);
             pane.getChildren().add(iv);
             stage.setScene(scene);
+            sstage = stage;
             stage.show();
             iv.setImage(image);
             iv.setFitHeight(700);
@@ -118,6 +120,10 @@ public class StartGame {
         if (event.getSource() == button) {
             //       System.out.println("wowwwww");
         }
+    }
+
+    public static void closeMain(){
+         sstage.close();
     }
 
 
