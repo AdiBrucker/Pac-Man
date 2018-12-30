@@ -1,0 +1,22 @@
+{
+"workers": [
+{
+"id": "4",
+"firstName": "Clark",
+"lastName": "Kent",
+"job": "Reporter"
+},
+{
+"id": "5",
+"firstName": "Bruce",
+"lastName": "Wayne",
+"job": "Playboy"
+},
+{
+"id": "6",
+"firstName": "Peter",
+"lastName": "Parker",
+"job": "Photographer"
+}
+]
+}

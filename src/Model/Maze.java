@@ -78,7 +78,7 @@ public class Maze {
                             candy.add(c);
 
                         }
-                        if (getCandy < 10) {
+                        if (getCandy < 30) {
 //                             candy.add(new ScoreCandy(xx * 32, yy * 32, "Yellow"));
 
                         	c=CandyFactory.makeCandy("Yellow",xx * 32,  yy * 32);

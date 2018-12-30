@@ -12,12 +12,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import Model.SysData;
 import Model.Question;
  import Model.QuestionResultsFromJSON;
 
-
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -33,7 +35,7 @@ public class QuestionManager implements EventHandler {
     Label l_Answer2;
     Label l_Answer3;
     Label l_Answer4;
-   Label l_curect_Ans;
+    Label l_curect_Ans;
     GridPane grid;
     TextField Text_Difficulty;
     TextField Text_Team;
@@ -42,14 +44,14 @@ public class QuestionManager implements EventHandler {
     TextField Text_Answer2;
     TextField Text_Answer3;
     TextField Text_Answer4;
-     TextField Text_cureectAns;
-     String answer1;
-     String answer2;
-      String answer3;
-      String answer4;
-      Stage stage;
-      Scene scene;
-       HBox bar;
+    TextField Text_cureectAns;
+    String answer1;
+    String answer2;
+    String answer3;
+    String answer4;
+    Stage stage;
+    Scene scene;
+    HBox bar;
        static int index = 0;
     Button knapp3 = new Button(">>");
     Button knapp1 = new Button("<<");
@@ -185,25 +187,25 @@ public class QuestionManager implements EventHandler {
         GridPane.setConstraints(l_curect_Ans,3,21);
 
         HBox bar = new HBox();
-     //   Button knapp1 = new Button("<<");
-     //   knapp1.setStyle("-fx-background-color: white");
-        knapp1.setMaxSize(65,35 );
+        bar.setSpacing(10);
+         knapp1.setMaxSize(65,35 );
         knapp1.setMinSize(65,35);
         knapp1.setOnAction(this);
         knapp1.setDisable(true);
         Button knapp2 = new Button("Edit");
-      //  knapp2.setStyle("-fx-background-color: white");
-        knapp2.setMaxSize(65,35 );
+         knapp2.setMaxSize(65,35 );
         knapp2.setMinSize(65,35);
-
-     //   Button knapp3 = new Button("Next");
-       // knapp3.setStyle("-fx-background-color: white");
+        knapp2.setOnAction(e-> EditQuestion()  );
         knapp3.setMaxSize(65,35 );
         knapp3.setMinSize(65,35);
         knapp3.setOnAction(this);
 
+        
+        Button knapp5 = new Button("remove");
+        knapp5.setMaxSize(65,35 );
+        knapp5.setMinSize(65,35);
+        knapp5.setOnAction(e->RemoveQuestion());
         Button knapp4 = new Button("Add");
-      //  knapp4.setStyle("-fx-background-color: white");
         knapp4.setMaxSize(65,35 );
         knapp4.setMinSize(65,35);
         knapp4.setOnAction(e->new AddQuestion(stage) );
@@ -214,19 +216,67 @@ public class QuestionManager implements EventHandler {
         B_back.setMinSize(65,35);
         B_back.setOnAction(e->new StartGame(stage) );
 
-        bar.getChildren().addAll(B_back,knapp1, knapp2,knapp3,knapp4 );
-
-        GridPane.setConstraints(bar,4,23);
-
-        pane.getChildren().addAll( Text_Team,Text_Difficulty,l_Difficulty, l_Team,l_Question,QuestText,l_Answer1,Text_Answer1,l_Answer2,Text_Answer2,l_Answer3,Text_Answer3,l_Answer4,Text_Answer4,l_curect_Ans,Text_cureectAns,bar);
+        bar.getChildren().addAll(knapp5,B_back,knapp1, knapp2,knapp3,knapp4 );
 
 
-        scene = new Scene(pane, 550,600);
+        pane.getChildren().addAll( Text_Team,Text_Difficulty,l_Difficulty, l_Team,l_Question,QuestText,l_Answer1,Text_Answer1,l_Answer2,Text_Answer2,l_Answer3,Text_Answer3,l_Answer4,Text_Answer4,l_curect_Ans,Text_cureectAns);
+
+        VBox vBox = new VBox();
+        vBox.setPadding(new Insets(10, 70, 10, 50 ));
+        vBox.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        vBox.getChildren().addAll(pane,bar);
+
+        scene = new Scene(vBox, 550,600);
         stage.setScene(scene);
 
         stage.show();
 
     }
+    
+    private void RemoveQuestion() {
+     	 if(SysData.instance.removeQuestion(index)) {
+     		 PopUpLogic.instance.QuestionRemove();
+     		 SetTextToEmpty();
+
+     	 }
+     	 else
+     		PopUpLogic.getInstance().QuestionMistake();
+
+    }
+    
+    private void EditQuestion() {
+
+	if( Text_cureectAns.getText()!=null&&!Text_cureectAns.getText().isEmpty() 
+		&& QuestText.getText()!=null&&!QuestText.getText().isEmpty()  &&
+		Text_Team.getText()!=null&&!Text_Team.getText().isEmpty()&&
+		Text_Difficulty.getText()!=null&&!Text_Difficulty.getText().isEmpty()&&
+		Text_Answer1.getText()!=null&&!Text_Answer1.getText().isEmpty()&&
+		Text_Answer2.getText()!=null&&!Text_Answer2.getText().isEmpty()) {
+ 	
+		Question q = SysData.instance.getQuestions().get(index);
+    	q.setCorrect_ans(Text_cureectAns.getText());
+    	q.setquestion(QuestText.getText());
+    	q.setTeam(Text_Team.getText());
+    	q.setlevel(Integer.valueOf(Text_Difficulty.getText()));
+    	List<String> answer=new ArrayList<String>();
+    	answer.add(Text_Answer1.getText());
+    	answer.add(Text_Answer2.getText());
+  		if(Text_Answer3.getText()!=null&&!Text_Answer3.getText().isEmpty()) {
+   	    	answer.add(Text_Answer3.getText());
+    	 }
+  		if(Text_Answer4.getText()!=null&&!Text_Answer4.getText().isEmpty()) {
+    	    	answer.add(Text_Answer4.getText());
+    	 }
+    	q.setAnswers(answer);
+    	PopUpLogic.getInstance().QuestionEdit();
+    	SetTextToEmpty();
+  	   	
+	}
+	else {
+		PopUpLogic.getInstance().QuestionMistake();
+	}
+     }
+    
 
     private void getAnswerByIndex(int index) {
         List<String> a= SysData.instance.getQuestions().get(index).getAnswers();
@@ -293,4 +343,15 @@ public class QuestionManager implements EventHandler {
 
 
     }
+    public void SetTextToEmpty() {
+    	Text_Answer1.setText("");
+    	Text_Answer2.setText("");
+    	Text_Answer3.setText("");
+    	Text_Answer4.setText("");
+    	QuestText.setText("");
+    	Text_Team.setText("");
+    	Text_cureectAns.setText("");
+  	   	Text_Difficulty.setText("");
+    }
+     
 }

@@ -40,7 +40,7 @@ public class AddQuestion {
         TextField Text_Answer1,Text_Answer2,Text_Answer3,Text_Answer4 ;
         HBox bar;
         TextField teamName;
-        int saveFiles = 0, currentArticle = 0;
+        int saveFiles = 0, currentQuestions = 0;
 
         ComboBox<String> comboBox,cureectAns;
          public AddQuestion(Stage stage)
@@ -297,7 +297,7 @@ public class AddQuestion {
 			       // currentArticle monitors the current article displayed
 
 			    	   saveFiles++;
-			    	   currentArticle++;
+			    	   currentQuestions++;
 			           undoBut.setDisable(false); // will enable it again
 
 
@@ -312,11 +312,11 @@ public class AddQuestion {
 	        }
 
         else if (choose.equals("Undo")) {
-            if(currentArticle >=1){//
+            if(currentQuestions >=1){//
             	// Decrement to the current question displayed
-            		currentArticle--;
+            	currentQuestions--;
                // Get the older question saved and display it in JTextArea
-            		  Question q= SysData.instance.UndoRedo.get(currentArticle);
+            		  Question q= SysData.instance.UndoRedo.get(currentQuestions);
               		// Get the newer question saved and display it
               		  SetVisibleQuestion(q);
 
@@ -334,12 +334,12 @@ public class AddQuestion {
 
         }
         else if (choose.equals("Redo")) {
-        	  if((saveFiles-1 ) > currentArticle){
+        	  if((saveFiles-1 ) > currentQuestions){
         		// Increment to the current article displayed
 
-        		  currentArticle++;
+        		  currentQuestions++;
 
-        		  Question q= SysData.instance.UndoRedo.get(currentArticle);
+        		  Question q= SysData.instance.UndoRedo.get(currentQuestions);
         		// Get the newer question saved and display it
         		  SetVisibleQuestion(q);
         		  undoBut.setDisable(false);// will enable it again
@@ -380,7 +380,7 @@ public class AddQuestion {
 
     		 Text_Answer1.setText(answer.get(0));
 	    	 Text_Answer2.setText(answer.get(1));
-	    	 if(answer.size()==3) {
+	    	 if(answer.size()>=3) {
 	    	 Text_Answer3.setText(answer.get(2));
 	    	 }
 	    	 else if( answer.size()>3){
@@ -394,7 +394,7 @@ public class AddQuestion {
          * @param SameStage
          */
        public void callBack(Stage SameStage) {
-    	   SysData.instance.UpdateQuestionArray(currentArticle) ;
+    	   SysData.instance.UpdateQuestionArray(currentQuestions) ;
             new QuestionManager(SameStage);
        }
 }

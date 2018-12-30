@@ -52,8 +52,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         score = 0;
         lifeScore = 3;
         PacmanNane = nickname;
-    }
-
+    } 
     /**
      * Constructor creates the players name and his score
      * @param score2
@@ -63,10 +62,10 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         PacmanNane = name;
         score1 = score2;
     }
-    
+
     public void setScore(int score) {
-		this.score = score;
-	}
+        this.score = score;
+    }
 
     /**
      * Responsible for the movements of the pacman and handles the cases when pacman is eating a candy or intersects with a ghost.
@@ -84,6 +83,8 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         //when there are no more candies the game is finished
         if (maze.candy.size() == 0) {
             System.exit(1);
+            score += 100;
+            ShowGameOver();
         }
     }
 
@@ -96,14 +97,15 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         for (int j = 0; j < maze.ghosts.size(); j++){
             if (this.intersects(maze.ghosts.get(j))) {
                 if (!(maze.ghosts.get(j) instanceof TmpGhost)) {
-                    maze.ghosts.remove(j);// he cant remove the ghost just when he eating spaciel candy
                     Music("\\src\\res\\pacmandeath.wav");
+
+                 		setBounds(160,160,  26, 26);
 
                     if (lifeScore > 1) {
                         lifeScore--;
                         viewInstance.setLifeScoreForPacman();
                     } else {
-                        SysData.instance.AddPacman(score, PacmanNane);// when we will add a name
+                 //       SysData.instance.AddPacman(score, PacmanNane);// when we will add a name
                         // its will add to pacman list that will be the winner at scores table
                         ShowGameOver();
                     }
@@ -115,7 +117,6 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                 	int level = popUpInstance.showQuestionResult((TmpGhost)g);
 
                 	maze.ghosts.removeAll(removeTmp());
-                    System.out.println( maze.ghosts.size());
                     right = false;
                     left = false;
                     up = false;
@@ -205,6 +206,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                     viewInstance.setScoreForPacman();
 
                 } else if (maze.candy.get(i).getType() == "Gold" && maze.candy.get(i) instanceof ScoreCandy) {
+                    // the gold candy can add point of life score
                     lifeScore++;
                     maze.candy.remove(i);
                     viewInstance.setLifeScoreForPacman();
@@ -223,6 +225,10 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                         up = false;
                         down = false;
                         maze.candy.remove(i);
+                    }
+                    else {
+                        maze.candy.remove(i);
+
                     }
                 } else if (maze.candy.get(i).getType() == "PoisonCandy") {
                     right = false;
@@ -259,13 +265,13 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
     }
     public ArrayList<Ghost> removeTmp(){
         ArrayList<Ghost> g = new ArrayList<>();
-             for (int i = 0; i < maze.ghosts.size(); i++) {
-                 if (maze.ghosts.get(i) instanceof TmpGhost) {
-                    g.add(maze.ghosts.get(i));
-                 }
-             }
-             System.out.println(g.size());
-             return g;
+        for (int i = 0; i < maze.ghosts.size(); i++) {
+            if (maze.ghosts.get(i) instanceof TmpGhost) {
+                g.add(maze.ghosts.get(i));
+            }
+        }
+        System.out.println(g.size());
+        return g;
     }
     /**
      * Plays the game's music

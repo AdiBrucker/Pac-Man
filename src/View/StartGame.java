@@ -27,8 +27,10 @@ public class StartGame {
     Button button;
     Button button1;
     Button button2;
+    Button button5;
     Image image = new Image("res/Startgame.PNG");
     StackPane pane;
+    static Stage sstage;
 
 
     public void initStartGame(Stage stage) {
@@ -41,6 +43,7 @@ public class StartGame {
             Scene scene = new Scene(pane, 550, 600);
             pane.getChildren().add(iv);
             stage.setScene(scene);
+            sstage = stage;
             stage.show();
             iv.setImage(image);
             iv.setFitHeight(700);
@@ -79,6 +82,19 @@ public class StartGame {
             button1.setStyle("-fx-background-color:transparent; -fx-text-fill:transparent ");
             button1.setOnAction(e-> new QuestionManager(stage));
 
+
+            button5 = new Button("Score");
+            pane.getChildren().add(button5);
+            button5.setMaxSize(300, 30);
+            button5.setTranslateX(-60);
+            button5.setTranslateY(-38);
+            button5.setStyle("-fx-background-color:transparent; -fx-text-fill:transparent ");
+            button5.setOnAction(e-> new ScoreHistory(stage));
+
+
+
+
+
             button2 = new Button("LogOut");
             pane.getChildren().add(button2);
             button2.setMaxSize(250, 30);
@@ -104,6 +120,10 @@ public class StartGame {
         if (event.getSource() == button) {
             //       System.out.println("wowwwww");
         }
+    }
+
+    public static void closeMain(){
+         sstage.close();
     }
 
 

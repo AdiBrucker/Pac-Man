@@ -17,36 +17,36 @@ import static com.sun.org.apache.xalan.internal.utils.SecuritySupport.getResourc
  */
 
 public class SysData implements Serializable{
-	
+
 	//for Serialization
 	private static final long serialVersionUID = 1L;
-	///Singleton  
+	///Singleton
 	public static SysData instance;
-	
-	
-	///Stores all questions from the class that imports the JSON 
+
+
+	///Stores all questions from the class that imports the JSON
 	public static List<Question> questions;
-	
-	public static List<Question> UndoRedo;/// list of Question  to Memento design-pattern 
+
+	public static List<Question> UndoRedo;/// list of Question  to Memento design-pattern
 
 	//all the pacman results after the game finish;
-	/// can be a hash map right now i cant see why 
+	/// can be a hash map right now i cant see why
 	// i think that at the table scores same player can be appear more then one time ;
 	public  ArrayList< Pacman>Pacman;
 	/**The path to which the data will be stored*/
 	public static String route="Serializable.ser";
-	
- 	/**
-	 * Full constructor 
+
+	/**
+	 * Full constructor
 	 */
-	private SysData(){		
- 		
- 		questions = new ArrayList<Question>();
- 		Pacman=new ArrayList<Pacman>();
- 		UndoRedo= new ArrayList<Question>();
+	private SysData(){
+
+		questions = new ArrayList<Question>();
+		Pacman=new ArrayList<Pacman>();
+		UndoRedo= new ArrayList<Question>();
 	}
-	
-  
+
+
 	/**
 	 *(singleton).
 	 * @return reference to this class's only instance (singleton).
@@ -57,12 +57,12 @@ public class SysData implements Serializable{
 			instance = new SysData();
 			return instance;
 		}
-			return instance;
+		return instance;
 	}
-	
+
 	public void SetPacman(ArrayList< Pacman> A) {
 		Pacman=A;
-		}
+	}
 	/**
 	 * @return the pacman DB.
 	 */
@@ -73,7 +73,7 @@ public class SysData implements Serializable{
 	public  List<Question> getQuestions() {
 		return questions;
 	}
-	
+
 	public  List<Question> getUndoRedo() {
 		return UndoRedo;
 	}
@@ -81,7 +81,7 @@ public class SysData implements Serializable{
 	 * this method loads the questions data from the JSON file
 	 */
 	public void loadQuestionsFromJsonFile () {
-		
+
 		Gson gson = new Gson();
 		BufferedReader br = null;
 
@@ -90,17 +90,17 @@ public class SysData implements Serializable{
 				questions = questionsResults.getQuestions();
 
 	}
-	
+
 	/**
 	 * this method writes the questions data to the JSON file
 	 */
 	public void writeQuestionsToJsonFile() {
- 
- 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String strJson = "{\n    \"questions\":"+gson.toJson(getQuestions())+"}";
-		
+
 		FileWriter writer = null;
-		
+
 		try {
 			writer = new FileWriter ("src/res/questions.json");
 			writer.write(strJson);
@@ -118,8 +118,8 @@ public class SysData implements Serializable{
 		}
 	}
 	/**
-	 * adding Question to list 
-	 * at the end of the game we will update json file 
+	 * adding Question to list
+	 * at the end of the game we will update json file
 	 * we will call writeQuestionsToJsonFile(); to update
 	 * @param question
 	 * @param level
@@ -129,7 +129,7 @@ public class SysData implements Serializable{
 	 * @return
 	 */
 	public boolean addQuestion(String question, int level,   String team, List<String> answers,String correct_ans ) {
-		
+
 		int id = getQuestions().size()+1;
 		boolean hasntBeenWritenYet = true;
 		for(Question q: getQuestions()) {
@@ -137,14 +137,14 @@ public class SysData implements Serializable{
 				hasntBeenWritenYet=false;
 			}
 		}
-		for(Question q1: getUndoRedo()) {////////////////ask shai 
+		for(Question q1: getUndoRedo()) {////////////////ask shai
 			if (q1.getquestion().equals(question)) {
 				hasntBeenWritenYet=false;
 			}
 		}
 		if( question!=null&&!question.isEmpty()  && level>=0 && level<=2 && team!=null&&!team.isEmpty() && answers.size()>=2 && hasntBeenWritenYet==true) {
 			Question newQ = new Question ();
- 			newQ.setquestion(question);
+			newQ.setquestion(question);
 			newQ.setlevel(level);
 			newQ.setTeam(team);
 			newQ.setAnswers(answers);
@@ -154,7 +154,7 @@ public class SysData implements Serializable{
 		}
 		return false;
 	}
-	
+
 	/**
 	 * marge UndoRedo array with Questions() array
 	 * @param number
@@ -163,13 +163,13 @@ public class SysData implements Serializable{
 		for(int i=0; i<number;i++) {
 			getQuestions().add(getUndoRedo().get(i));
 		}
-		
- 		UndoRedo= new ArrayList<Question>();
+
+		UndoRedo= new ArrayList<Question>();
 
 	}
 	/**
 	 * remove Question from json files
-	 * we update the list and when we finished the game and we close the screen 
+	 * we update the list and when we finished the game and we close the screen
 	 * we will call the mathode  	writeQuestionsToJsonFile();
 	 * @param index
 	 * @return
@@ -179,71 +179,70 @@ public class SysData implements Serializable{
 			Question questionToRemove = getQuestions().get(index);
 			if (questionToRemove != null) {
 				getQuestions().remove(questionToRemove);
- 				return true;
+				return true;
 			}
 		}
 		return false;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * adding  pacman results  to the PacmanResults list and sort by scores
-	 * 
+	 *
 	 * @param score
 	 * @param name
 	 * @return
 	 */
 	public boolean AddPacman(int score, String name) {
- 		if (name!=null&& score>0) {
-		 	Pacman.add(new Pacman(score, name));
- 			 	Collections.sort(getPacman());
- 				System.out.println(getPacman()+"after adding ");
+		if (name!=null&& score>0) {
+			Pacman.add(new Pacman(score, name));
+			Collections.sort(getPacman());
+			System.out.println(getPacman()+"after adding ");
 
- 				return true; 
- 
+			return true;
+
 		}
-		return false; 
+		return false;
 	}
-	
+
 	/**
 	 * this method loads game objects that has already been
-	 * created and saved into the system. 
+	 * created and saved into the system.
 	 */
 	public static SysData inputSerialize(){
 		try{
- 			FileInputStream inputFile= new FileInputStream(route);
+			FileInputStream inputFile= new FileInputStream(route);
 			ObjectInputStream inputStream = new ObjectInputStream(inputFile);
 			SysData input = (SysData)inputStream.readObject();
- 			inputStream.close();
- 			inputFile.close();
- 			
- 			return input;
+			inputStream.close();
+			inputFile.close();
+
+			return input;
 		}
 		catch (Exception e){
 			e.getMessage();
- 			e.printStackTrace();
- 		 	return new SysData();
+			e.printStackTrace();
+			return new SysData();
 		}
 	}
-	
+
 	/**
 	 * this method writes new data   to the serialized DB
 	 * so that everything new that inserted to the system will be saved.
 	 */
 	public static void Serialize(Object Obj) throws IllegalPathStateException{
 		try{
- 			FileOutputStream OutPutFile= new FileOutputStream(route);
+			FileOutputStream OutPutFile= new FileOutputStream(route);
 			ObjectOutputStream OutPutStream = new ObjectOutputStream(OutPutFile);
 			OutPutStream.writeObject(Obj);
- 			OutPutStream.close();
+			OutPutStream.close();
 			OutPutFile.close();
- 
+
 		}
 		catch (IOException e){
- 			e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 
 }
-
