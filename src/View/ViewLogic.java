@@ -9,6 +9,7 @@ import java.util.TimerTask;
 import javax.swing.*;
 import java.awt.*;
 
+
 /**
  * Manages the view logic between the different screens.
  */
@@ -122,9 +123,20 @@ public class ViewLogic {
     	            int minutes1 = (int) Math.floor(TimerCounting / 60F);
     	            int second1 = (int) Math.floor(TimerCounting - minutes1 * 60);
     	            
-    	            if(second1%10 == 0){//// if 40 second passed its replace with the other users 
+    	            if(second1%10 == 0) {//// if 40 second passed its replace with the other users
                         setPacmanTurn();
-    	            }
+                        Timer timer = new Timer();
+
+                        timer.schedule(new TimerTask() {
+                            public void run() {
+                                PopUpLogic.getInstance().showPlayerTurn();
+                            }
+                        }, 1);
+
+                    }
+
+
+
     	            // checking if the second is less then 10 its will add a 0 at the begging of the second view
     	            if(second1<10) {
     	            	if(minutes1<10) { // checking if the minutes is less then 10 its will add a 0 at the begging of the second view

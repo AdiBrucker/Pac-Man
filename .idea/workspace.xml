@@ -4,18 +4,9 @@
     <list default="true" id="450d62db-f77a-4081-9305-f632443c737e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Serializable.ser" afterPath="$PROJECT_DIR$/Serializable.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/res/questions.json" afterPath="$PROJECT_DIR$/out/production/Pac-Man/res/questions.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Maze.java" afterPath="$PROJECT_DIR$/src/Model/Maze.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Pacman.java" afterPath="$PROJECT_DIR$/src/Model/Pacman.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/GameView.java" afterPath="$PROJECT_DIR$/src/View/GameView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/PopUpLogic.java" afterPath="$PROJECT_DIR$/src/View/PopUpLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/QuestionManager.java" afterPath="$PROJECT_DIR$/src/View/QuestionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/StartGame.java" afterPath="$PROJECT_DIR$/src/View/StartGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/ViewLogic.java" afterPath="$PROJECT_DIR$/src/View/ViewLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/res/questions.json" afterPath="$PROJECT_DIR$/src/res/questions.json" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +21,7 @@
       <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
+            <state relative-caret-position="25">
               <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -39,13 +30,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PopUpLogic.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PopUpLogic.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/PopUpLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
+            <state relative-caret-position="188">
+              <caret line="146" column="41" lean-forward="true" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#8384#8541#0" expanded="true" />
+                <element signature="e#8540#8541#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,18 +57,18 @@
       <file leaf-file-name="StartGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/StartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1388">
+            <state relative-caret-position="1050">
               <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+            <state relative-caret-position="445">
+              <caret line="66" column="64" lean-forward="false" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -94,12 +87,12 @@
       <file leaf-file-name="ViewLogic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/ViewLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2225">
-              <caret line="106" column="14" lean-forward="false" selection-start-line="106" selection-start-column="14" selection-end-line="106" selection-end-column="14" />
+            <state relative-caret-position="387">
+              <caret line="133" column="28" lean-forward="false" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3501#5215#0" expanded="true" />
-                <element signature="e#5214#5215#0" expanded="true" />
+                <element signature="e#4234#4430#0" expanded="true" />
+                <element signature="e#4429#4430#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,7 +101,7 @@
       <file leaf-file-name="Timer.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/Timer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11925">
+            <state relative-caret-position="11975">
               <caret line="513" column="0" lean-forward="false" selection-start-line="513" selection-start-column="0" selection-end-line="513" selection-end-column="0" />
               <folding />
             </state>
@@ -184,11 +177,11 @@
         <option value="$PROJECT_DIR$/src/View/ScoreHistory.java" />
         <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
         <option value="$PROJECT_DIR$/src/View/QuestionManager.java" />
-        <option value="$PROJECT_DIR$/src/View/PopUpLogic.java" />
-        <option value="$PROJECT_DIR$/src/View/ViewLogic.java" />
         <option value="$PROJECT_DIR$/src/Model/Maze.java" />
         <option value="$PROJECT_DIR$/src/View/StartGame.java" />
         <option value="$PROJECT_DIR$/src/View/GameView.java" />
+        <option value="$PROJECT_DIR$/src/View/ViewLogic.java" />
+        <option value="$PROJECT_DIR$/src/View/PopUpLogic.java" />
       </list>
     </option>
   </component>
@@ -214,8 +207,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -256,6 +247,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -665,7 +658,7 @@
         <state relative-caret-position="4100">
           <caret line="180" column="47" lean-forward="false" selection-start-line="180" selection-start-column="47" selection-end-line="181" selection-end-column="38" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -694,16 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/MainClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/QuestionManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5075">
@@ -714,31 +697,9 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/Timer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11925">
+        <state relative-caret-position="11975">
           <caret line="513" column="0" lean-forward="false" selection-start-line="513" selection-start-column="0" selection-end-line="513" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/PopUpLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/ViewLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2225">
-          <caret line="106" column="14" lean-forward="false" selection-start-line="106" selection-start-column="14" selection-end-line="106" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3501#5215#0" expanded="true" />
-            <element signature="e#5214#5215#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -755,7 +716,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/StartGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1388">
+        <state relative-caret-position="1050">
           <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
           <folding />
         </state>
@@ -763,9 +724,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+        <state relative-caret-position="445">
+          <caret line="66" column="64" lean-forward="false" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/MainClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/ViewLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="133" column="28" lean-forward="false" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4234#4430#0" expanded="true" />
+            <element signature="e#4429#4430#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/PopUpLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="146" column="41" lean-forward="true" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8384#8541#0" expanded="true" />
+            <element signature="e#8540#8541#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

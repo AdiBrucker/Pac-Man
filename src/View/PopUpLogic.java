@@ -133,6 +133,24 @@ public class PopUpLogic {
 
 
     }
+
+	/**
+	 * Pop up that shows each time player turn
+	 */
+	public void showPlayerTurn(){
+
+		UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
+	Game g=Game.getInstance();
+		g.setFlag(true);
+		ViewLogic.getInstance().CancelTimer();
+		JOptionPane.showMessageDialog(null,
+				"Player " + Game.pacmans.get(Game.getPlayerIndex()).getPacmanName() + " turn!", "Pause", JOptionPane.INFORMATION_MESSAGE);
+
+	synchronized ( g) {
+			g.notify();
+		}
+		ViewLogic.getInstance().getTimer();
+	}
     /**
      * pop up that show if we want to exit from the game
      * if the param is true its mean get out from all of the game 
