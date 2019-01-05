@@ -117,24 +117,56 @@ public class PopUpLogic {
  * pop up that show that the game is over 
  * @param score
  */
-    public void ShowGameOver(int score){
-       	ViewLogic.getInstance().CancelTimer();
+public void ShowGameOver(int score){
+	ViewLogic.getInstance().CancelTimer();
+	String winnerName="";
+	String Losser= "";
+	//
 
-       	if(Game.pacmans.size() == 1) {
-			UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
-			JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
-					" Your final score is " + score + " at " + ViewLogic.getInstance().GetTimeResults() + " minutes", "Game over", JOptionPane.INFORMATION_MESSAGE);
-			ViewLogic.getInstance().setTimerCounting();
+
+	if(Game.pacmans.size() == 1) {
+		UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
+		JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
+				" Your final score is " + score + " at " + ViewLogic.getInstance().GetTimeResults() + " minutes", "Game over", JOptionPane.INFORMATION_MESSAGE);
+		ViewLogic.getInstance().setTimerCounting();
+	}
+	else if(Game.pacmans.size() == 2){
+		//java.net.URL imgURL = getClass().getResource("/res/Winner2.PNG");
+		java.net.URL imgURL = getClass().getResource("/res/winner-gif-13.gif");
+		ImageIcon icon =new ImageIcon(imgURL);
+		icon.getImage().getScaledInstance(5,5,Image.SCALE_AREA_AVERAGING);
+		UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
+		JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
+				Game.pacmans.get(0).getPacmanName()+": Your final score is " + Game.pacmans.get(0).getScore() + " \n " +   Game.pacmans.get(1).getPacmanName()+" : Your final score is " + Game.pacmans.get(1).getScore(), "Game over", JOptionPane.INFORMATION_MESSAGE);
+		ViewLogic.getInstance().setTimerCounting();
+
+		if(Game.pacmans.get(0).getScore()>Game.pacmans.get(1).getScore())
+		{
+			winnerName= "" + Game.pacmans.get(0).getPacmanName();
+			Losser = ""+ Game.pacmans.get(1).getPacmanName();
 		}
-		else if(Game.pacmans.size() == 2){
-			UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
-			JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
-					 Game.pacmans.get(0).getPacmanName()+": Your final score is " + Game.pacmans.get(0).getScore() + " \n " +   Game.pacmans.get(1).getPacmanName()+" : Your final score is " + Game.pacmans.get(1).getScore(), "Game over", JOptionPane.INFORMATION_MESSAGE);
-			ViewLogic.getInstance().setTimerCounting();
+		else{
+			winnerName= "" + Game.pacmans.get(1).getPacmanName();
+			Losser = ""+ Game.pacmans.get(0).getPacmanName();
 		}
 
 
-    }
+		JLabel label2 = new JLabel("<html> And the Winner is: \n" + winnerName +" <br>" +" <br>"+" <br>" + Losser+  " You lose!!!</html>" );
+
+		label2.setFont(new Font("Lucida Console", Font.BOLD, 50));
+
+
+		UIManager.put("OptionPane.minimumSize",new Dimension(300,300));
+//					JOptionPane.showMessageDialog(null, " And the Winner is: \n"
+//							+ winnerName, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
+		JOptionPane.showMessageDialog(null, label2, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
+
+
+	}
+
+
+}
+
 
 	/**
 	 * Pop up that shows each time player turn
