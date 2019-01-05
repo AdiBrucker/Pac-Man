@@ -188,10 +188,19 @@ public class Game extends Canvas implements Runnable, KeyListener {
        if (e.getKeyCode() == KeyEvent.VK_U)// cheat for the correct tmp ghost
             TmpGhost.cheetWithCorrectTmpGhost();
 
-        if (e.getKeyCode() == KeyEvent.VK_I) {// cheat for the correct tmp ghost
+        if (e.getKeyCode() == KeyEvent.VK_I) {// cheat for upgrade score
             pacmans.get(playerIndex).score += Scores.EASY_CORRECT.getScore();
             viewInstance.setScoreForPacman();
         }
+
+        if (e.getKeyCode() == KeyEvent.VK_Y) {// cheat for upgrade score
+            if(!Ghost.isCheatAppears){
+                Ghost.isCheatAppears = true;
+            } else{
+                Ghost.isCheatAppears = false;
+            }
+        }
+            //isCheatAppears
     }
 
     /**

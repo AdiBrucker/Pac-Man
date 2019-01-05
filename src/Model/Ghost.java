@@ -19,6 +19,7 @@ public class Ghost extends Rectangle implements IMovable {
     public Random randomGen = new Random();
     private int speed = 2;
     private int dir = randomGen.nextInt(4);
+     static boolean isCheatAppears = false;
 
     /**
      * Constructor of Ghosts. Responsible to create and locate on the game's board
@@ -42,6 +43,7 @@ public class Ghost extends Rectangle implements IMovable {
      * The AI for the ghost movement. When a ghost intersects with a wall the directions of its movement is changed.
      */
     private void ghostsAI() {
+        if(!isCheatAppears){
         if (state == random) {
             if (dir == right) {
                 if (Game.canMove(x + speed, y, width, height)) {
@@ -73,6 +75,7 @@ public class Ghost extends Rectangle implements IMovable {
         else if (state == smart) {
 
         }
+    }
     }
 
     /**
