@@ -6,10 +6,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
-import View.GameView;
-import View.PacmanAnimation;
-import View.PopUpLogic;
-import View.StartGame;
+import View.*;
 
 /**
  * Class which is responsible to hold the game objects such as pacman, maze, game etc.
@@ -179,8 +176,16 @@ public class Game extends Canvas implements Runnable, KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_UP) pacmans.get(playerIndex).up = true;
         if (e.getKeyCode() == KeyEvent.VK_DOWN) pacmans.get(playerIndex).down = true;
 
-        if (e.getKeyCode() == KeyEvent.VK_SPACE)// when pressing space
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            // when pressing space
+            ViewLogic.pauseb4();
             PopUpLogic.getInstance().pauseGame();
+            ViewLogic.pauseafter();
+        }
+
+
+       if (e.getKeyCode() == KeyEvent.VK_U)// when pressing space
+            TmpGhost.cheetWithCorrectTmpGhost();
     }
 
     /**

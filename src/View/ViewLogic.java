@@ -26,6 +26,7 @@ public class ViewLogic {
 
     private static String timeResults = "";///
     private static TimerTask task;
+    public static Timer timer1;
     public static boolean restart = false;
 
 
@@ -132,9 +133,20 @@ public class ViewLogic {
      *
      * @return
      */
+    public static void pauseb4(){
+        saveCountingToContinue = TimerCounting;
+        task.cancel();
+        timer1.cancel(); //In order to gracefully terminate the timer threa
+    }
+
+    public static void pauseafter(){
+        ViewLogic.getInstance().getTimer();
+
+        TimerCounting = saveCountingToContinue;
+    }
     public static void getTimer() {
 
-         Timer timer1 = new Timer();
+        timer1 = new Timer();
         task = new TimerTask() {
             public void run() {
 
@@ -153,11 +165,9 @@ public class ViewLogic {
                         setPacmanTurn();
                                 if (PopUpLogic.getNumOfPlayers() > 1) {
                                     updateTimeDisplay(minutes1,second1);
-                                    saveCountingToContinue = TimerCounting;
-                                    task.cancel();
-                                    timer1.cancel(); //In order to gracefully terminate the timer threa
+                                    pauseb4();
                                     PopUpLogic.getInstance().showPlayerTurn();
-                                    TimerCounting = saveCountingToContinue;
+                                    pauseafter();
                                     return;
                                 }
 
@@ -199,10 +209,13 @@ public class ViewLogic {
         Game.pacmans.get(0).left = false;
         Game.pacmans.get(0).up = false;
         Game.pacmans.get(0).down = false;
-        Game.pacmans.get(1).right = false;
-        Game.pacmans.get(1).left = false;
-        Game.pacmans.get(1).up = false;
-        Game.pacmans.get(1).down = false;
+
+        if(PopUpLogic.getNumOfPlayers() > 1) {
+            Game.pacmans.get(1).right = false;
+            Game.pacmans.get(1).left = false;
+            Game.pacmans.get(1).up = false;
+            Game.pacmans.get(1).down = false;
+        }
     }
 
     public static void setNickname() {

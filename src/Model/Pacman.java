@@ -376,4 +376,9 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         return isQuestionAppeared;
     }
 
+    public Maze getMaze(){
+        return maze;
+    }
+
+
 }
