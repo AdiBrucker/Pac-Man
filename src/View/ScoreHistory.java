@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.control.TableColumn;
@@ -29,6 +30,7 @@ public class ScoreHistory {
     Label l_rank;
     TextField Score4_Text,Score5_Text,Rank1_Text,Score1_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text,Rank3_Text,Rank4_Text,Rank5_Text,Name3_Text,Name4_Text,Name5_Text;
     Button B_back;
+    Image pic;
 
 
     TableView table;
@@ -272,7 +274,14 @@ public class ScoreHistory {
 
 
 
-            pane.getChildren().addAll(B_back, Score4_Text,Score5_Text,Name3_Text,Name4_Text,Name5_Text,l_Score,l_rank,l_Name,Rank1_Text,Score1_Text,Rank3_Text,Rank4_Text,Rank5_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text );
+
+
+
+
+
+
+
+            pane.getChildren().addAll( B_back, Score4_Text,Score5_Text,Name3_Text,Name4_Text,Name5_Text,l_Score,l_rank,l_Name,Rank1_Text,Score1_Text,Rank3_Text,Rank4_Text,Rank5_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text );
 
 
 
