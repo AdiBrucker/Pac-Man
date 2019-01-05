@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="450d62db-f77a-4081-9305-f632443c737e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/Game.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/Pacman.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/Pacman.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/SysData.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/SysData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/TmpGhost.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/TmpGhost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/ViewLogic$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/ViewLogic$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/ViewLogic.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/ViewLogic.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/res/questions.json" afterPath="$PROJECT_DIR$/out/production/Pac-Man/res/questions.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Game.java" afterPath="$PROJECT_DIR$/src/Model/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Pacman.java" afterPath="$PROJECT_DIR$/src/Model/Pacman.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/TmpGhost.java" afterPath="$PROJECT_DIR$/src/Model/TmpGhost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/PopUpLogic.java" afterPath="$PROJECT_DIR$/src/View/PopUpLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/ViewLogic.java" afterPath="$PROJECT_DIR$/src/View/ViewLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/res/questions.json" afterPath="$PROJECT_DIR$/src/res/questions.json" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,11 +19,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="182" column="35" lean-forward="true" selection-start-line="182" selection-start-column="35" selection-end-line="182" selection-end-column="35" />
+            <state relative-caret-position="268">
+              <caret line="192" column="34" lean-forward="false" selection-start-line="192" selection-start-column="34" selection-end-line="192" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Scores.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Scores.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -67,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TmpGhost.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TmpGhost.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/TmpGhost.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+            <state relative-caret-position="29">
+              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -103,8 +97,8 @@
       <file leaf-file-name="Pacman.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="264" column="34" lean-forward="false" selection-start-line="264" selection-start-column="16" selection-end-line="264" selection-end-column="34" />
+            <state relative-caret-position="366">
+              <caret line="153" column="53" lean-forward="true" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="53" />
               <folding>
                 <element signature="e#12043#12044#0" expanded="true" />
                 <element signature="e#12070#12071#0" expanded="true" />
@@ -215,8 +209,8 @@
         <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
         <option value="$PROJECT_DIR$/src/View/PopUpLogic.java" />
         <option value="$PROJECT_DIR$/src/View/ViewLogic.java" />
-        <option value="$PROJECT_DIR$/src/Model/Game.java" />
         <option value="$PROJECT_DIR$/src/Model/TmpGhost.java" />
+        <option value="$PROJECT_DIR$/src/Model/Game.java" />
       </list>
     </option>
   </component>
@@ -492,7 +486,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/beans/property/ObjectProperty.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/beans/property/ObjectPropertyBase.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/beans/property/SimpleObjectProperty.java" />
     <entry file="file://$PROJECT_DIR$/src/View/ScoreHistory.java" />
@@ -746,29 +739,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="264" column="34" lean-forward="false" selection-start-line="264" selection-start-column="16" selection-end-line="264" selection-end-column="34" />
-          <folding>
-            <element signature="e#12043#12044#0" expanded="true" />
-            <element signature="e#12070#12071#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/PopUpLogic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="225" column="8" lean-forward="false" selection-start-line="225" selection-start-column="8" selection-end-line="225" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="161" column="0" lean-forward="true" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -794,14 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="182" column="35" lean-forward="true" selection-start-line="182" selection-start-column="35" selection-end-line="182" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/MazeView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -823,8 +789,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/TmpGhost.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+        <state relative-caret-position="29">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Scores.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="161" column="0" lean-forward="true" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="153" column="53" lean-forward="true" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="53" />
+          <folding>
+            <element signature="e#12043#12044#0" expanded="true" />
+            <element signature="e#12070#12071#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="192" column="34" lean-forward="false" selection-start-line="192" selection-start-column="34" selection-end-line="192" selection-end-column="34" />
           <folding />
         </state>
       </provider>

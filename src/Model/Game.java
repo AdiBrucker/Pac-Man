@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import View.*;
 
+import static Model.Pacman.viewInstance;
+
 /**
  * Class which is responsible to hold the game objects such as pacman, maze, game etc.
  */
@@ -183,9 +185,13 @@ public class Game extends Canvas implements Runnable, KeyListener {
             ViewLogic.pauseafter();
         }
 
-
-       if (e.getKeyCode() == KeyEvent.VK_U)// when pressing space
+       if (e.getKeyCode() == KeyEvent.VK_U)// cheat for the correct tmp ghost
             TmpGhost.cheetWithCorrectTmpGhost();
+
+        if (e.getKeyCode() == KeyEvent.VK_I) {// cheat for the correct tmp ghost
+            pacmans.get(playerIndex).score += Scores.EASY_CORRECT.getScore();
+            viewInstance.setScoreForPacman();
+        }
     }
 
     /**
