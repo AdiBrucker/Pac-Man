@@ -83,7 +83,8 @@ public class PopUpLogic {
 		ViewLogic.getInstance().getTimer();
 	 	   if(!Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared()) {
 			   for (int i = 0; i < a.size(); i++) {
-				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost( 32*(i+4), 32*(i+4)));
+				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost(
+				   		Game.mazes.get(Game.getPlayerIndex()).ghosts.get(0).x,  Game.mazes.get(Game.getPlayerIndex()).ghosts.get(0).y));
 
 			   }
 			   Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared(true);
