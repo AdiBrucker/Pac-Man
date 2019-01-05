@@ -2,6 +2,7 @@ package Model;
 
 import javax.imageio.ImageIO;
 
+import View.MazeView;
 import com.google.gson.Gson;
 
 import java.awt.*;
@@ -25,13 +26,15 @@ public class Maze {
     public List<Candy> candy;
     //list the contains the ghosts in the maze
     public List<Ghost> ghosts;
-    public static boolean level2 =false;
+    public static boolean level2 = false;
     public static int goodx = 0; // it will determine the location of the tmp ghosts
     public static int goody = 0;
+
     /**
      * Constructor
      * Responsible to build the maze by reading the pixels from the source map which is imported in the constructor
      * by reading the map the walls, candies and ghosts are sorted into the relevant array/list and later are drawn on games map.
+     *
      * @param path
      */
     public Maze(String path) {
@@ -63,50 +66,44 @@ public class Maze {
                     } else if (val == 0xFFFF0000) {
                         //Ghost
                         ghosts.add(new Ghost(xx * 32, yy * 32));
-                        goodx = xx*32;
-                        goody = yy*32;
+                        goodx = xx * 32;
+                        goody = yy * 32;
                     } else {
                         //Candy
                         // if its a gold candy
-                    	Candy c = null;
+                        Candy c = null;
 
                         if (level2) {// if the player pass the first level
                             level2 = false;
-                      //       candy.add(new ScoreCandy(xx * 32, yy * 32, "Gold"));
-                             c=CandyFactory.makeCandy("Gold",xx * 32,  yy * 32);
-//                            c.setLocation();
+                            //candy.add(new ScoreCandy(xx * 32, yy * 32, "Gold"));
+                            c = CandyFactory.makeCandy("Gold", xx * 32, yy * 32);
+                            //c.setLocation();
                             candy.add(c);
-
                         }
                         if (getCandy < 30) {
-//                             candy.add(new ScoreCandy(xx * 32, yy * 32, "Yellow"));
-
-                        	c=CandyFactory.makeCandy("Yellow",xx * 32,  yy * 32);
-                        //    c.setLocation(xx * 32,  yy * 32);
+                            //candy.add(new ScoreCandy(xx * 32, yy * 32, "Yellow"));
+                            c = CandyFactory.makeCandy("Yellow", xx * 32, yy * 32);
+                            //c.setLocation(xx * 32,  yy * 32);
                             candy.add(c);
                             getCandy++;
                         } else if (getSilverCandy < 5 && n % 5 == 0) {
-                        	c=CandyFactory.makeCandy("Silver",xx * 32,  yy * 32);
-                        //    c.setLocation(xx * 32,  yy * 32);
-                           candy.add(c);
-                      //      candy.add(new ScoreCandy(xx * 32, yy * 32, "Silver"));
-                            
+                            c = CandyFactory.makeCandy("Silver", xx * 32, yy * 32);
+                            //c.setLocation(xx * 32,  yy * 32);
+                            candy.add(c);
+                            //candy.add(new ScoreCandy(xx * 32, yy * 32, "Silver"));
                             getSilverCandy++;
-
                         } else if (!candyPoisonAppeared) {
-                        	c=CandyFactory.makeCandy("PoisonCandy",xx * 32,  yy * 32);
-                         //   c.setLocation(xx * 32,  yy * 32);
-                        	 candy.add(c);
-                            
-                         //   candy.add(new PoisonCandy(xx * 32, yy * 32));
-                           
+                            c = CandyFactory.makeCandy("PoisonCandy", xx * 32, yy * 32);
+                            //c.setLocation(xx * 32,  yy * 32);
+                            candy.add(c);
+                            //candy.add(new PoisonCandy(xx * 32, yy * 32));
                             candyPoisonAppeared = true;
                         } else {
-                        	
-                        	c=CandyFactory.makeCandy("QuestionCandy",xx * 32,  yy * 32);
-                     //       c.setLocation(xx * 32,  yy * 32);
+
+                            c = CandyFactory.makeCandy("QuestionCandy", xx * 32, yy * 32);
+                            //c.setLocation(xx * 32,  yy * 32);
                             candy.add(c);
-//                           candy.add(new QuestionCandy(xx * 32, yy * 32));
+                            //candy.add(new QuestionCandy(xx * 32, yy * 32));
                             getCandy = 0;
 
                         }
@@ -131,23 +128,14 @@ public class Maze {
 
     /**
      * draws the walls, candies and ghosts on the game's map
+     *
      * @param g
      */
     public void render(Graphics g) {
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                if (walls[x][y] != null) {
-                    walls[x][y].render(g);
-                }
-            }
-        }
-        for (int i = 0; i < candy.size(); i++) {
-            candy.get(i).render(g);
-        }
-        for (int i = 0; i < ghosts.size(); i++) {
-            ghosts.get(i).render(g);
-        }
+        MazeView view = new MazeView(walls, candy, ghosts, width, height);
+        view.render(g);
     }
+
     public static int getGhostWidth() {
         return goodx;
     }

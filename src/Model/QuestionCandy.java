@@ -1,5 +1,7 @@
 package Model;
 
+import View.QuestionCandyView;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -31,6 +33,7 @@ public class QuestionCandy extends Candy {
      * @param g
      */
     public void render(Graphics g) {
-        g.drawImage(redCandy, x, y, width + 10, height + 10, null, null);
+        QuestionCandyView view = new QuestionCandyView(x, y, "QuestionCandy", redCandy);
+        view.render(g);
     }
 }

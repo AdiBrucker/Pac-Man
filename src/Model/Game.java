@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
+import View.GameView;
 import View.PacmanAnimation;
 import View.PopUpLogic;
 
@@ -31,7 +32,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public static  boolean flag = false;
     //Counts how many players there are in the game
     public static int playerCount = 0;
-    private static Thread thread;
+    public static Thread thread;
     //Responsible for the pop up messages
     static PopUpLogic popInctance = PopUpLogic.getInstance();
     // set the game turn with the relevant player
@@ -80,50 +81,6 @@ public class Game extends Canvas implements Runnable, KeyListener {
     }
 
     /**
-     * Stops the game
-     */
-    public synchronized void stop() {
-        if (!isRunning) {
-            return;
-        }
-        isRunning = false;
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-
-        }
-    }
-
-    /**
-     * Handling the movement of the pacman character
-     */
-    public void tick() {
-        pacmans.get(playerIndex).tick();
-        mazes.get(playerIndex).tick();
-    }
-
-    /**
-     * Responsible to render the game's board
-     */
-    private void render() {
-        BufferStrategy bs = getBufferStrategy();
-        if (bs == null) {
-            createBufferStrategy(3);
-            return;
-        }
-
-        Graphics g = bs.getDrawGraphics();
-
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
-        pacmans.get(playerIndex).render(g);
-        mazes.get(playerIndex).render(g);
-        g.dispose();
-        bs.show();
-    }
-
-    /**
      * A method which is responsible to run the game and define the speed of the characters.
      * Manages their movements and their speed.
      */
@@ -141,13 +98,13 @@ public class Game extends Canvas implements Runnable, KeyListener {
                 long now = System.nanoTime();
                 delta += (now - lastTime) / ns;
                 lastTime = now;
-                while (delta >= 1) {                   
-                	if (flag) {
-                         synchronized (getInstanceList().get(playerIndex)) {
+                while (delta >= 1) {
+                    if (flag) {
+                        synchronized (getInstanceList().get(playerIndex)) {
                             try {
-                             	getInstanceList().get(playerIndex).wait();
+                                getInstanceList().get(playerIndex).wait();
                             } catch (Exception e) {
-                            	getInstanceList().get(playerIndex).notify();
+                                getInstanceList().get(playerIndex).notify();
                             }
                             flag = false;
                         }
@@ -161,9 +118,46 @@ public class Game extends Canvas implements Runnable, KeyListener {
                 }
             }
 
-            stop();
+            stop(isRunning);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Responsible for the movement of the characters
+     */
+    public void tick() {
+        Game.pacmans.get(playerIndex).tick();
+        Game.mazes.get(playerIndex).tick();
+    }
+
+    /**
+     * Responsible to render the game's board
+     */
+    public void render() {
+        BufferStrategy bs = getBufferStrategy();
+        if (bs == null) {
+            createBufferStrategy(3);
+            return;
+        }
+        GameView view = new GameView(0, 0);
+        view.render(Game.pacmans, Game.mazes, playerIndex, bs);
+    }
+
+    /**
+     * Stops the game
+     */
+    public synchronized void stop(boolean isRunning) {
+        if (!isRunning) {
+            return;
+        }
+        isRunning = false;
+        try {
+            Game.thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+
         }
     }
 

@@ -1,5 +1,7 @@
 package Model;
 
+import View.PosionCandyView;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -33,8 +35,8 @@ public class PoisonCandy extends Candy {
      * @param g
      */
     public void render(Graphics g) {
-        g.drawImage(poisonCandy, x, y, width + 10, height + 10, null, null);
-
+        PosionCandyView view = new PosionCandyView(x, y, "PoisonCandy", poisonCandy);
+        view.render(g);
     }
 
 }

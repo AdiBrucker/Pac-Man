@@ -1,5 +1,7 @@
 package Model;
 
+import View.WallView;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,8 +12,8 @@ import java.io.IOException;
  */
 public class Walls extends Rectangle {
 
-    private BufferedImage blueBrick;
 
+    private BufferedImage blueBrick;
     /**
      * Constructor- Creates the walls in the game
      * @param x
@@ -31,6 +33,7 @@ public class Walls extends Rectangle {
      * @param g
      */
     public void render(Graphics g){
-        g.drawImage(blueBrick, x, y, width, height, null, null);
+        WallView view = new WallView(x, y, width, height, blueBrick);
+        view.render(g);
     }
 }

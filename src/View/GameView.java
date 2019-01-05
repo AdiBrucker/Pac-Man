@@ -2,18 +2,24 @@ package View;
 
 import Controller.PacmanController;
 import Model.Game;
+import Model.Maze;
+import Model.Pacman;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
 
 /**
  * The view of the game view
  */
-public class GameView{
+public class GameView extends Canvas{
 	private	static JFrame frame;
 	private	static Game game;
 	private	static	ViewLogic instance;
 	private static PacmanController controller;
+	private int x;
+	private int y;
 
 	public GameView()
     {
@@ -23,6 +29,11 @@ public class GameView{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public GameView(int x, int y){
+	    this.x = x;
+	    this.y = y;
     }
  
     public static void  initGame(){
@@ -69,8 +80,19 @@ public class GameView{
 		game.isRunning=false;
   		game.SetInstance();
  		instance.SetInstance();
-	    
-
  	}
+
+    /**
+     * Responsible to render the game's board
+     */
+    public void render(ArrayList<Pacman> pacmans, ArrayList<Maze> mazes, int playerIndex, BufferStrategy bs) {
+        Graphics g = bs.getDrawGraphics();
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
+        pacmans.get(playerIndex).render(g);
+        mazes.get(playerIndex).render(g);
+        g.dispose();
+        bs.show();
+    }
 	
 }

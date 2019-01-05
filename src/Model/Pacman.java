@@ -1,9 +1,6 @@
 package Model;
 
-import View.PacmanAnimation;
-import View.GameView;
-import View.PopUpLogic;
-import View.ViewLogic;
+import View.*;
 
 import java.awt.*;
 import java.io.File;
@@ -296,7 +293,8 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
     /**
      * Shows a question as a popup window when pacman eats a question candy
      */
-    public void showQuestion() {
+    public void showQuestion()
+    {
         PopUpLogic.getInstance().ShowQuestion();
     }
 
@@ -304,18 +302,8 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
      * shows a popup when the game is over
      */
     public void ShowGameOver() {
-        PopUpLogic.getInstance().ShowGameOver(score);
-        
-       	if(Game.pacmans.size() == 1) {
-    		SysData.instance.AddPacman(Game.pacmans.get(0).getScore(), Game.pacmans.get(0).getPacmanName());
-       	}
-       	else {
-    		SysData.instance.AddPacman(Game.pacmans.get(0).getScore(), Game.pacmans.get(0).getPacmanName());
-    		SysData.instance.AddPacman(Game.pacmans.get(1).getScore(), Game.pacmans.get(1).getPacmanName());
-
-       	}
-
-        GameView.closewindow();
+        PacmanView view = new PacmanView(x, y, width, height);
+        view.ShowGameOver(score);
     }
 
     /**
@@ -340,19 +328,8 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
      */
     @Override
     public void render(Graphics g) {
-    	 
-        if (lastDir == CONSTS.RIGHT) {
-            g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2], x, y, width, height, null);
-        }
-        if (lastDir == CONSTS.LEFT) {
-            g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2], x + 32, y, -width, height, null);
-        }
-        if (lastDir == CONSTS.UP) {
-            g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2 + 2], x, y, width, height, null);
-        }
-        if (lastDir == CONSTS.DOWN) {
-            g.drawImage(PacmanAnimation.pacman[animationIndexImage % 2 + 4], x, y, width, height, null);
-        }
+        PacmanView view = new PacmanView(x, y, width, height);
+        view.render(g, lastDir, animationIndexImage);
     }
 
     /**

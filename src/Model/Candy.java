@@ -1,5 +1,7 @@
 package Model;
 
+import View.CandyView;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -42,14 +44,8 @@ public class Candy extends Rectangle {
      * @param g
      */
     public void render(Graphics g) {
-        if (type == "Yellow") {
-            g.drawImage(yellowCandy, x, y, width + 10, height + 10, null, null);
-
-        } else if (type == "Gold") {
-            g.drawImage(goldCandy, x, y, width + 10, height + 10, null, null);
-        } else {
-            g.drawImage(silverCandy, x, y, width + 10, height + 10, null, null);
-        }
+        CandyView view = new CandyView(type, yellowCandy, goldCandy, silverCandy, x, y, width, height);
+        view.render(g);
     }
 
     /**

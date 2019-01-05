@@ -1,5 +1,7 @@
 package Model;
 
+import View.GhostView;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -79,6 +81,7 @@ public class Ghost extends Rectangle implements IMovable {
      */
     public void render(Graphics g) {
         SpriteSheet sheet = Game.spriteSheets.get(Game.getPlayerIndex());
-        g.drawImage(sheet.getSprite(0, 16), x, y, 32, 32, null);
+        GhostView view = new GhostView(0, 16, x, y, 32, 32, sheet);
+        view.render(g);
     }
 }
