@@ -215,7 +215,6 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                         up = false;
                         down = false;
                         Music("\\src\\res\\Question-SOUND.wav");
-
                         showQuestion();
                         right = false;
                         left = false;

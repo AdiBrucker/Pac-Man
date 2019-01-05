@@ -78,9 +78,10 @@ public class PopUpLogic {
     			" <br>"+" <br>"+ answer3+" <br>"+
     			"</html>");
     	UIManager.put("OptionPane.minimumSize",new Dimension(150,150));
+		ViewLogic.getInstance().CancelTimer();
     	label.setFont(new Font("Lucida Console", Font.BOLD, 13));
         JOptionPane.showMessageDialog(null,label,"Question",JOptionPane.QUESTION_MESSAGE,icon);
-
+		ViewLogic.getInstance().getTimer();
 	 	   if(!Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared()) {
 			   for (int i = 0; i < a.size(); i++) {
 				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost( 32*(i+4), 32*(i+4)));
@@ -139,15 +140,14 @@ public class PopUpLogic {
 	 * Pop up that shows each time player turn
 	 */
 	public void showPlayerTurn(){
-
 		UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
 	Game g=Game.getInstance();
 		g.setFlag(true);
-		ViewLogic.getInstance().CancelTimer();
+		//ViewLogic.getInstance().CancelTimer();
 		JOptionPane.showMessageDialog(null,
 				"Player " + Game.pacmans.get(Game.getPlayerIndex()).getPacmanName() + " turn!", "Pause", JOptionPane.INFORMATION_MESSAGE);
 
-	synchronized ( g) {
+synchronized ( g) {
 			g.notify();
 		}
 		ViewLogic.getInstance().getTimer();

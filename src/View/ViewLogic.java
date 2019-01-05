@@ -21,11 +21,11 @@ public class ViewLogic {
     private static Label nickname;
     private static ViewLogic instance;
     private static Game game;
-    private int TimerCounting = 0;// counting seconds
-    private int saveCountingToContinue = 0;// counting seconds
+    private static int TimerCounting = 0;// counting seconds
+    private static int saveCountingToContinue = 0;// counting seconds
 
     private static String timeResults = "";///
-    private TimerTask task;
+    private static TimerTask task;
     public static boolean restart = false;
 
 
@@ -103,19 +103,38 @@ public class ViewLogic {
      * cancel timer when there are a pause at the game
      * the func save the time and cancel the timer
      */
-    public void CancelTimer() {
+    public static void CancelTimer() {
         saveCountingToContinue = TimerCounting;
         restart = true;
     }
+    public static void updateTimeDisplay(int minutes1, int second1) {
+        if (second1 < 10) {
+            if (minutes1 < 10) { // checking if the minutes is less then 10 its will add a 0 at the begging of the second view
+                timeResults = "0" + minutes1 + ":0" + second1;
+                timer.setText("Timer: " + timeResults);
+            } else {
+                timeResults = "" + minutes1 + ":0" + second1;
+                timer.setText("Timer: " + timeResults);
 
+            }
+        } else {
+            if (minutes1 < 10) {
+                timeResults = "0" + minutes1 + ":" + second1;
+                timer.setText("Timer: " + timeResults);
+            } else {
+                timeResults = "" + minutes1 + ":" + second1;
+                timer.setText("Timer: " + timeResults);
+            }
+        }
+    }
     /**
      * init the timer
      *
      * @return
      */
-    public void getTimer() {
+    public static void getTimer() {
 
-        Timer timer1 = new Timer();
+         Timer timer1 = new Timer();
         task = new TimerTask() {
             public void run() {
 
@@ -125,45 +144,30 @@ public class ViewLogic {
                     timer1.cancel(); //In order to gracefully terminate the timer thread
                     restart = false;
                 }
-                TimerCounting++;
-                int minutes1 = (int) Math.floor(TimerCounting / 60F);
-                int second1 = (int) Math.floor(TimerCounting - minutes1 * 60);
+                else {
+                    TimerCounting++;
+                    int minutes1 = (int) Math.floor(TimerCounting / 60F);
+                    int second1 = (int) Math.floor(TimerCounting - minutes1 * 60);
 
-                if (second1 % 10 == 0) {//// if 40 second passed its replace with the other users
-                    setPacmanTurn();
-                    Timer timer = new Timer();
-
-                    timer.schedule(new TimerTask() {
-                        public void run() {
-                            if (PopUpLogic.getNumOfPlayers() > 1)
-                                PopUpLogic.getInstance().showPlayerTurn();
-                        }
-                    }, 1);
-
-                }
-
-
-                // checking if the second is less then 10 its will add a 0 at the begging of the second view
-                if (second1 < 10) {
-                    if (minutes1 < 10) { // checking if the minutes is less then 10 its will add a 0 at the begging of the second view
-                        timeResults = "0" + minutes1 + ":0" + second1;
-                        timer.setText("Timer: " + timeResults);
-                    } else {
-                        timeResults = "" + minutes1 + ":0" + second1;
-                        timer.setText("Timer: " + timeResults);
+                    if (TimerCounting % 10 == 0) {//// if 40 second passed its replace with the other users
+                        setPacmanTurn();
+                                if (PopUpLogic.getNumOfPlayers() > 1) {
+                                    updateTimeDisplay(minutes1,second1);
+                                    saveCountingToContinue = TimerCounting;
+                                    task.cancel();
+                                    timer1.cancel(); //In order to gracefully terminate the timer threa
+                                    PopUpLogic.getInstance().showPlayerTurn();
+                                    TimerCounting = saveCountingToContinue;
+                                    return;
+                                }
 
                     }
-                } else {
-                    if (minutes1 < 10) {
-                        timeResults = "0" + minutes1 + ":" + second1;
-                        timer.setText("Timer: " + timeResults);
-                    } else {
-                        timeResults = "" + minutes1 + ":" + second1;
-                        timer.setText("Timer: " + timeResults);
-                    }
+
+
+                    // checking if the second is less then 10 its will add a 0 at the begging of the second view
+                    updateTimeDisplay(minutes1,second1);
+
                 }
-
-
             }
         };
         timer1.scheduleAtFixedRate(task, 1000, 1000);/// the time will work the same as a regular timer
