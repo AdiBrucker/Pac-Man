@@ -37,14 +37,14 @@ public class QuestionManager implements EventHandler {
     Label l_Answer4;
     Label l_curect_Ans;
     GridPane grid;
-    TextField Text_Difficulty;
-    TextField Text_Team;
-    TextField QuestText;
-    TextField Text_Answer1;
-    TextField Text_Answer2;
-    TextField Text_Answer3;
-    TextField Text_Answer4;
-    TextField Text_cureectAns;
+    Label Text_Difficulty;
+    Label Text_Team;
+    Label QuestText;
+    Label Text_Answer1;
+    Label Text_Answer2;
+    Label Text_Answer3;
+    Label Text_Answer4;
+    Label Text_cureectAns;
     String answer1;
     String answer2;
     String answer3;
@@ -92,25 +92,25 @@ public class QuestionManager implements EventHandler {
 
 
 //
-        Text_Difficulty = new TextField(""+ SysData.instance.getQuestions().get(index).getlevel());
+        Text_Difficulty = new Label(""+ SysData.instance.getQuestions().get(index).getlevel());
         Text_Difficulty.setMaxSize(350,35);
         Text_Difficulty.setMinSize(350,35);
         Text_Difficulty.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(Text_Difficulty,4,13);
 
-        Text_Team = new TextField(""+ SysData.instance.getQuestions().get(index).getTeam());
+        Text_Team = new Label(""+ SysData.instance.getQuestions().get(index).getTeam());
         Text_Team.setMaxSize(350,35);
         Text_Team.setMinSize(350,35);
         Text_Team.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(Text_Team,4,14);
 
-        QuestText = new TextField(SysData.instance.getQuestions().get(index).getquestion());
+        QuestText = new Label(SysData.instance.getQuestions().get(index).getquestion());
         QuestText.setMaxSize(350,35);
         QuestText.setMinSize(350,35);
         QuestText.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(QuestText,4,16);
 
-        Text_cureectAns = new TextField(SysData.instance.getQuestions().get(index).getCorrect_ans());
+        Text_cureectAns = new Label(SysData.instance.getQuestions().get(index).getCorrect_ans());
         Text_cureectAns.setMaxSize(100,35);
         Text_cureectAns.setMinSize(100,35);
         Text_cureectAns.setStyle("-fx-background-color: yellow");
@@ -138,7 +138,7 @@ public class QuestionManager implements EventHandler {
         l_Answer1.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer1,3,17);
 
-        Text_Answer1 = new TextField(answer1);
+        Text_Answer1 = new Label(answer1);
         Text_Answer1.setMaxSize(350,35);
         Text_Answer1.setMinSize(350,35);
         Text_Answer1.setStyle("-fx-background-color: yellow");
@@ -150,7 +150,7 @@ public class QuestionManager implements EventHandler {
         l_Answer2.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer2,3,18);
 
-        Text_Answer2 = new TextField(answer2);
+        Text_Answer2 = new Label(answer2);
         Text_Answer2.setMaxSize(350,35);
         Text_Answer2.setMinSize(350,35);
         Text_Answer2.setStyle("-fx-background-color: yellow");
@@ -162,7 +162,7 @@ public class QuestionManager implements EventHandler {
         l_Answer3.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer3,3,19);
 
-        Text_Answer3 = new TextField(answer3);
+        Text_Answer3 = new Label(answer3);
         Text_Answer3.setMaxSize(350,35);
         Text_Answer3.setMinSize(350,35);
         Text_Answer3.setStyle("-fx-background-color: yellow");
@@ -174,7 +174,7 @@ public class QuestionManager implements EventHandler {
         l_Answer4.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer4,3,20);
 
-        Text_Answer4 = new TextField(answer4);
+        Text_Answer4 = new Label(answer4);
         Text_Answer4.setMaxSize(350,35);
         Text_Answer4.setMinSize(350,35);
         Text_Answer4.setStyle("-fx-background-color: yellow");

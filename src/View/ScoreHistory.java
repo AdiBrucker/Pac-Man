@@ -28,7 +28,7 @@ public class ScoreHistory {
     Label l_Score;
     Label l_Name;
     Label l_rank;
-    TextField Score4_Text,Score5_Text,Rank1_Text,Score1_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text,Rank3_Text,Rank4_Text,Rank5_Text,Name3_Text,Name4_Text,Name5_Text;
+    Label Score4_Text,Score5_Text,Rank1_Text,Score1_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text,Rank3_Text,Rank4_Text,Rank5_Text,Name3_Text,Name4_Text,Name5_Text;
     Button B_back;
     Image pic;
 
@@ -75,10 +75,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>0)
             {
-                Rank1_Text = new TextField("1" );
+                Rank1_Text = new Label("1" );
             }
             else {
-                Rank1_Text = new TextField("");
+                Rank1_Text = new Label("");
             }
 
             Rank1_Text.setMaxSize(110,35);
@@ -86,25 +86,25 @@ public class ScoreHistory {
             Rank1_Text.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(Rank1_Text,3,16);
 
-            Rank2_Text = new TextField("2" );
+            Rank2_Text = new Label("2" );
             Rank2_Text.setMaxSize(110,35);
             Rank2_Text.setMinSize(110,35);
             Rank2_Text.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(Rank2_Text,3,17);
 
-            Rank3_Text = new TextField("3" );
+            Rank3_Text = new Label("3" );
             Rank3_Text.setMaxSize(110,35);
             Rank3_Text.setMinSize(110,35);
             Rank3_Text.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(Rank3_Text,3,18);
 
-            Rank4_Text = new TextField("4" );
+            Rank4_Text = new Label("4" );
             Rank4_Text.setMaxSize(110,35);
             Rank4_Text.setMinSize(110,35);
             Rank4_Text.setStyle("-fx-background-color: yellow");
             GridPane.setConstraints(Rank4_Text,3,19);
 
-            Rank5_Text = new TextField("5" );
+            Rank5_Text = new Label("5" );
             Rank5_Text.setMaxSize(110,35);
             Rank5_Text.setMinSize(110,35);
             Rank5_Text.setStyle("-fx-background-color: yellow");
@@ -122,11 +122,11 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>0)
             {
-                Score1_Text = new TextField(" " + Integer.valueOf(SysData.instance.getPacman().get(0).getScoreResult()));
+                Score1_Text = new Label(" " + Integer.valueOf(SysData.instance.getPacman().get(0).getScoreResult()));
                 System.out.println(SysData.instance.getPacman().get(0).getScoreResult());
             }
             else {
-                Score1_Text = new TextField("");
+                Score1_Text = new Label("");
             }
 
             Score1_Text.setMaxSize(110,35);
@@ -137,10 +137,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>1)
             {
-                Score2_Text = new TextField("" + Integer.valueOf(SysData.instance.getPacman().get(1).getScoreResult()));
+                Score2_Text = new Label("" + Integer.valueOf(SysData.instance.getPacman().get(1).getScoreResult()));
             }
             else {
-                Score2_Text = new TextField("");
+                Score2_Text = new Label("");
             }
 
 
@@ -152,10 +152,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>2)
             {
-                Score3_Text = new TextField("" + Integer.valueOf(SysData.instance.getPacman().get(2).getScoreResult()));
+                Score3_Text = new Label("" + Integer.valueOf(SysData.instance.getPacman().get(2).getScoreResult()));
             }
             else {
-                Score3_Text = new TextField("");
+                Score3_Text = new Label("");
             }
             Score3_Text.setMaxSize(110,35);
             Score3_Text.setMinSize(110,35);
@@ -166,10 +166,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>3)
             {
-                Score4_Text = new TextField("" + Integer.valueOf(SysData.instance.getPacman().get(3).getScoreResult()));
+                Score4_Text = new Label("" + Integer.valueOf(SysData.instance.getPacman().get(3).getScoreResult()));
             }
             else {
-                Score4_Text = new TextField("");
+                Score4_Text = new Label("");
             }
             Score4_Text.setMaxSize(110,35);
             Score4_Text.setMinSize(110,35);
@@ -179,10 +179,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>4)
             {
-                Score5_Text = new TextField("" + Integer.valueOf(SysData.instance.getPacman().get(4).getScoreResult()));
+                Score5_Text = new Label("" + Integer.valueOf(SysData.instance.getPacman().get(4).getScoreResult()));
             }
             else {
-                Score5_Text = new TextField("");
+                Score5_Text = new Label("");
             }
             Score5_Text.setMaxSize(110,35);
             Score5_Text.setMinSize(110,35);
@@ -200,10 +200,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>0)
             {
-                Name1_Text = new TextField("" + SysData.instance.getPacman().get(0).getPacmanName());
+                Name1_Text = new Label("" + SysData.instance.getPacman().get(0).getPacmanName());
             }
             else {
-                Name1_Text = new TextField("");
+                Name1_Text = new Label("");
             }
 
             Name1_Text.setMaxSize(110,35);
@@ -214,10 +214,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>1)
             {
-                Name2_Text = new TextField("" + SysData.instance.getPacman().get(1).getPacmanName());
+                Name2_Text = new Label("" + SysData.instance.getPacman().get(1).getPacmanName());
             }
             else {
-                Name2_Text = new TextField("");
+                Name2_Text = new Label("");
             }
 
             Name2_Text.setMaxSize(110,35);
@@ -227,10 +227,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>2)
             {
-                Name3_Text = new TextField("" + SysData.instance.getPacman().get(2).getPacmanName());
+                Name3_Text = new Label("" + SysData.instance.getPacman().get(2).getPacmanName());
             }
             else {
-                Name3_Text = new TextField("");
+                Name3_Text = new Label("");
             }
 
             Name3_Text.setMaxSize(110,35);
@@ -240,10 +240,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>3)
             {
-                Name4_Text = new TextField("" + SysData.instance.getPacman().get(3).getPacmanName());
+                Name4_Text = new Label("" + SysData.instance.getPacman().get(3).getPacmanName());
             }
             else {
-                Name4_Text = new TextField("");
+                Name4_Text = new Label("");
             }
 
             Name4_Text.setMaxSize(110,35);
@@ -253,10 +253,10 @@ public class ScoreHistory {
 
             if(SysData.instance.getPacman().size()>4)
             {
-                Name5_Text = new TextField("" + SysData.instance.getPacman().get(4).getPacmanName());
+                Name5_Text = new Label("" + SysData.instance.getPacman().get(4).getPacmanName());
             }
             else {
-                Name5_Text = new TextField("");
+                Name5_Text = new Label("");
             }
 
             Name5_Text.setMaxSize(110,35);
