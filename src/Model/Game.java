@@ -193,7 +193,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
             viewInstance.setScoreForPacman();
         }
 
-        if (e.getKeyCode() == KeyEvent.VK_Y) {// cheat for upgrade score
+        if (e.getKeyCode() == KeyEvent.VK_Y) {// cheat for ghosts to stop move
             if(!Ghost.isCheatAppears){
                 Ghost.isCheatAppears = true;
             } else{
