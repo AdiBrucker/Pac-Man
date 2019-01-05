@@ -46,14 +46,14 @@ public class ViewLogic {
          //   game = Game.getInstance();
             nickname = new Label(Game.pacmans.get(Game.getPlayerIndex()).getPacmanName());
 
-            nickname.setPreferredSize(new Dimension(400,70));
+            nickname.setPreferredSize(new Dimension(300,40));
             nickname.setForeground(Color.WHITE);
             nickname.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
                     | java.awt.Font.ITALIC, 36));
             nickname.setBackground(Color.BLACK);
 
             lScore = new Label("SCORE: " + String.valueOf(Game.pacmans.get(Game.getPlayerIndex()).getScore()));
-            lScore.setPreferredSize(new Dimension(400,70));
+            lScore.setPreferredSize(new Dimension(300,40));
             lScore.setForeground(Color.WHITE);
             lScore.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
                     | java.awt.Font.ITALIC, 36));
@@ -61,14 +61,14 @@ public class ViewLogic {
 
             lifeScore = new Label("LIFE SCORE: " + String.valueOf(Game.pacmans.get(Game.getPlayerIndex()).getLifeScore()));
             lifeScore.setForeground(Color.WHITE);
-            lifeScore.setMinimumSize(new Dimension(200,50));
+            lifeScore.setMinimumSize(new Dimension(300,40));
             lifeScore.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
                     | java.awt.Font.ITALIC, 36));
             lifeScore.setBackground(Color.BLACK);
 
             timer = new Label("timer : 00:00");
             timer.setForeground(Color.WHITE);
-            timer.setMinimumSize(new Dimension(200,50));
+            timer.setMinimumSize(new Dimension(200,40));
             timer.setFont(new java.awt.Font("Monospaced", java.awt.Font.BOLD
                     | java.awt.Font.ITALIC, 36));
             timer.setBackground(Color.BLACK);
@@ -129,6 +129,7 @@ public class ViewLogic {
 
                         timer.schedule(new TimerTask() {
                             public void run() {
+                               if (PopUpLogic.getNumOfPlayers() >1)
                                 PopUpLogic.getInstance().showPlayerTurn();
                             }
                         }, 1);
