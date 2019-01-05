@@ -24,6 +24,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Pac_Man$MainClass.coverage" NAME="MainClass Coverage Results" MODIFIED="1546642763141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>Controller.*</FILTER>
+    </SUITE>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file pinned="false" current-in-tab="false">
@@ -194,11 +199,6 @@
               <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -206,6 +206,12 @@
               <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
@@ -230,6 +236,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nogas\Documents\GitHub\Pac-Man\src\res" />
       <recent name="C:\Users\nogas\Documents\pacman_hedgehog\src\res" />
     </key>
   </component>
@@ -644,6 +651,10 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Desktop/BackBTN.PNG" />
+    <entry file="file://$PROJECT_DIR$/src/res/BackBTN.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -677,6 +688,8 @@
           <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2871#2872#0" expanded="true" />
+            <element signature="e#2900#2901#0" expanded="true" />
           </folding>
         </state>
       </provider>

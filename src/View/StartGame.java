@@ -24,16 +24,17 @@ public class StartGame {
     }
 
 
-    Button button;
-    Button button1;
-    Button button2;
-    Button button5;
-    Image image = new Image("res/Startgame.PNG");
-    StackPane pane;
+    static Button button;
+    static Button button1;
+    static Button button2;
+    static Button button5;
+    static Image image = new Image("res/Startgame.PNG");
+    static StackPane pane;
     static Stage sstage;
+    static boolean stageShowed = true;
 
 
-    public void initStartGame(Stage stage) {
+    public static void initStartGame(Stage stage) {
         try {
 
             ImageView iv = new ImageView();
@@ -121,6 +122,8 @@ public class StartGame {
             //       System.out.println("wowwwww");
         }
     }
+
+
 
     public static void closeMain(){
          sstage.close();
