@@ -12,11 +12,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import Model.SysData;
 import Model.Question;
  import Model.QuestionResultsFromJSON;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -185,6 +187,7 @@ public class QuestionManager implements EventHandler {
         GridPane.setConstraints(l_curect_Ans,3,21);
 
         HBox bar = new HBox();
+        bar.setSpacing(10);
          knapp1.setMaxSize(65,35 );
         knapp1.setMinSize(65,35);
         knapp1.setOnAction(this);
@@ -215,12 +218,15 @@ public class QuestionManager implements EventHandler {
 
         bar.getChildren().addAll(knapp5,B_back,knapp1, knapp2,knapp3,knapp4 );
 
-        GridPane.setConstraints(bar,4,23);
 
-        pane.getChildren().addAll( Text_Team,Text_Difficulty,l_Difficulty, l_Team,l_Question,QuestText,l_Answer1,Text_Answer1,l_Answer2,Text_Answer2,l_Answer3,Text_Answer3,l_Answer4,Text_Answer4,l_curect_Ans,Text_cureectAns,bar);
+        pane.getChildren().addAll( Text_Team,Text_Difficulty,l_Difficulty, l_Team,l_Question,QuestText,l_Answer1,Text_Answer1,l_Answer2,Text_Answer2,l_Answer3,Text_Answer3,l_Answer4,Text_Answer4,l_curect_Ans,Text_cureectAns);
 
+        VBox vBox = new VBox();
+        vBox.setPadding(new Insets(10, 70, 10, 50 ));
+        vBox.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        vBox.getChildren().addAll(pane,bar);
 
-        scene = new Scene(pane, 550,600);
+        scene = new Scene(vBox, 550,600);
         stage.setScene(scene);
 
         stage.show();

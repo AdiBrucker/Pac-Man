@@ -83,6 +83,8 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         //when there are no more candies the game is finished
         if (maze.candy.size() == 0) {
             System.exit(1);
+            score += 100;
+            ShowGameOver();
         }
     }
 
@@ -97,12 +99,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                 if (!(maze.ghosts.get(j) instanceof TmpGhost)) {
                     Music("\\src\\res\\pacmandeath.wav");
 
-                	if(!isQuestionAppeared) {
                  		setBounds(160,160,  26, 26);
-                	}
-                	else {
-                		maze.ghosts.remove(j); 
-                	}
 
                     if (lifeScore > 1) {
                         lifeScore--;
@@ -209,6 +206,7 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                     viewInstance.setScoreForPacman();
 
                 } else if (maze.candy.get(i).getType() == "Gold" && maze.candy.get(i) instanceof ScoreCandy) {
+                    // the gold candy can add point of life score
                     lifeScore++;
                     maze.candy.remove(i);
                     viewInstance.setLifeScoreForPacman();

@@ -5,6 +5,7 @@ import Model.Ghost;
 import Model.SysData;
 import Model.TmpGhost;
 import com.jfoenix.controls.*;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -50,7 +51,6 @@ public class PopUpLogic {
  * pop up that show question
  */
     public void ShowQuestion(){
-       	ViewLogic.getInstance().CancelTimer();
 
 		java.net.URL imgURL = getClass().getResource("/res/download.jpg");
     	ImageIcon icon =new ImageIcon(imgURL);
@@ -80,7 +80,6 @@ public class PopUpLogic {
     	UIManager.put("OptionPane.minimumSize",new Dimension(150,150));
     	label.setFont(new Font("Lucida Console", Font.BOLD, 13));
         JOptionPane.showMessageDialog(null,label,"Question",JOptionPane.QUESTION_MESSAGE,icon);
-	 	   ViewLogic.getInstance().getTimer();
 
 	 	   if(!Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared()) {
 			   for (int i = 0; i < a.size(); i++) {
@@ -135,6 +134,24 @@ public class PopUpLogic {
 
 
     }
+
+	/**
+	 * Pop up that shows each time player turn
+	 */
+	public void showPlayerTurn(){
+
+		UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
+	Game g=Game.getInstance();
+		g.setFlag(true);
+		ViewLogic.getInstance().CancelTimer();
+		JOptionPane.showMessageDialog(null,
+				"Player " + Game.pacmans.get(Game.getPlayerIndex()).getPacmanName() + " turn!", "Pause", JOptionPane.INFORMATION_MESSAGE);
+
+	synchronized ( g) {
+			g.notify();
+		}
+		ViewLogic.getInstance().getTimer();
+	}
     /**
      * pop up that show if we want to exit from the game
      * if the param is true its mean get out from all of the game 
@@ -184,7 +201,7 @@ public class PopUpLogic {
      	 synchronized ( g) {
 			   g.notify();
      	 }
-	 	   ViewLogic.getInstance().getTimer();
+		ViewLogic.getInstance().getTimer();
 
     } 
     

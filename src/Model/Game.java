@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import View.PacmanAnimation;
 import View.PopUpLogic;
+import View.StartGame;
 
 /**
  * Class which is responsible to hold the game objects such as pacman, maze, game etc.
@@ -284,4 +285,5 @@ public class Game extends Canvas implements Runnable, KeyListener {
         }
         return true;
     }
+
 }
