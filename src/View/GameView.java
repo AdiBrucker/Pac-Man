@@ -65,8 +65,6 @@ public class GameView{
             System.out.println("does not succeed");
             e.printStackTrace();
         }
-        Image finalBack = back;
-        Image finalnewImage = newImage;
         backBTN.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -79,16 +77,10 @@ public class GameView{
             @Override
             public void mouseEntered(MouseEvent e) {
                 backBTN.setForeground(Color.white);
-             /*   Font font = backBTN.getFont();
-                Map<TextAttribute, Object> attributes = new HashMap<>(font.getAttributes());
-                attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-                backBTN.setFont(font.deriveFont(attributes));*/
-              //  backBTN.setIcon(new ImageIcon(finalBack));
             }
             @Override
             public void mouseExited(MouseEvent e) {
                 backBTN.setForeground(Color.black);
-               // backBTN.setIcon(new ImageIcon(finalnewImage));
             }
         });
         backBTN.setMaximumSize(new Dimension(100,100));
