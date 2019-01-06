@@ -156,15 +156,72 @@
     "team": "hedgehog"
   },
   {
-    "question": "UML Diagrams types includes one of the following diagrams:",
+    "question": "Which of the following is not an example for 'Antipattern' ?",
     "answers": [
-      "Petri Net",
-      "BPMN",
-      "DSD",
-      "StateChart"
+      "Big ball of mud",
+      "Cash cow",
+      "Pipeline",
+      "Poltergeists"
+    ],
+    "correct_ans": "1",
+    "level": 2,
+    "team": "hedgehog"
+  },
+  {
+    "question": "  Which of the following is a type of maintenance?",
+    "answers": [
+      "Corrective maintenance",
+     "Technical maintenance" 
+    ],
+    "correct_ans": "1",
+    "level": 0,
+    "team": "hedgehog"
+  },
+  {
+    "question": " Event - driven model is an architecture type?",
+    "answers": [
+      "Yes",
+     "No" 
+    ],
+    "correct_ans": "1",
+    "level": 0,
+    "team": "hedgehog"
+  },
+  {
+    "question": "Which of the following is a user requirements?",
+    "answers": [
+      "system Architects",
+      "software developers"
+    ],
+    "correct_ans": "1",
+    "level": 0,
+    "team": "hedgehog"
+  }	,
+  {
+    "question": " Which of the following plays a role in  Inspection Procedure?",
+    "answers": [
+      "Designer",
+       "SQA",
+        "Review Leader",
+      "Maintances oracle"
+    ],
+    "correct_ans": "1",
+    "level": 2,
+    "team": "hedgehog"
+  
+  }
+  ,
+  {
+    "question": " what are the Maintenance risks?",
+    "answers": [
+      "Schedule ",
+       "Low quality",
+        "Future maintenance difficulties",
+      "All the answers are correct"
     ],
     "correct_ans": "4",
-    "level": 1,
+    "level": 2,
     "team": "hedgehog"
+  
   }
 ]}

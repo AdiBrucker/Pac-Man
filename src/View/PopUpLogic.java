@@ -54,13 +54,17 @@ public class PopUpLogic {
 		java.net.URL imgURL = getClass().getResource("/res/download.jpg");
     	ImageIcon icon =new ImageIcon(imgURL);
      	Random rand = new Random();
-     	indexOfQuestion = rand.nextInt(SysData.createInstance().getQuestions().size());
+
+		indexOfQuestion=rand.nextInt(SysData.createInstance().getQuestions().size());
  		List<String> a=new ArrayList<>();
  		a= SysData.instance.getQuestions().get(indexOfQuestion).getAnswers();
      	String answer= a.get(0);
     	String answer1= a.get(1);
-    	String answer2=	 a.get(2);
+    	String answer2=	"";
     	String answer3=	"";
+		if(a.size()>=3) {
+			answer2="3. "+a.get(2);
+		}
     	if(a.size()==4) {
     	  answer3="4. "+a.get(3);
     	}
@@ -73,7 +77,7 @@ public class PopUpLogic {
     	}
     	JLabel label = new JLabel("<html>Question Candy: <br>"  +  SysData.instance.getQuestions().get(indexOfQuestion).getquestion()+" <br>"+" <br>" +"1. "+ answer+
     			" <br>"+" <br>"+"2. "+ answer1+
-    			" <br>"+" <br>"+"3. "+ answer2+
+    			" <br>"+" <br>"+""+ answer2+
     			" <br>"+" <br>"+ answer3+" <br>"+
     			"</html>");
     	UIManager.put("OptionPane.minimumSize",new Dimension(150,150));
@@ -123,48 +127,59 @@ public void ShowGameOver(int score){
 	String winnerName="";
 	String Losser= "";
 	//
-
+	//java.net.URL imgURL = getClass().getResource("/res/Winner2.PNG");
+	java.net.URL imgURL = getClass().getResource("/res/winner-gif-13.gif");
+	ImageIcon icon =new ImageIcon(imgURL);
+	icon.getImage().getScaledInstance(5,5,Image.SCALE_AREA_AVERAGING);
 
 	if(Game.pacmans.size() == 1) {
-		UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
+	/*	UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
 		JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
 				" Your final score is " + score + " at " + ViewLogic.getInstance().GetTimeResults() + " minutes", "Game over", JOptionPane.INFORMATION_MESSAGE);
+		*/
+		JLabel label2 = new JLabel("<html> Final score: " +Game.pacmans.get(0).getScore()+"</html>" );
+
+		label2.setFont(new Font("Lucida Console", Font.BOLD, 20));
+
+
+		UIManager.put("OptionPane.minimumSize",new Dimension(200,200));
+//					JOptionPane.showMessageDialog(null, " And the Winner is: \n"
+//							+ winnerName, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
+		JOptionPane.showMessageDialog(null, label2, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
+		synchronized ( Game.getInstance()) {
+			Game.getInstance().notify();
+		}
 		ViewLogic.getInstance().setTimerCounting();
 	}
 	else if(Game.pacmans.size() == 2){
 		//java.net.URL imgURL = getClass().getResource("/res/Winner2.PNG");
-		java.net.URL imgURL = getClass().getResource("/res/winner-gif-13.gif");
-		ImageIcon icon =new ImageIcon(imgURL);
-		icon.getImage().getScaledInstance(5,5,Image.SCALE_AREA_AVERAGING);
-		UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
-		JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
-				Game.pacmans.get(0).getPacmanName()+": Your final score is " + Game.pacmans.get(0).getScore() + " \n " +   Game.pacmans.get(1).getPacmanName()+" : Your final score is " + Game.pacmans.get(1).getScore(), "Game over", JOptionPane.INFORMATION_MESSAGE);
-		ViewLogic.getInstance().setTimerCounting();
 
 		if(Game.pacmans.get(0).getScore()>Game.pacmans.get(1).getScore())
 		{
-			winnerName= "" + Game.pacmans.get(0).getPacmanName();
-			Losser = ""+ Game.pacmans.get(1).getPacmanName();
+			winnerName= "" + Game.pacmans.get(0).getPacmanName() +"with score " + Game.pacmans.get(0).getScore();
+			Losser = ""+ Game.pacmans.get(1).getPacmanName()+"with score " + Game.pacmans.get(1).getScore();;
 		}
 		else{
-			winnerName= "" + Game.pacmans.get(1).getPacmanName();
-			Losser = ""+ Game.pacmans.get(0).getPacmanName();
+			winnerName= "" + Game.pacmans.get(1).getPacmanName()+ " with score " + Game.pacmans.get(1).getScore();;
+			Losser = ""+ Game.pacmans.get(0).getPacmanName()+" with score " + Game.pacmans.get(0).getScore();;
 		}
 
 
-		JLabel label2 = new JLabel("<html> And the Winner is: \n" + winnerName +" <br>" +" <br>"+" <br>" + Losser+  " You lose!!!</html>" );
+		JLabel label2 = new JLabel("<html> And the Winner is: \n" + winnerName +" with score" + "<br>" +" <br>"+" <br>" + Losser+  " You lose!!!</html>" );
 
-		label2.setFont(new Font("Lucida Console", Font.BOLD, 50));
+		label2.setFont(new Font("Lucida Console", Font.BOLD, 20));
 
 
-		UIManager.put("OptionPane.minimumSize",new Dimension(300,300));
+		UIManager.put("OptionPane.minimumSize",new Dimension(200,200));
 //					JOptionPane.showMessageDialog(null, " And the Winner is: \n"
 //							+ winnerName, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
 		JOptionPane.showMessageDialog(null, label2, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
-
+		synchronized ( Game.getInstance()) {
+			Game.getInstance().notify();
+		}
 
 	}
-
+	ViewLogic.getInstance().setTimerCounting();
 
 }
 
