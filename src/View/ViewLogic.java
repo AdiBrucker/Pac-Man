@@ -184,7 +184,6 @@ public class ViewLogic {
                                     pauseafter();
                                     return;
                                 }
-
                     }
 
 

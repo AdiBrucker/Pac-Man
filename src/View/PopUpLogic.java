@@ -28,6 +28,7 @@ import java.util.TimerTask;
  */
 public class PopUpLogic {
 
+	static JFXComboBox combo9,combo2,combo7;
     static PopUpLogic instance;
 	static JFXTextField player1; // name of player 1
 	static JFXTextField player2; // name of player 2
@@ -348,64 +349,65 @@ synchronized ( g) {
 	 * @param gridPane
 	 * @return
 	 */
-	public GridPane chooseGameType(String option,GridPane gridPane){
-		switch (option){
-			case "One Player":
-				if (gridPane.getChildren().contains(player2)){
-					gridPane.getChildren().remove(player2);
+	public GridPane chooseGameType(String option,GridPane gridPane) {
+
+		switch (option) {
+			case "One Player": {
+				if (gridPane.getChildren().contains(player2) ) {
+					gridPane.getChildren().removeAll(player2, combo2, combo9);
+					System.out.print("aa");
 				}
 				player1 = new JFXTextField("Nickname player 1");
-				GridPane.setConstraints(player1,0,2);
+				GridPane.setConstraints(player1, 0, 2);
 
-				ObservableList<String> comboBox1 = FXCollections.observableArrayList("Green","colorful","Purple");
-				JFXComboBox combo2=new JFXComboBox(comboBox1);
+				ObservableList<String> comboBox1 = FXCollections.observableArrayList("Green", "colorful", "Purple");
+				combo2 = new JFXComboBox(comboBox1);
 				combo2.setPromptText("Pac-Man color");
-				GridPane.setConstraints(combo2,3,1);
+				GridPane.setConstraints(combo2, 3, 1);
 				combo2.setOnAction(e -> setPacManColor(combo2.getValue().toString()));
 
-				ObservableList<String> comboBoxpl = FXCollections.observableArrayList("Game map","Dev map","SW map");
-				JFXComboBox combo9=new JFXComboBox(comboBoxpl);
+				ObservableList<String> comboBoxpl = FXCollections.observableArrayList("Game map", "Dev map", "SW map");
+				combo9 = new JFXComboBox(comboBoxpl);
 				combo9.setPromptText("Choose map");
-				GridPane.setConstraints(combo9,3,2);
+				GridPane.setConstraints(combo9, 3, 2);
 				combo9.setOnAction(e -> setPacManMap(combo9.getValue().toString()));
 
 
-				gridPane.getChildren().addAll(player1,combo2,combo9);
-				numOfPlayers =1;
+				gridPane.getChildren().addAll(player1, combo2, combo9);
+				numOfPlayers = 1;
 				break;
-			case "Two Players":
+			}
+
+			case "Two Players": {
+
+				if (gridPane.getChildren().contains(player1) ){
+					gridPane.getChildren().removeAll(player1, combo2, combo9);
+					System.out.print("SS");
+				}
+				ObservableList<String> comboBox = FXCollections.observableArrayList("Green", "colorful", "Purple");
+				combo2 = new JFXComboBox(comboBox);
+				combo2.setPromptText("Pac Man color");
+				GridPane.setConstraints(combo2, 3, 2);
+				combo2.setOnAction(e -> setPacManColor(combo2.getValue().toString()));
 
 
-
-				ObservableList<String> comboBox = FXCollections.observableArrayList("Green","colorful","Purple");
-				JFXComboBox combo=new JFXComboBox(comboBox);
-				combo.setPromptText("Pac Man color");
-				GridPane.setConstraints(combo,3,2);
-				combo.setOnAction(e -> setPacManColor(combo.getValue().toString()));
-
-
-				ObservableList<String> comboBoxp = FXCollections.observableArrayList("Game map","Dev map","SW map");
-				JFXComboBox combo7=new JFXComboBox(comboBoxp);
-				combo7.setPromptText("Choose map");
-				GridPane.setConstraints(combo7,3,3);
-				combo7.setOnAction(e -> setPacManMap(combo7.getValue().toString()));
-
-
-
-				//j_color.setSelectedIndex(4);
-
-
-				//j_color.addActionListener(this);
+				ObservableList<String> comboBoxp = FXCollections.observableArrayList("Game map", "Dev map", "SW map");
+				combo9 = new JFXComboBox(comboBoxp);
+				combo9.setPromptText("Choose map");
+				GridPane.setConstraints(combo9, 3, 3);
+				combo9.setOnAction(e -> setPacManMap(combo9.getValue().toString()));
 
 
 				player1 = new JFXTextField("Nickname player 1");
-				GridPane.setConstraints(player1,0,2);
+				GridPane.setConstraints(player1, 0, 2);
 				player2 = new JFXTextField("Nickname player 2");
-				GridPane.setConstraints(player2,0,3);
-				gridPane.getChildren().addAll(player1,player2,combo,combo7);
-				numOfPlayers =2;
+				GridPane.setConstraints(player2, 0, 3);
+				gridPane.getChildren().addAll(player1, player2, combo2, combo9);
+				numOfPlayers = 2;
 				break;
+			}
 		}
+
 		return gridPane;
 	}
 
