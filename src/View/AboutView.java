@@ -45,7 +45,7 @@ public class AboutView {
 
 
 
-        Image image2 = new Image("res/INS.PNG");
+        Image image2 = new Image("res/iii.PNG");
         ImageView imgView = new ImageView(image2);
         GridPane.setConstraints( imgView,3,15);
         //  pane.getChildren().add(imgView );

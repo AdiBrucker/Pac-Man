@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
@@ -251,6 +252,8 @@ synchronized ( g) {
 		JFXComboBox gameType=new JFXComboBox(options);
 		gameType.setPromptText("How many players?");
 		gameType.setOnAction(e -> chooseGameType(gameType.getValue().toString(), gridPane));
+
+
 		GridPane.setConstraints(gameType,0,1);
 		gridPane.getChildren().addAll(gameType);
 		JFXButton button = new JFXButton("Start game!");
@@ -275,7 +278,6 @@ synchronized ( g) {
 
 					timer.schedule(new TimerTask() {
 						public void run() {
-							System.out.println(content.getBody().size());
 							new GameView();
 							dialog.close();
 						}
@@ -284,12 +286,49 @@ synchronized ( g) {
 				}
 		});
 
+
+
 		GridPane.setConstraints(button,0,1);
  		content.setBody(gridPane);
 		content.setActions(button);
 		dialog.show();
 	}
 
+	public void setPacManColor(String comboBox1 )
+	{
+
+		switch (comboBox1) {
+			case "Green":
+			PacmanAnimation.path="/res/sprites/green.png";
+				break;
+			case "colorful":
+				PacmanAnimation.path="/res/sprites/colorful.png";
+				break;
+			case "Purple":
+				PacmanAnimation.path="/res/sprites/pink.png";
+				break;
+		}
+
+
+	}
+
+	public void setPacManMap(String comboBox1 )
+	{
+
+		switch (comboBox1) {
+			case "Game map":
+				Game.path1="/res/map/map.png";
+				break;
+			case "Dev map":
+				Game.path1="/res/map/map2.png";
+				break;
+			case "SW map":
+				Game.path1="/res/map/map1.png";
+				break;
+		}
+
+
+	}
 	public GridPane chooseGameType(String option,GridPane gridPane){
 		switch (option){
 			case "One Player":
@@ -298,15 +337,53 @@ synchronized ( g) {
 				}
 				player1 = new JFXTextField("Nickname player 1");
 				GridPane.setConstraints(player1,0,2);
-				gridPane.getChildren().addAll(player1);
+
+				ObservableList<String> comboBox1 = FXCollections.observableArrayList("Green","colorful","Purple");
+				JFXComboBox combo2=new JFXComboBox(comboBox1);
+				combo2.setPromptText("Pac-Man color");
+				GridPane.setConstraints(combo2,3,1);
+				combo2.setOnAction(e -> setPacManColor(combo2.getValue().toString()));
+
+				ObservableList<String> comboBoxpl = FXCollections.observableArrayList("Game map","Dev map","SW map");
+				JFXComboBox combo9=new JFXComboBox(comboBoxpl);
+				combo9.setPromptText("Choose map");
+				GridPane.setConstraints(combo9,3,2);
+				combo9.setOnAction(e -> setPacManMap(combo9.getValue().toString()));
+
+
+				gridPane.getChildren().addAll(player1,combo2,combo9);
 				numOfPlayers =1;
 				break;
 			case "Two Players":
+
+
+
+				ObservableList<String> comboBox = FXCollections.observableArrayList("Green","colorful","Purple");
+				JFXComboBox combo=new JFXComboBox(comboBox);
+				combo.setPromptText("Pac Man color");
+				GridPane.setConstraints(combo,3,2);
+				combo.setOnAction(e -> setPacManColor(combo.getValue().toString()));
+
+
+				ObservableList<String> comboBoxp = FXCollections.observableArrayList("Game map","Dev map","SW map");
+				JFXComboBox combo7=new JFXComboBox(comboBoxp);
+				combo7.setPromptText("Choose map");
+				GridPane.setConstraints(combo7,3,3);
+				combo7.setOnAction(e -> setPacManMap(combo7.getValue().toString()));
+
+
+
+				//j_color.setSelectedIndex(4);
+
+
+				//j_color.addActionListener(this);
+
+
 				player1 = new JFXTextField("Nickname player 1");
 				GridPane.setConstraints(player1,0,2);
 				player2 = new JFXTextField("Nickname player 2");
 				GridPane.setConstraints(player2,0,3);
-				gridPane.getChildren().addAll(player1,player2);
+				gridPane.getChildren().addAll(player1,player2,combo,combo7);
 				numOfPlayers =2;
 				break;
 		}

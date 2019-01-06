@@ -37,6 +37,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     static PopUpLogic popInctance = PopUpLogic.getInstance();
     // set the game turn with the relevant player
     private static int playerIndex = 0;
+    public static String path1="/res/map/map.png";
 
     /**
      * Class constructor. initiates the arrays, build the game boards with its contents.
@@ -63,7 +64,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
             playerIndex = 1;
         }
 
-        mazes.add(new Maze("/res/map/map.png"));
+        mazes.add(new Maze(path1));
         spriteSheets.add(new SpriteSheet("/res/sprites/spritesheet.png"));
     }
 
