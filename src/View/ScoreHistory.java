@@ -16,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -68,7 +70,9 @@ public class ScoreHistory {
             l_rank = new Label("Rank:");
             l_rank.setMaxSize(110,35);
             l_rank.setMinSize(110,35);
-            l_rank.setStyle("-fx-background-color: yellow");
+            l_rank.setFont(new Font("Lucida Console", 20));
+           // l_rank.setStyle("-fx-background-color: yellow");
+            l_rank.setTextFill(Color.WHITE);
             GridPane.setConstraints(l_rank,3,15);
 
 
@@ -83,31 +87,36 @@ public class ScoreHistory {
 
             Rank1_Text.setMaxSize(110,35);
             Rank1_Text.setMinSize(110,35);
-            Rank1_Text.setStyle("-fx-background-color: yellow");
+            Rank1_Text.setFont(new Font("Lucida Console", 20));
+            Rank1_Text.setTextFill(Color.YELLOW);
             GridPane.setConstraints(Rank1_Text,3,16);
 
             Rank2_Text = new Label("2" );
             Rank2_Text.setMaxSize(110,35);
             Rank2_Text.setMinSize(110,35);
-            Rank2_Text.setStyle("-fx-background-color: yellow");
+            Rank2_Text.setFont(new Font("Lucida Console", 20));
+            Rank2_Text.setTextFill(Color.RED);
             GridPane.setConstraints(Rank2_Text,3,17);
 
             Rank3_Text = new Label("3" );
             Rank3_Text.setMaxSize(110,35);
             Rank3_Text.setMinSize(110,35);
-            Rank3_Text.setStyle("-fx-background-color: yellow");
+            Rank3_Text.setFont(new Font("Lucida Console", 20));
+            Rank3_Text.setTextFill(Color.LIGHTBLUE);
             GridPane.setConstraints(Rank3_Text,3,18);
 
             Rank4_Text = new Label("4" );
             Rank4_Text.setMaxSize(110,35);
             Rank4_Text.setMinSize(110,35);
-            Rank4_Text.setStyle("-fx-background-color: yellow");
+            Rank4_Text.setFont(new Font("Lucida Console", 20));
+            Rank4_Text.setTextFill(Color.PINK);
             GridPane.setConstraints(Rank4_Text,3,19);
 
             Rank5_Text = new Label("5" );
             Rank5_Text.setMaxSize(110,35);
             Rank5_Text.setMinSize(110,35);
-            Rank5_Text.setStyle("-fx-background-color: yellow");
+            Rank5_Text.setFont(new Font("Lucida Console", 20));
+            Rank5_Text.setTextFill(Color.GREENYELLOW);
             GridPane.setConstraints(Rank5_Text,3,20);
 
 
@@ -116,7 +125,8 @@ public class ScoreHistory {
              l_Score = new Label("Score:");
             l_Score.setMaxSize(110,35);
             l_Score.setMinSize(110,35);
-            l_Score.setStyle("-fx-background-color: yellow");
+            l_Score.setFont(new Font("Lucida Console", 20));
+            l_Score.setTextFill(Color.WHITE);
             GridPane.setConstraints(l_Score,9,15);
 
 
@@ -131,7 +141,8 @@ public class ScoreHistory {
 
             Score1_Text.setMaxSize(110,35);
             Score1_Text.setMinSize(110,35);
-            Score1_Text.setStyle("-fx-background-color: yellow");
+            Score1_Text.setFont(new Font("Lucida Console", 20));
+            Score1_Text.setTextFill(Color.YELLOW);
             GridPane.setConstraints(Score1_Text,9,16);
 
 
@@ -146,7 +157,8 @@ public class ScoreHistory {
 
             Score2_Text.setMaxSize(110,35);
             Score2_Text.setMinSize(110,35);
-            Score2_Text.setStyle("-fx-background-color: yellow");
+            Score2_Text.setFont(new Font("Lucida Console", 20));
+            Score2_Text.setTextFill(Color.RED);
             GridPane.setConstraints(Score2_Text,9,17);
 
 
@@ -159,7 +171,8 @@ public class ScoreHistory {
             }
             Score3_Text.setMaxSize(110,35);
             Score3_Text.setMinSize(110,35);
-            Score3_Text.setStyle("-fx-background-color: yellow");
+            Score3_Text.setFont(new Font("Lucida Console", 20));
+            Score3_Text.setTextFill(Color.LIGHTBLUE);
             GridPane.setConstraints(Score3_Text,9,18);
 
 
@@ -173,7 +186,8 @@ public class ScoreHistory {
             }
             Score4_Text.setMaxSize(110,35);
             Score4_Text.setMinSize(110,35);
-            Score4_Text.setStyle("-fx-background-color: yellow");
+            Score4_Text.setFont(new Font("Lucida Console", 20));
+            Score4_Text.setTextFill(Color.PINK);
             GridPane.setConstraints(Score4_Text,9,19);
 
 
@@ -186,7 +200,8 @@ public class ScoreHistory {
             }
             Score5_Text.setMaxSize(110,35);
             Score5_Text.setMinSize(110,35);
-            Score5_Text.setStyle("-fx-background-color: yellow");
+            Score5_Text.setFont(new Font("Lucida Console", 20));
+            Score5_Text.setTextFill(Color.GREENYELLOW);
             GridPane.setConstraints(Score5_Text,9,20);
 
 
@@ -194,7 +209,8 @@ public class ScoreHistory {
              l_Name = new Label("Name:");
             l_Name.setMaxSize(110,35);
             l_Name.setMinSize(110,35);
-            l_Name.setStyle("-fx-background-color: yellow");
+            l_Name.setFont(new Font("Lucida Console", 20));
+            l_Name.setTextFill(Color.WHITE);
             GridPane.setConstraints(l_Name,18,15);
 
 
@@ -208,7 +224,8 @@ public class ScoreHistory {
 
             Name1_Text.setMaxSize(110,35);
             Name1_Text.setMinSize(110,35);
-            Name1_Text.setStyle("-fx-background-color: yellow");
+            Name1_Text.setFont(new Font("Lucida Console", 20));
+            Name1_Text.setTextFill(Color.YELLOW);
             GridPane.setConstraints( Name1_Text,18,16);
 
 
@@ -222,7 +239,8 @@ public class ScoreHistory {
 
             Name2_Text.setMaxSize(110,35);
             Name2_Text.setMinSize(110,35);
-            Name2_Text.setStyle("-fx-background-color: yellow");
+            Name2_Text.setFont(new Font("Lucida Console", 20));
+            Name2_Text.setTextFill(Color.RED);
             GridPane.setConstraints( Name2_Text,18,17);
 
             if(SysData.instance.getPacman().size()>2)
@@ -235,7 +253,8 @@ public class ScoreHistory {
 
             Name3_Text.setMaxSize(110,35);
             Name3_Text.setMinSize(110,35);
-            Name3_Text.setStyle("-fx-background-color: yellow");
+            Name3_Text.setFont(new Font("Lucida Console", 20));
+            Name3_Text.setTextFill(Color.LIGHTBLUE);
             GridPane.setConstraints( Name3_Text,18,18);
 
             if(SysData.instance.getPacman().size()>3)
@@ -248,7 +267,8 @@ public class ScoreHistory {
 
             Name4_Text.setMaxSize(110,35);
             Name4_Text.setMinSize(110,35);
-            Name4_Text.setStyle("-fx-background-color: yellow");
+            Name4_Text.setFont(new Font("Lucida Console", 20));
+            Name4_Text.setTextFill(Color.PINK);
             GridPane.setConstraints( Name4_Text,18,19);
 
             if(SysData.instance.getPacman().size()>4)
@@ -261,7 +281,8 @@ public class ScoreHistory {
 
             Name5_Text.setMaxSize(110,35);
             Name5_Text.setMinSize(110,35);
-            Name5_Text.setStyle("-fx-background-color: yellow");
+            Name5_Text.setFont(new Font("Lucida Console", 20));
+            Name5_Text.setTextFill(Color.GREENYELLOW);
             GridPane.setConstraints( Name5_Text,18,20);
 
              Button B_back = new Button("Back");

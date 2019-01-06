@@ -6,10 +6,9 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
-import View.GameView;
-import View.PacmanAnimation;
-import View.PopUpLogic;
-import View.StartGame;
+import View.*;
+
+import static Model.Pacman.viewInstance;
 
 /**
  * Class which is responsible to hold the game objects such as pacman, maze, game etc.
@@ -179,8 +178,29 @@ public class Game extends Canvas implements Runnable, KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_UP) pacmans.get(playerIndex).up = true;
         if (e.getKeyCode() == KeyEvent.VK_DOWN) pacmans.get(playerIndex).down = true;
 
-        if (e.getKeyCode() == KeyEvent.VK_SPACE)// when pressing space
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            // when pressing space
+            ViewLogic.pauseb4();
             PopUpLogic.getInstance().pauseGame();
+            ViewLogic.pauseafter();
+        }
+
+       if (e.getKeyCode() == KeyEvent.VK_U)// cheat for the correct tmp ghost
+            TmpGhost.cheetWithCorrectTmpGhost();
+
+        if (e.getKeyCode() == KeyEvent.VK_I) {// cheat for upgrade score
+            pacmans.get(playerIndex).score += Scores.EASY_CORRECT.getScore();
+            viewInstance.setScoreForPacman();
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_Y) {// cheat for ghosts to stop move
+            if(!Ghost.isCheatAppears){
+                Ghost.isCheatAppears = true;
+            } else{
+                Ghost.isCheatAppears = false;
+            }
+        }
+            //isCheatAppears
     }
 
     /**

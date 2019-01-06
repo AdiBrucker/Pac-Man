@@ -1,11 +1,9 @@
 package View;
 
 import Model.Game;
-import Model.Ghost;
 import Model.SysData;
 import Model.TmpGhost;
 import com.jfoenix.controls.*;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,6 +36,7 @@ public class PopUpLogic {
 	static int indexOfQuestion;
  	boolean flag= false;
  	static int Player1SizeArray=0,Player2SizeArray=0;
+ 	static boolean isTMPGhostCheetAppears = false;
 
 
     public static PopUpLogic getInstance() {
@@ -84,12 +83,14 @@ public class PopUpLogic {
 		ViewLogic.getInstance().getTimer();
 	 	   if(!Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared()) {
 			   for (int i = 0; i < a.size(); i++) {
-				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost( 32*(i+4), 32*(i+4)));
+				   Game.mazes.get(Game.getPlayerIndex()).ghosts.add(new TmpGhost(
+				   		Game.mazes.get(Game.getPlayerIndex()).ghosts.get(0).x,  Game.mazes.get(Game.getPlayerIndex()).ghosts.get(0).y));
 
 			   }
 			   Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared(true);
 
 		   }
+		   System.out.println(SysData.instance.getQuestions().get(indexOfQuestion).getCorrect_ans());
     }
 
     public static int showQuestionResult(TmpGhost ghost){
@@ -175,14 +176,13 @@ public void ShowGameOver(int score){
 		UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
 	Game g=Game.getInstance();
 		g.setFlag(true);
-		//ViewLogic.getInstance().CancelTimer();
+
 		JOptionPane.showMessageDialog(null,
 				"Player " + Game.pacmans.get(Game.getPlayerIndex()).getPacmanName() + " turn!", "Pause", JOptionPane.INFORMATION_MESSAGE);
 
 synchronized ( g) {
 			g.notify();
 		}
-		ViewLogic.getInstance().getTimer();
 	}
     /**
      * pop up that show if we want to exit from the game
@@ -228,12 +228,11 @@ synchronized ( g) {
         UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
         Game g=Game.getInstance();
        	g.setFlag(true);
-       	ViewLogic.getInstance().CancelTimer();
      	JOptionPane.showMessageDialog(null, "you stop the game ,press ok to continue  ","Pause",JOptionPane.INFORMATION_MESSAGE);
      	 synchronized ( g) {
 			   g.notify();
      	 }
-		ViewLogic.getInstance().getTimer();
+
 
     } 
     
@@ -380,4 +379,7 @@ synchronized ( g) {
  	public static int getPlayer2SizeArra() {
  		return Player2SizeArray;
  	}
+ 	public static boolean isTMPGhostCheetAppears(){return isTMPGhostCheetAppears;}
+	public static void isTMPGhostCheetAppears(boolean isAppears){isTMPGhostCheetAppears = isAppears;}
+	public int getindexOfQuestion(){return indexOfQuestion;}
 }
