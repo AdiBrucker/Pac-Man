@@ -3,6 +3,10 @@ package View;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Responsible to draw the question candy on the map
+ */
+
 public class QuestionCandyView extends CandyView {
 
     private BufferedImage redCandy;

@@ -156,7 +156,7 @@
     "team": "hedgehog"
   },
   {
-    "question": "Which of the following is not an example for 'Antipattern' ?",
+    "question": "Which of the following is not an example for \u0027Antipattern\u0027 ?",
     "answers": [
       "Big ball of mud",
       "Cash cow",
@@ -171,7 +171,7 @@
     "question": "  Which of the following is a type of maintenance?",
     "answers": [
       "Corrective maintenance",
-     "Technical maintenance" 
+      "Technical maintenance"
     ],
     "correct_ans": "1",
     "level": 0,
@@ -181,7 +181,7 @@
     "question": " Event - driven model is an architecture type?",
     "answers": [
       "Yes",
-     "No" 
+      "No"
     ],
     "correct_ans": "1",
     "level": 0,
@@ -196,32 +196,29 @@
     "correct_ans": "1",
     "level": 0,
     "team": "hedgehog"
-  }	,
+  },
   {
     "question": " Which of the following plays a role in  Inspection Procedure?",
     "answers": [
       "Designer",
-       "SQA",
-        "Review Leader",
+      "SQA",
+      "Review Leader",
       "Maintances oracle"
     ],
     "correct_ans": "1",
     "level": 2,
     "team": "hedgehog"
-  
-  }
-  ,
+  },
   {
     "question": " what are the Maintenance risks?",
     "answers": [
       "Schedule ",
-       "Low quality",
-        "Future maintenance difficulties",
+      "Low quality",
+      "Future maintenance difficulties",
       "All the answers are correct"
     ],
     "correct_ans": "4",
     "level": 2,
     "team": "hedgehog"
-  
   }
 ]}

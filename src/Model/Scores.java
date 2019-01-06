@@ -1,5 +1,9 @@
 package Model;
 
+/**
+ * Enum that holds the score of each type of answer
+ */
+
 public enum Scores {
     EASY_CORRECT,
     INTERMEDIATE_CORRECT,

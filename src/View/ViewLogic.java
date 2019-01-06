@@ -42,6 +42,10 @@ public class ViewLogic {
         return nickname;
     }
 
+    /**
+     * Create singleton of ViewLogic class
+     */
+
     public static ViewLogic getInstance() {
         if (instance == null) {
             instance = new ViewLogic();
@@ -108,6 +112,12 @@ public class ViewLogic {
         saveCountingToContinue = TimerCounting;
         restart = true;
     }
+
+    /**
+     * Set the view of the timer on the pacmans screens
+     * @param minutes1
+     * @param second1
+     */
     public static void updateTimeDisplay(int minutes1, int second1) {
         if (second1 < 10) {
             if (minutes1 < 10) { // checking if the minutes is less then 10 its will add a 0 at the begging of the second view
@@ -144,6 +154,10 @@ public class ViewLogic {
 
         TimerCounting = saveCountingToContinue;
     }
+
+    /**
+    Count the time when the game is running
+     */
     public static void getTimer() {
 
         timer1 = new Timer();
@@ -184,6 +198,9 @@ public class ViewLogic {
         resetPacmanMovements();
     }
 
+    /**
+     * Set pacman turn
+     */
 
     public static void setPacmanTurn() {
 
@@ -204,6 +221,9 @@ public class ViewLogic {
         }
     }
 
+    /**
+     * This method controls the seed of the pacmans
+     */
     private static void resetPacmanMovements() {
         Game.pacmans.get(0).right = false;
         Game.pacmans.get(0).left = false;

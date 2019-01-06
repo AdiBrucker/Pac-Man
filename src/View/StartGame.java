@@ -74,12 +74,7 @@ public class StartGame {
             button9.setStyle("-fx-background-color: transparent; -fx-text-fill:transparent ");
             button9.setOnAction(e-> new AboutView(stage));
 
-
-
-
             sstage.show();
-
-
 
             stage.setTitle("PACMAN");
             pane.getChildren().add(button);

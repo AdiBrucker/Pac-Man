@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Draw the wall in the game
+ */
 public class WallView extends Rectangle {
 
 

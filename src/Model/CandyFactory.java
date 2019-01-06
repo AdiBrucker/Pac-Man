@@ -1,7 +1,10 @@
 package Model;
-//This is a factory thats only job is creating Candy
- //By encapsulating ship creation, we only have one
-//place to make modifications
+/**
+ * This is a factory thats only job is creating Candy
+ By encapsulating ship creation, we only have one
+ place to make modifications
+ */
+
 
 public class CandyFactory {
 

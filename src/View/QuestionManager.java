@@ -23,6 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Responsible on the Question Manager screen,
+ * lets to edit question, delete or add a new question
+ */
+
 public class QuestionManager implements EventHandler {
 
     TextField Text_Difficulty;

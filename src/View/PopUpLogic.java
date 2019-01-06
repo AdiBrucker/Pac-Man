@@ -97,7 +97,12 @@ public class PopUpLogic {
 		   System.out.println(SysData.instance.getQuestions().get(indexOfQuestion).getCorrect_ans());
     }
 
-    public static int showQuestionResult(TmpGhost ghost){
+	/**
+	 * Pop up that shows the result of the most recent question that appeared
+	 * @param ghost
+	 * @return
+	 */
+	public static int showQuestionResult(TmpGhost ghost){
     	if(SysData.instance.getQuestions().get(indexOfQuestion).getCorrect_ans().equals(String.valueOf(ghost.index))){
 			UIManager.put("OptionPane.minimumSize",new Dimension(120,120));
 			JOptionPane.showMessageDialog(null, "Correct Answer!","Correct",JOptionPane.INFORMATION_MESSAGE);
@@ -126,25 +131,18 @@ public void ShowGameOver(int score){
 	ViewLogic.getInstance().CancelTimer();
 	String winnerName="";
 	String Losser= "";
-	//
-	//java.net.URL imgURL = getClass().getResource("/res/Winner2.PNG");
+
 	java.net.URL imgURL = getClass().getResource("/res/winner-gif-13.gif");
 	ImageIcon icon =new ImageIcon(imgURL);
 	icon.getImage().getScaledInstance(5,5,Image.SCALE_AREA_AVERAGING);
 
 	if(Game.pacmans.size() == 1) {
-	/*	UIManager.put("OptionPane.minimumSize", new Dimension(120, 120));
-		JOptionPane.showMessageDialog(null, "                       Game over!!! \n" +
-				" Your final score is " + score + " at " + ViewLogic.getInstance().GetTimeResults() + " minutes", "Game over", JOptionPane.INFORMATION_MESSAGE);
-		*/
 		JLabel label2 = new JLabel("<html> Final score: " +Game.pacmans.get(0).getScore()+"</html>" );
 
 		label2.setFont(new Font("Lucida Console", Font.BOLD, 20));
 
 
 		UIManager.put("OptionPane.minimumSize",new Dimension(200,200));
-//					JOptionPane.showMessageDialog(null, " And the Winner is: \n"
-//							+ winnerName, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
 		JOptionPane.showMessageDialog(null, label2, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
 		synchronized ( Game.getInstance()) {
 			Game.getInstance().notify();
@@ -152,8 +150,6 @@ public void ShowGameOver(int score){
 		ViewLogic.getInstance().setTimerCounting();
 	}
 	else if(Game.pacmans.size() == 2){
-		//java.net.URL imgURL = getClass().getResource("/res/Winner2.PNG");
-
 		if(Game.pacmans.get(0).getScore()>Game.pacmans.get(1).getScore())
 		{
 			winnerName= "" + Game.pacmans.get(0).getPacmanName() +"with score " + Game.pacmans.get(0).getScore();
@@ -171,8 +167,6 @@ public void ShowGameOver(int score){
 
 
 		UIManager.put("OptionPane.minimumSize",new Dimension(200,200));
-//					JOptionPane.showMessageDialog(null, " And the Winner is: \n"
-//							+ winnerName, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
 		JOptionPane.showMessageDialog(null, label2, "Podium ",JOptionPane.INFORMATION_MESSAGE,icon);
 		synchronized ( Game.getInstance()) {
 			Game.getInstance().notify();
@@ -249,9 +243,13 @@ synchronized ( g) {
      	 }
 
 
-    } 
-    
-    
+    }
+
+	/**
+	 * Pop up that shows the game type- one player or two players mode
+	 * @param pane
+	 */
+
 	public void showGameType(StackPane pane){
         javafx.scene.control.Label field = new Label("Please choose how many players");
 		GridPane gridPane = new GridPane();
@@ -305,6 +303,13 @@ synchronized ( g) {
 		dialog.show();
 	}
 
+	/**
+	 * Update the pop up that responsible of the game type.
+	 * It will give to set nick name and pacman color for each player
+	 * @param option
+	 * @param gridPane
+	 * @return
+	 */
 	public GridPane chooseGameType(String option,GridPane gridPane){
 		switch (option){
 			case "One Player":
