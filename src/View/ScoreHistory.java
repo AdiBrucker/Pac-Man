@@ -118,7 +118,6 @@ public class ScoreHistory {
             if(SysData.instance.getPacman().size()>0)
             {
                 Score1_Text = new Label(" " + Integer.valueOf(SysData.instance.getPacman().get(0).getScoreResult()));
-                System.out.println(SysData.instance.getPacman().get(0).getScoreResult());
             }
             else {
                 Score1_Text = new Label("");

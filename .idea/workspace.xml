@@ -7,24 +7,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="450d62db-f77a-4081-9305-f632443c737e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Pac_Man_jar/Pac-Man.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Pac_Man_jar/Serializable.ser" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/CandyFactory.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/CandyFactory.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/Pacman.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/Pacman.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/Scores$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/Scores$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/Scores.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/Scores.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/SysData.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/SysData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView$2.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/GhostView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/GhostView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/MazeView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/MazeView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PacmanAnimation.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PacmanAnimation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PacmanView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PacmanView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PosionCandyView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PosionCandyView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionCandyView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionCandyView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/ScoreHistory.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/ScoreHistory.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/StartGame.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/StartGame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/WallView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/WallView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/res/questions.json" afterPath="$PROJECT_DIR$/out/production/Pac-Man/res/questions.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/CandyFactory.java" afterPath="$PROJECT_DIR$/src/Model/CandyFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Scores.java" afterPath="$PROJECT_DIR$/src/Model/Scores.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/GhostView.java" afterPath="$PROJECT_DIR$/src/View/GhostView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/MazeView.java" afterPath="$PROJECT_DIR$/src/View/MazeView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/PacmanAnimation.java" afterPath="$PROJECT_DIR$/src/View/PacmanAnimation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/PacmanView.java" afterPath="$PROJECT_DIR$/src/View/PacmanView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ModelLogic.java" afterPath="$PROJECT_DIR$/src/Model/ModelLogic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Pacman.java" afterPath="$PROJECT_DIR$/src/Model/Pacman.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/QuestionResultsFromJSON.java" afterPath="$PROJECT_DIR$/src/Model/QuestionResultsFromJSON.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/SysData.java" afterPath="$PROJECT_DIR$/src/Model/SysData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/GameView.java" afterPath="$PROJECT_DIR$/src/View/GameView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/PopUpLogic.java" afterPath="$PROJECT_DIR$/src/View/PopUpLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/PosionCandyView.java" afterPath="$PROJECT_DIR$/src/View/PosionCandyView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/QuestionCandyView.java" afterPath="$PROJECT_DIR$/src/View/QuestionCandyView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/QuestionManager.java" afterPath="$PROJECT_DIR$/src/View/QuestionManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/ScoreHistory.java" afterPath="$PROJECT_DIR$/src/View/ScoreHistory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/StartGame.java" afterPath="$PROJECT_DIR$/src/View/StartGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/ViewLogic.java" afterPath="$PROJECT_DIR$/src/View/ViewLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/WallView.java" afterPath="$PROJECT_DIR$/src/View/WallView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,7 +52,70 @@
     </SUITE>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/MainClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScoreHistory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/ScoreHistory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PopUpLogic.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/PopUpLogic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="206" column="45" lean-forward="false" selection-start-line="206" selection-start-column="45" selection-end-line="206" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pacman.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="467">
+              <caret line="297" column="0" lean-forward="false" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuestionResultsFromJSON.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/QuestionResultsFromJSON.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+              <folding>
+                <element signature="e#531#532#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModelLogic.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Model/ModelLogic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="83" column="40" lean-forward="true" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -52,9 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>is</find>
-      <find>sho</find>
-      <find>grid</find>
       <find>pause</find>
       <find>system.out.pr</find>
       <find>bar</find>
@@ -81,8 +153,14 @@
       <find>Button</find>
       <find>getT</find>
       <find>popup</find>
+      <find>System.out.print</find>
+      <find>System.out</find>
       <find>showGameO</find>
+      <find>System.err</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -125,7 +203,6 @@
         <option value="$PROJECT_DIR$/src/View/QuestionManager.java" />
         <option value="$PROJECT_DIR$/src/View/ScoreHistory.java" />
         <option value="$PROJECT_DIR$/src/View/QuestionCandyView.java" />
-        <option value="$PROJECT_DIR$/src/View/PopUpLogic.java" />
         <option value="$PROJECT_DIR$/src/View/WallView.java" />
         <option value="$PROJECT_DIR$/src/View/PacmanView.java" />
         <option value="$PROJECT_DIR$/src/View/PosionCandyView.java" />
@@ -134,6 +211,9 @@
         <option value="$PROJECT_DIR$/src/View/GhostView.java" />
         <option value="$PROJECT_DIR$/src/Model/Scores.java" />
         <option value="$PROJECT_DIR$/src/Model/CandyFactory.java" />
+        <option value="$PROJECT_DIR$/src/View/PopUpLogic.java" />
+        <option value="$PROJECT_DIR$/src/Model/QuestionResultsFromJSON.java" />
+        <option value="$PROJECT_DIR$/src/Model/ModelLogic.java" />
       </list>
     </option>
   </component>
@@ -169,24 +249,6 @@
             <path>
               <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pac-Man" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="Pac_Man_jar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pac-Man" type="b2602c69:ProjectViewProjectNode" />
@@ -393,6 +455,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -407,7 +470,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22239584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22239584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -441,10 +504,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.221875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22239584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -543,10 +606,10 @@
         <state relative-caret-position="138">
           <caret line="194" column="6" lean-forward="false" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="6" />
           <folding>
-            <marker date="1546801036092" expanded="true" signature="0:5003" ph="{...}" />
-            <marker date="1546801036092" expanded="true" signature="18:5002" ph="[...]" />
-            <marker date="1546801036092" expanded="true" signature="3582:3646" ph="{&quot;question&quot;: &quot;Which of the following is not an example for 'Antipattern' ?&quot;...}" />
-            <marker date="1546801036092" expanded="true" signature="4996:5000" ph="{&quot;question&quot;: &quot; what are the Maintenance risks?&quot;...}" />
+            <marker date="1546805822954" expanded="true" signature="0:5003" ph="{...}" />
+            <marker date="1546805822954" expanded="true" signature="18:5002" ph="[...]" />
+            <marker date="1546805822954" expanded="true" signature="3582:3646" ph="{&quot;question&quot;: &quot;Which of the following is not an example for 'Antipattern' ?&quot;...}" />
+            <marker date="1546805822954" expanded="true" signature="4996:5000" ph="{&quot;question&quot;: &quot; what are the Maintenance risks?&quot;...}" />
           </folding>
         </state>
       </provider>
@@ -563,14 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/ScoreHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -611,14 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/PopUpLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -727,14 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/QuestionResultsFromJSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/QuestionCandy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="775">
@@ -758,22 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
           <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4200">
-          <caret line="179" column="71" lean-forward="true" selection-start-line="179" selection-start-column="71" selection-end-line="179" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/ModelLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -850,18 +873,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/MainClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Candy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/MainClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/ScoreHistory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/PopUpLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="206" column="45" lean-forward="false" selection-start-line="206" selection-start-column="45" selection-end-line="206" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="297" column="0" lean-forward="false" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/QuestionResultsFromJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+          <folding>
+            <element signature="e#531#532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/ModelLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="83" column="40" lean-forward="true" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
           <folding />
         </state>
       </provider>

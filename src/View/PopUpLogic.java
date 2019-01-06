@@ -94,7 +94,7 @@ public class PopUpLogic {
 			   Game.pacmans.get(Game.getPlayerIndex()).isQuestionAppeared(true);
 
 		   }
-		   System.out.println(SysData.instance.getQuestions().get(indexOfQuestion).getCorrect_ans());
+
     }
 
 	/**
@@ -205,7 +205,6 @@ synchronized ( g) {
     	int g=4;
     	if (!freeze) {
           	Game.getInstance().setFlag(true);
-          	System.out.println(	Game.getInstance().flag);
            	ViewLogic.getInstance().CancelTimer();
  			 g =  JOptionPane.showConfirmDialog(null, "Would you like to exit from the game?", "Exit?", JOptionPane.YES_NO_OPTION);
  			synchronized ( Game.getInstance()) {
@@ -288,7 +287,6 @@ synchronized ( g) {
 
 					timer.schedule(new TimerTask() {
 						public void run() {
-							System.out.println(content.getBody().size());
 							new GameView();
 							dialog.close();
 						}

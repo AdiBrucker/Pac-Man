@@ -97,6 +97,5 @@ public class ModelLogic implements InterModel, Serializable {
     public void inputSerialize() {
         data = data.inputSerialize();
         SysData.createInstance().SetPacman(data.getPacman());
-        System.err.println(SysData.createInstance().getPacman());
     }
 }

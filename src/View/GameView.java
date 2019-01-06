@@ -73,7 +73,6 @@ public class GameView extends Canvas{
              newImage = back.getScaledInstance(300, 50, Image.SCALE_DEFAULT);
             backBTN.setIcon(new ImageIcon(newImage));
         } catch (IOException e) {
-            System.out.println("does not succeed");
             e.printStackTrace();
         }
         backBTN.addMouseListener(new MouseAdapter() {

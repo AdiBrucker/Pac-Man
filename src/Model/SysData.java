@@ -198,7 +198,6 @@ public class SysData implements Serializable{
 		if (name!=null&& score>0) {
 			Pacman.add(new Pacman(score, name));
 			Collections.sort(getPacman());
-			System.out.println(getPacman()+"after adding ");
 
 			return true;
 
