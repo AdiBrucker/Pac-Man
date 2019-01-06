@@ -5,6 +5,10 @@ import Model.SpriteSheet;
 
 import java.awt.*;
 
+/**
+ * Draw the ghost in the game
+ */
+
 public class GhostView {
 
     int xx;

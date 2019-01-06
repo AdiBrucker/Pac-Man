@@ -74,12 +74,7 @@ public class StartGame {
             button9.setStyle("-fx-background-color: transparent; -fx-text-fill:transparent ");
             button9.setOnAction(e-> new AboutView(stage));
 
-
-
-
             sstage.show();
-
-
 
             stage.setTitle("PACMAN");
             pane.getChildren().add(button);
@@ -92,7 +87,6 @@ public class StartGame {
                 if( PopUpLogic.getInstance().ShowEXit(true)==0) {
                     ModelLogic.getsData().writeQuestionsToJsonFile();
                     ModelLogic.getsData().Serialize(ModelLogic.getsData());
-                    System.out.println(ModelLogic.getsData());
 
                     stage.close();
                 }
@@ -143,12 +137,6 @@ public class StartGame {
 
     }
 
-
-    public void handle(ActionEvent event) {
-        if (event.getSource() == button) {
-            //       System.out.println("wowwwww");
-        }
-    }
 
 
 

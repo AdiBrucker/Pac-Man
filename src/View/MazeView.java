@@ -7,6 +7,10 @@ import Model.Walls;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Draw the maze in the game
+ */
+
 public class MazeView {
 
     public Walls[][] walls;

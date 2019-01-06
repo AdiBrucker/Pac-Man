@@ -86,6 +86,7 @@ public class ModelLogic implements InterModel, Serializable {
      * @param name
      * @return
      */
+
     @Override
     public boolean AddPacman(int score, String name) {
         return data.AddPacman(score, name);
@@ -97,6 +98,5 @@ public class ModelLogic implements InterModel, Serializable {
     public void inputSerialize() {
         data = data.inputSerialize();
         SysData.createInstance().SetPacman(data.getPacman());
-        System.err.println(SysData.createInstance().getPacman());
     }
 }

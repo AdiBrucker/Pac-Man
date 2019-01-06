@@ -266,7 +266,6 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                 g.add(maze.ghosts.get(i));
             }
         }
-        System.out.println(g.size());
         return g;
     }
     /**

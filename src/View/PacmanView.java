@@ -6,6 +6,10 @@ import Model.SysData;
 
 import java.awt.*;
 
+/**
+ *Draw the pacman in the game
+ */
+
 public class PacmanView {
     int x;
     int y;

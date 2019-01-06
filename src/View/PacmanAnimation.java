@@ -5,6 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.Buffer;
 
+/**
+ * Connect between the pacman drawing to the map
+ */
 public class PacmanAnimation {
 
     public static BufferedImage spritesheet;

@@ -25,22 +25,16 @@ import javafx.scene.control.TableView;
 
 import java.util.List;
 
+/**
+ * Screen that shows the top 5 scores of the pacmans
+ */
+
 public class ScoreHistory {
 
     Label l_Score;
     Label l_Name;
     Label l_rank;
     Label Score4_Text,Score5_Text,Rank1_Text,Score1_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text,Rank3_Text,Rank4_Text,Rank5_Text,Name3_Text,Name4_Text,Name5_Text;
-    Button B_back;
-    Image pic;
-
-
-    TableView table;
-    Group Group;
-
-      //  TableView<Pacman> table;
-     //    public  int score1=0  ;
-         public String PacmanNane;
 
         public ScoreHistory(Stage stage)
 
@@ -75,16 +69,7 @@ public class ScoreHistory {
             l_rank.setTextFill(Color.WHITE);
             GridPane.setConstraints(l_rank,3,15);
 
-
-
-            if(SysData.instance.getPacman().size()>0)
-            {
                 Rank1_Text = new Label("1" );
-            }
-            else {
-                Rank1_Text = new Label("");
-            }
-
             Rank1_Text.setMaxSize(110,35);
             Rank1_Text.setMinSize(110,35);
             Rank1_Text.setFont(new Font("Lucida Console", 20));
@@ -133,7 +118,6 @@ public class ScoreHistory {
             if(SysData.instance.getPacman().size()>0)
             {
                 Score1_Text = new Label(" " + Integer.valueOf(SysData.instance.getPacman().get(0).getScoreResult()));
-                System.out.println(SysData.instance.getPacman().get(0).getScoreResult());
             }
             else {
                 Score1_Text = new Label("");
@@ -291,24 +275,7 @@ public class ScoreHistory {
             B_back.setStyle("-fx-background-color: white");
             GridPane.setConstraints( B_back,3,30);
 
-
-
-
-
-
-
-
-
-
-
-
             pane.getChildren().addAll( B_back, Score4_Text,Score5_Text,Name3_Text,Name4_Text,Name5_Text,l_Score,l_rank,l_Name,Rank1_Text,Score1_Text,Rank3_Text,Rank4_Text,Rank5_Text, Name1_Text,Rank2_Text,Score2_Text,Score3_Text,Name2_Text );
-
-
-
-
-
-
 
                     Scene scene = new Scene(pane, 550,600);
                     stage.setScene(scene);
