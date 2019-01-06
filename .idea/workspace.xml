@@ -7,36 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="450d62db-f77a-4081-9305-f632443c737e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/CandyFactory.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/CandyFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/Pacman.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/Pacman.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/Scores$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/Scores$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/Scores.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/Scores.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/Model/SysData.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/Model/SysData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView$2.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/GameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/GhostView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/GhostView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/MazeView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/MazeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PacmanAnimation.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PacmanAnimation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PacmanView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PacmanView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PopUpLogic.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/PosionCandyView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/PosionCandyView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionCandyView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionCandyView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/QuestionManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/ScoreHistory.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/ScoreHistory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/StartGame.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/StartGame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Pac-Man/View/WallView.class" afterPath="$PROJECT_DIR$/out/production/Pac-Man/View/WallView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ModelLogic.java" afterPath="$PROJECT_DIR$/src/Model/ModelLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Pacman.java" afterPath="$PROJECT_DIR$/src/Model/Pacman.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/QuestionResultsFromJSON.java" afterPath="$PROJECT_DIR$/src/Model/QuestionResultsFromJSON.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/SysData.java" afterPath="$PROJECT_DIR$/src/Model/SysData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/GameView.java" afterPath="$PROJECT_DIR$/src/View/GameView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/PopUpLogic.java" afterPath="$PROJECT_DIR$/src/View/PopUpLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/ScoreHistory.java" afterPath="$PROJECT_DIR$/src/View/ScoreHistory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/StartGame.java" afterPath="$PROJECT_DIR$/src/View/StartGame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/ViewLogic.java" afterPath="$PROJECT_DIR$/src/View/ViewLogic.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -105,11 +77,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModelLogic.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ModelLogic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/ModelLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="83" column="40" lean-forward="true" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+            <state relative-caret-position="148">
+              <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViewLogic.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/View/ViewLogic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="175" column="64" lean-forward="false" selection-start-line="175" selection-start-column="51" selection-end-line="175" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -127,7 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pause</find>
       <find>system.out.pr</find>
       <find>bar</find>
       <find>question</find>
@@ -157,6 +138,7 @@
       <find>System.out</find>
       <find>showGameO</find>
       <find>System.err</find>
+      <find>System.ou</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -197,7 +179,6 @@
         <option value="$PROJECT_DIR$/src/Model/Game.java" />
         <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
         <option value="$PROJECT_DIR$/src/res/questions.json" />
-        <option value="$PROJECT_DIR$/src/View/ViewLogic.java" />
         <option value="$PROJECT_DIR$/src/View/StartGame.java" />
         <option value="$PROJECT_DIR$/out/artifacts/Pac_Man_jar/Serializable.ser" />
         <option value="$PROJECT_DIR$/src/View/QuestionManager.java" />
@@ -214,6 +195,7 @@
         <option value="$PROJECT_DIR$/src/View/PopUpLogic.java" />
         <option value="$PROJECT_DIR$/src/Model/QuestionResultsFromJSON.java" />
         <option value="$PROJECT_DIR$/src/Model/ModelLogic.java" />
+        <option value="$PROJECT_DIR$/src/View/ViewLogic.java" />
       </list>
     </option>
   </component>
@@ -605,12 +587,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="194" column="6" lean-forward="false" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="6" />
-          <folding>
-            <marker date="1546805822954" expanded="true" signature="0:5003" ph="{...}" />
-            <marker date="1546805822954" expanded="true" signature="18:5002" ph="[...]" />
-            <marker date="1546805822954" expanded="true" signature="3582:3646" ph="{&quot;question&quot;: &quot;Which of the following is not an example for 'Antipattern' ?&quot;...}" />
-            <marker date="1546805822954" expanded="true" signature="4996:5000" ph="{&quot;question&quot;: &quot; what are the Maintenance risks?&quot;...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -642,14 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/ViewLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5525">
-          <caret line="240" column="38" lean-forward="true" selection-start-line="240" selection-start-column="38" selection-end-line="240" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -925,8 +894,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/ModelLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="83" column="40" lean-forward="true" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+        <state relative-caret-position="148">
+          <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/ViewLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="175" column="64" lean-forward="false" selection-start-line="175" selection-start-column="51" selection-end-line="175" selection-end-column="64" />
           <folding />
         </state>
       </provider>

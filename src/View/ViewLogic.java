@@ -175,7 +175,7 @@ public class ViewLogic {
                     int minutes1 = (int) Math.floor(TimerCounting / 60F);
                     int second1 = (int) Math.floor(TimerCounting - minutes1 * 60);
 
-                    if (TimerCounting % 10 == 0) {//// if 40 second passed its replace with the other users
+                    if (TimerCounting % 40 == 0) {//// if 40 second passed its replace with the other users
                         setPacmanTurn();
                                 if (PopUpLogic.getNumOfPlayers() > 1) {
                                     updateTimeDisplay(minutes1,second1);
