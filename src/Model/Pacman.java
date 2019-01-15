@@ -220,7 +220,6 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                         up = false;
                         down = false;
                         Music("\\src\\res\\Question-SOUND.wav");
-
                         showQuestion();
                         right = false;
                         left = false;
@@ -284,7 +283,6 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                 g.add(maze.ghosts.get(i));
             }
         }
-        System.out.println(g.size());
         return g;
     }
     /**
@@ -393,5 +391,10 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
     public boolean isQuestionAppeared() {
         return isQuestionAppeared;
     }
+
+    public Maze getMaze(){
+        return maze;
+    }
+
 
 }

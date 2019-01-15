@@ -3,6 +3,11 @@ package View;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Draw the poison candy in the game
+ */
+
+
 public class PosionCandyView extends CandyView {
 
     BufferedImage poisonCandy;

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import View.*;
 
+import static Model.Pacman.viewInstance;
+
 /**
  * Class which is responsible to hold the game objects such as pacman, maze, game etc.
  */
@@ -37,6 +39,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     static PopUpLogic popInctance = PopUpLogic.getInstance();
     // set the game turn with the relevant player
     private static int playerIndex = 0;
+    public static String path1="/res/map/map.png";
 
     /**
      * Class constructor. initiates the arrays, build the game boards with its contents.
@@ -65,7 +68,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
             playerIndex = 1;
         }
 
-        mazes.add(new Maze("/res/map/map.png"));
+        mazes.add(new Maze(path1));
         spriteSheets.add(new SpriteSheet("/res/sprites/spritesheet.png"));
         flickerCandyspriteSheets.add(new SpriteSheet("/res/sprites/FlickerCandy.png"));
     }
@@ -181,8 +184,29 @@ public class Game extends Canvas implements Runnable, KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_UP) pacmans.get(playerIndex).up = true;
         if (e.getKeyCode() == KeyEvent.VK_DOWN) pacmans.get(playerIndex).down = true;
 
-        if (e.getKeyCode() == KeyEvent.VK_SPACE)// when pressing space
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            // when pressing space
+            ViewLogic.pauseb4();
             PopUpLogic.getInstance().pauseGame();
+            ViewLogic.pauseafter();
+        }
+
+       if (e.getKeyCode() == KeyEvent.VK_U)// cheat for the correct tmp ghost
+            TmpGhost.cheetWithCorrectTmpGhost();
+
+        if (e.getKeyCode() == KeyEvent.VK_I) {// cheat for upgrade score
+            pacmans.get(playerIndex).score += Scores.EASY_CORRECT.getScore();
+            viewInstance.setScoreForPacman();
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_Y) {// cheat for ghosts to stop move
+            if(!Ghost.isCheatAppears){
+                Ghost.isCheatAppears = true;
+            } else{
+                Ghost.isCheatAppears = false;
+            }
+        }
+            //isCheatAppears
     }
 
     /**
@@ -222,7 +246,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         playerIndex = 0;
         playerCount = 0;
     }
-    
+
     public static ArrayList<Game> getInstanceList() {
        return instances;
     }
@@ -235,7 +259,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         return playerIndex;
     }
 
-    
+
     public static void setFlag(boolean a) {
     	flag=a;
     }

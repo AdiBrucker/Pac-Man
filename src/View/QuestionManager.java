@@ -23,43 +23,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Responsible on the Question Manager screen,
+ * lets to edit question, delete or add a new question
+ */
+
 public class QuestionManager implements EventHandler {
 
-    // Image image = new Image("res/first.PNG");
-    Button button;
-    Label Difficulty;
-    Label l_Quest_Num;
-    Label l_Team;
-    Label l_Question;
-    Label l_Answer1;
-    Label l_Answer2;
-    Label l_Answer3;
-    Label l_Answer4;
-    Label l_curect_Ans;
-    GridPane grid;
-    Label Text_Difficulty;
-    Label Text_Team;
-    Label QuestText;
-    Label Text_Answer1;
-    Label Text_Answer2;
-    Label Text_Answer3;
-    Label Text_Answer4;
-    Label Text_cureectAns;
+    TextField Text_Difficulty;
+    TextField Text_Team;
+    TextField QuestText;
+    TextField Text_Answer1;
+    TextField Text_Answer2;
+    TextField Text_Answer3;
+    TextField Text_Answer4;
+    TextField Text_cureectAns;
     String answer1;
     String answer2;
     String answer3;
     String answer4;
-    Stage stage;
     Scene scene;
-    HBox bar;
+    Button knapp2;
        static int index = 0;
     Button knapp3 = new Button(">>");
     Button knapp1 = new Button("<<");
 
 
-    ComboBox<String> comboBox;
-    ComboBox<String> comboBox_num;
-    ComboBox<String> comboBox_team;
 
     public QuestionManager(Stage stage)
     {
@@ -91,29 +80,32 @@ public class QuestionManager implements EventHandler {
         GridPane.setConstraints(l_Difficulty,3,13);
 
 
-//
-        Text_Difficulty = new Label(""+ SysData.instance.getQuestions().get(index).getlevel());
+        Text_Difficulty = new TextField(""+ SysData.instance.getQuestions().get(index).getlevel());
         Text_Difficulty.setMaxSize(350,35);
         Text_Difficulty.setMinSize(350,35);
         Text_Difficulty.setStyle("-fx-background-color: yellow");
+        Text_Difficulty.setEditable(false);
         GridPane.setConstraints(Text_Difficulty,4,13);
 
-        Text_Team = new Label(""+ SysData.instance.getQuestions().get(index).getTeam());
+        Text_Team = new TextField(""+ SysData.instance.getQuestions().get(index).getTeam());
         Text_Team.setMaxSize(350,35);
         Text_Team.setMinSize(350,35);
         Text_Team.setStyle("-fx-background-color: yellow");
+        Text_Team.setEditable(false);
         GridPane.setConstraints(Text_Team,4,14);
 
-        QuestText = new Label(SysData.instance.getQuestions().get(index).getquestion());
+        QuestText = new TextField(SysData.instance.getQuestions().get(index).getquestion());
         QuestText.setMaxSize(350,35);
         QuestText.setMinSize(350,35);
         QuestText.setStyle("-fx-background-color: yellow");
+        QuestText.setEditable(false);
         GridPane.setConstraints(QuestText,4,16);
 
-        Text_cureectAns = new Label(SysData.instance.getQuestions().get(index).getCorrect_ans());
+        Text_cureectAns = new TextField(SysData.instance.getQuestions().get(index).getCorrect_ans());
         Text_cureectAns.setMaxSize(100,35);
         Text_cureectAns.setMinSize(100,35);
         Text_cureectAns.setStyle("-fx-background-color: yellow");
+        Text_cureectAns.setEditable(false);
         GridPane.setConstraints(Text_cureectAns,4,21);
 
         getAnswerByIndex(0);
@@ -138,10 +130,11 @@ public class QuestionManager implements EventHandler {
         l_Answer1.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer1,3,17);
 
-        Text_Answer1 = new Label(answer1);
+        Text_Answer1 = new TextField(answer1);
         Text_Answer1.setMaxSize(350,35);
         Text_Answer1.setMinSize(350,35);
         Text_Answer1.setStyle("-fx-background-color: yellow");
+        Text_Answer1.setEditable(false);
         GridPane.setConstraints(Text_Answer1,4,17);
 
         Label l_Answer2 = new Label("Answer 2:");
@@ -150,10 +143,11 @@ public class QuestionManager implements EventHandler {
         l_Answer2.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer2,3,18);
 
-        Text_Answer2 = new Label(answer2);
+        Text_Answer2 = new TextField(answer2);
         Text_Answer2.setMaxSize(350,35);
         Text_Answer2.setMinSize(350,35);
         Text_Answer2.setStyle("-fx-background-color: yellow");
+        Text_Answer2.setEditable(false);
         GridPane.setConstraints(Text_Answer2,4,18);
 
         Label l_Answer3 = new Label("Answer 3:");
@@ -162,10 +156,11 @@ public class QuestionManager implements EventHandler {
         l_Answer3.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer3,3,19);
 
-        Text_Answer3 = new Label(answer3);
+        Text_Answer3 = new TextField(answer3);
         Text_Answer3.setMaxSize(350,35);
         Text_Answer3.setMinSize(350,35);
         Text_Answer3.setStyle("-fx-background-color: yellow");
+        Text_Answer3.setEditable(false);
         GridPane.setConstraints(Text_Answer3,4,19);
 
         Label l_Answer4 = new Label("Answer 4:");
@@ -174,10 +169,11 @@ public class QuestionManager implements EventHandler {
         l_Answer4.setStyle("-fx-background-color: yellow");
         GridPane.setConstraints(l_Answer4,3,20);
 
-        Text_Answer4 = new Label(answer4);
+        Text_Answer4 = new TextField(answer4);
         Text_Answer4.setMaxSize(350,35);
         Text_Answer4.setMinSize(350,35);
         Text_Answer4.setStyle("-fx-background-color: yellow");
+        Text_Answer4.setEditable(false);
         GridPane.setConstraints(Text_Answer4,4,20);
 
         Label l_curect_Ans = new Label("curect Ans");
@@ -192,7 +188,7 @@ public class QuestionManager implements EventHandler {
         knapp1.setMinSize(65,35);
         knapp1.setOnAction(this);
         knapp1.setDisable(true);
-        Button knapp2 = new Button("Edit");
+         knapp2 = new Button("Edit");
          knapp2.setMaxSize(65,35 );
         knapp2.setMinSize(65,35);
         knapp2.setOnAction(e-> EditQuestion()  );
@@ -243,39 +239,60 @@ public class QuestionManager implements EventHandler {
      		PopUpLogic.getInstance().QuestionMistake();
 
     }
+
     
     private void EditQuestion() {
 
-	if( Text_cureectAns.getText()!=null&&!Text_cureectAns.getText().isEmpty() 
-		&& QuestText.getText()!=null&&!QuestText.getText().isEmpty()  &&
-		Text_Team.getText()!=null&&!Text_Team.getText().isEmpty()&&
-		Text_Difficulty.getText()!=null&&!Text_Difficulty.getText().isEmpty()&&
-		Text_Answer1.getText()!=null&&!Text_Answer1.getText().isEmpty()&&
-		Text_Answer2.getText()!=null&&!Text_Answer2.getText().isEmpty()) {
- 	
-		Question q = SysData.instance.getQuestions().get(index);
-    	q.setCorrect_ans(Text_cureectAns.getText());
-    	q.setquestion(QuestText.getText());
-    	q.setTeam(Text_Team.getText());
-    	q.setlevel(Integer.valueOf(Text_Difficulty.getText()));
-    	List<String> answer=new ArrayList<String>();
-    	answer.add(Text_Answer1.getText());
-    	answer.add(Text_Answer2.getText());
-  		if(Text_Answer3.getText()!=null&&!Text_Answer3.getText().isEmpty()) {
-   	    	answer.add(Text_Answer3.getText());
-    	 }
-  		if(Text_Answer4.getText()!=null&&!Text_Answer4.getText().isEmpty()) {
-    	    	answer.add(Text_Answer4.getText());
-    	 }
-    	q.setAnswers(answer);
-    	PopUpLogic.getInstance().QuestionEdit();
-    	SetTextToEmpty();
-  	   	
-	}
-	else {
-		PopUpLogic.getInstance().QuestionMistake();
-	}
-     }
+        if (knapp2.getText() == "Edit") {
+            Text_Difficulty.setEditable(true);
+            Text_Team.setEditable(true);
+            QuestText.setEditable(true);
+            Text_Answer1.setEditable(true);
+            Text_Answer2.setEditable(true);
+            Text_Answer3.setEditable(true);
+            Text_Answer4.setEditable(true);
+            Text_cureectAns.setEditable(true);
+            knapp2.setText("Save edit");
+        } else {
+            if (Text_cureectAns.getText() != null && !Text_cureectAns.getText().isEmpty()
+                    && QuestText.getText() != null && !QuestText.getText().isEmpty() &&
+                    Text_Team.getText() != null && !Text_Team.getText().isEmpty() &&
+                    Text_Difficulty.getText() != null && !Text_Difficulty.getText().isEmpty() &&
+                    Text_Answer1.getText() != null && !Text_Answer1.getText().isEmpty() &&
+                    Text_Answer2.getText() != null && !Text_Answer2.getText().isEmpty()) {
+
+                Question q = SysData.instance.getQuestions().get(index);
+                q.setCorrect_ans(Text_cureectAns.getText());
+                q.setquestion(QuestText.getText());
+                q.setTeam(Text_Team.getText());
+                q.setlevel(Integer.valueOf(Text_Difficulty.getText()));
+                List<String> answer = new ArrayList<String>();
+                answer.add(Text_Answer1.getText());
+                answer.add(Text_Answer2.getText());
+                if (Text_Answer3.getText() != null && !Text_Answer3.getText().isEmpty()) {
+                    answer.add(Text_Answer3.getText());
+                }
+                if (Text_Answer4.getText() != null && !Text_Answer4.getText().isEmpty()) {
+                    answer.add(Text_Answer4.getText());
+                }
+                q.setAnswers(answer);
+                PopUpLogic.getInstance().QuestionEdit();
+                SetTextToEmpty();
+
+            } else {
+                PopUpLogic.getInstance().QuestionMistake();
+            }
+            Text_Difficulty.setEditable(false);
+            Text_Team.setEditable(false);
+            QuestText.setEditable(false);
+            Text_Answer1.setEditable(false);
+            Text_Answer2.setEditable(false);
+            Text_Answer3.setEditable(false);
+            Text_Answer4.setEditable(false);
+            Text_cureectAns.setEditable(false);
+            knapp2.setText("Edit");
+        }
+    }
     
 
     private void getAnswerByIndex(int index) {

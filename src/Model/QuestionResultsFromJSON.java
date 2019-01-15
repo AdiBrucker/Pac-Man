@@ -23,7 +23,6 @@ public class QuestionResultsFromJSON implements Serializable{
 	 * @return
 	 */
 	public List<Question> getQuestions() {
-		System.err.println(questions);
 		return questions;
 	}
 

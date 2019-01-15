@@ -1,5 +1,5 @@
 package View;
- 
+
 import Model.ModelLogic;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -27,8 +27,9 @@ public class StartGame {
     static Button button;
     static Button button1;
     static Button button2;
-    static Button button5;
+    static Button button5, button9;
     static Image image = new Image("res/Startgame.PNG");
+
     static StackPane pane;
     static Stage sstage;
     static boolean stageShowed = true;
@@ -40,40 +41,60 @@ public class StartGame {
             ImageView iv = new ImageView();
             PopUpLogic popUpLogic= PopUpLogic.getInstance();
 
-             pane = new StackPane();
+            pane = new StackPane();
             Scene scene = new Scene(pane, 550, 600);
             pane.getChildren().add(iv);
             stage.setScene(scene);
             sstage = stage;
-            stage.show();
+            //sstage.show();
             iv.setImage(image);
             iv.setFitHeight(700);
             iv.setFitWidth(700);
             iv.setPreserveRatio(true);
             stage.setScene(scene);
             button = new Button("Start");
-        	Image icon =new Image("res/pacnanIm.png");////   src//pacnanIm.jpg
-        	stage.getIcons().add(icon);
-        	stage.setTitle("PACMAN");
+            Image icon =new Image("res/pacnanIm.png");////   src//pacnanIm.jpg
+            stage.getIcons().add(icon);
+
+            ImageView iv2 = new ImageView();
+            Image image2 = new Image("res/QMark.PNG");
+            iv2.setImage(image2);
+            pane.getChildren().add(iv2);
+            stage.getIcons().add(image2);
+            iv2.setFitHeight(50);
+            iv2.setFitWidth(50);
+            iv2.setTranslateX(200);
+            iv2.setTranslateY(200);
+
+            button9 = new Button("Qmark");
+            pane.getChildren().add(button9);
+            button9.setMaxSize(20, 20);
+            button9.setTranslateX(200);
+            button9.setTranslateY(200);
+            button9.setStyle("-fx-background-color: transparent; -fx-text-fill:transparent ");
+            button9.setOnAction(e-> new AboutView(stage));
+
+            sstage.show();
+
+            stage.setTitle("PACMAN");
             pane.getChildren().add(button);
             button.setMaxSize(260, 30);
             button.setTranslateX(-110);
             button.setTranslateY(-110);
             button.setStyle("-fx-background-color:transparent ; -fx-text-fill:transparent ");
-             button.setOnAction(e->new GameView() );
+            button.setOnAction(e->new GameView() );
             stage.setOnCloseRequest(e-> {
-            if( PopUpLogic.getInstance().ShowEXit(true)==0) {
-	       		 ModelLogic.getsData().writeQuestionsToJsonFile();
-	       		  ModelLogic.getsData().Serialize(ModelLogic.getsData());
-         		 System.out.println(ModelLogic.getsData());
+                if( PopUpLogic.getInstance().ShowEXit(true)==0) {
+                    ModelLogic.getsData().writeQuestionsToJsonFile();
+                    ModelLogic.getsData().Serialize(ModelLogic.getsData());
 
-	       		 stage.close();
-            	}
-            e.consume();
+                    stage.close();
+                }
+                e.consume();
             });
- 
-          button.setOnAction(e -> popUpLogic.showGameType(pane));
-  
+
+            button.setOnAction(e -> popUpLogic.showGameType(pane));
+
 
             button1 = new Button("Question");
             pane.getChildren().add(button1);
@@ -103,11 +124,11 @@ public class StartGame {
             button2.setTranslateY(100);
             button2.setStyle("-fx-background-color:transparent; -fx-text-fill:transparent ");
             button2.setOnAction(e -> {
-            	 if( PopUpLogic.getInstance().ShowEXit(true)==0) {
-            		 ModelLogic.getsData().writeQuestionsToJsonFile();
-            		 ModelLogic.getsData().Serialize(ModelLogic.getsData());
-                      stage.close();
-                 }
+                if( PopUpLogic.getInstance().ShowEXit(true)==0) {
+                    ModelLogic.getsData().writeQuestionsToJsonFile();
+                    ModelLogic.getsData().Serialize(ModelLogic.getsData());
+                    stage.close();
+                }
             });
 
         } catch (Exception e) {
@@ -117,16 +138,10 @@ public class StartGame {
     }
 
 
-    public void handle(ActionEvent event) {
-        if (event.getSource() == button) {
-            //       System.out.println("wowwwww");
-        }
-    }
-
 
 
     public static void closeMain(){
-         sstage.close();
+        sstage.close();
     }
 
 

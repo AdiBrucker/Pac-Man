@@ -5,14 +5,18 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.Buffer;
 
+/**
+ * Connect between the pacman drawing to the map
+ */
 public class PacmanAnimation {
 
     public static BufferedImage spritesheet;
     public static BufferedImage[] pacman;
+    public static String path="/res/sprites/spritesheet.png";
 
     public PacmanAnimation(){
         try {
-            spritesheet = ImageIO.read(getClass().getResource("/res/sprites/spritesheet.png"));
+            spritesheet = ImageIO.read(getClass().getResource(path));
         } catch (IOException e) {
             e.printStackTrace();
         }
