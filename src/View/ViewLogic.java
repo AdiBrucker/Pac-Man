@@ -191,14 +191,16 @@ public class ViewLogic {
     }
 
     private static void resetPacmanMovements() {
-        Game.pacmans.get(0).right = false;
-        Game.pacmans.get(0).left = false;
-        Game.pacmans.get(0).up = false;
-        Game.pacmans.get(0).down = false;
-        Game.pacmans.get(1).right = false;
-        Game.pacmans.get(1).left = false;
-        Game.pacmans.get(1).up = false;
-        Game.pacmans.get(1).down = false;
+        if (Game.pacmans.size() == 2){
+            Game.pacmans.get(0).right = false;
+            Game.pacmans.get(0).left = false;
+            Game.pacmans.get(0).up = false;
+            Game.pacmans.get(0).down = false;
+            Game.pacmans.get(1).right = false;
+            Game.pacmans.get(1).left = false;
+            Game.pacmans.get(1).up = false;
+            Game.pacmans.get(1).down = false;
+        }
     }
 
     public static void setNickname() {

@@ -36,6 +36,8 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
     private int lastDir = 1;
     private Maze maze;
     private boolean isQuestionAppeared = false; //flag that says when the temp ghosts appears
+    int flickerTime = 0;
+    int flickerIndex = 0;
 
     /**
      * Constructor creates the instance of pacman
@@ -74,15 +76,18 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
         viewInstance = ViewLogic.getInstance();
         popUpInstance = PopUpLogic.getInstance();
         animatePacman();
+
         eatingCandies(maze);
         pacmansMovements();
         ghostIntersections(maze);
+
         //when there are no more candies the game is finished
         if (maze.candy.size() == 0) {
             System.exit(1);
             score += 100;
             ShowGameOver();
         }
+
     }
 
     /**
@@ -245,6 +250,16 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
                     down = false;
                     maze.candy.remove(i);
                 }
+                else if (this.intersects(maze.flickerCandy)){
+                    if (score > 0){
+                        score = score * 2;
+                    }
+                    else {
+                        score = 0;
+                    }
+                    maze.candy.remove(maze.flickerCandy);
+                    maze.flickerIndex = 15;
+                }
                 break;
             }
         }
@@ -260,6 +275,8 @@ public class Pacman extends Rectangle implements IMovable, Comparable, Serializa
             animationIndexImage++;
         }
     }
+
+
     public ArrayList<Ghost> removeTmp(){
         ArrayList<Ghost> g = new ArrayList<>();
         for (int i = 0; i < maze.ghosts.size(); i++) {

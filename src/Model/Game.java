@@ -6,10 +6,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
-import View.GameView;
-import View.PacmanAnimation;
-import View.PopUpLogic;
-import View.StartGame;
+import View.*;
 
 /**
  * Class which is responsible to hold the game objects such as pacman, maze, game etc.
@@ -27,6 +24,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public static ArrayList<Maze> mazes;
     //An array that holds spriteshets instances for multiple players.
     public static ArrayList<SpriteSheet> spriteSheets;
+    //An array that holds spriteshets instances for multiple players.
+    public static ArrayList<SpriteSheet> flickerCandyspriteSheets;
     //An array that holds game instances for multiple players.
     private static ArrayList<Game> instances;
     //uses to indicate when to stop the watch and when the game is running
@@ -48,6 +47,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
             pacmans = new ArrayList<>();
             mazes = new ArrayList<>();
             spriteSheets = new ArrayList<>();
+            flickerCandyspriteSheets = new ArrayList<>();
         }
 
         setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
@@ -57,6 +57,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         addKeyListener(this);
         new PacmanAnimation();
+        new FlickerCandyAnimation();
         if (playerCount == 1) {
             pacmans.add(new Pacman(Game.WIDTH / 2, Game.HEIGHT / 2, popInctance.getPlayer1()));
         } else if (playerCount == 2) {
@@ -66,6 +67,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         mazes.add(new Maze("/res/map/map.png"));
         spriteSheets.add(new SpriteSheet("/res/sprites/spritesheet.png"));
+        flickerCandyspriteSheets.add(new SpriteSheet("/res/sprites/FlickerCandy.png"));
     }
 
     /**

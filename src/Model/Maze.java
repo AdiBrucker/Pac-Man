@@ -29,6 +29,10 @@ public class Maze {
     public static boolean level2 = false;
     public static int goodx = 0; // it will determine the location of the tmp ghosts
     public static int goody = 0;
+    public FlickerCandy flickerCandy;
+    int flickerIndex = 0;
+    int flickerTime = 0;
+
 
     /**
      * Constructor
@@ -43,6 +47,7 @@ public class Maze {
         int getCandy = 0;
         boolean candyPoisonAppeared = false;
         int getSilverCandy = 0;
+        int getFlickerCandy = 1;
         Random rand = new Random();
         try {
             BufferedImage map = ImageIO.read(getClass().getResource(path));
@@ -56,6 +61,7 @@ public class Maze {
                 for (int yy = 0; yy < height; yy++) {
                     int val = pixels[xx + (yy * width)];
                     int n = rand.nextInt(10) + 1;
+                    int m = rand.nextInt(100) + 1;
                     if (val == 0xFF000000) {
                         //Wall
                         walls[xx][yy] = new Walls(xx * 32, yy * 32);
@@ -92,6 +98,10 @@ public class Maze {
                             candy.add(c);
                             //candy.add(new ScoreCandy(xx * 32, yy * 32, "Silver"));
                             getSilverCandy++;
+                        } else if (getFlickerCandy < 2 && m % 6 == 0) {
+                            c = CandyFactory.makeCandy("Flicker", xx * 32, yy * 32);
+                            candy.add(c);
+                            getSilverCandy++;
                         } else if (!candyPoisonAppeared) {
                             c = CandyFactory.makeCandy("PoisonCandy", xx * 32, yy * 32);
                             //c.setLocation(xx * 32,  yy * 32);
@@ -110,6 +120,7 @@ public class Maze {
                     }
                 }
             }
+            getFlickerCandy();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -124,6 +135,7 @@ public class Maze {
         for (int i = 0; i < ghosts.size(); i++) {
             ghosts.get(i).tick();
         }
+        animateFlickerCandy();
     }
 
     /**
@@ -134,6 +146,9 @@ public class Maze {
     public void render(Graphics g) {
         MazeView view = new MazeView(walls, candy, ghosts, width, height);
         view.render(g);
+        if (flickerCandy != null) {
+            flickerCandy.render(g, flickerIndex);
+        }
     }
 
     public static int getGhostWidth() {
@@ -142,5 +157,23 @@ public class Maze {
 
     public static int getGhostHeigh() {
         return goody;
+    }
+
+    public void getFlickerCandy() {
+        for (int i = 0; i < candy.size(); i++) {
+            if (candy.get(i).getType().equals("Flicker")) {
+                flickerCandy = (FlickerCandy) candy.get(i);
+            }
+        }
+    }
+
+    private void animateFlickerCandy() {
+        if (flickerCandy != null) {
+            flickerTime++;
+            if (flickerTime == 48) {
+                flickerIndex++;
+                flickerTime = 0;
+            }
+        }
     }
 }

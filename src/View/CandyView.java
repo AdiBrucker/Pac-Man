@@ -42,7 +42,7 @@ public class CandyView {
 
         } else if (type == "Gold") {
             g.drawImage(goldCandy, x, y, width + 10, height + 10, null, null);
-        } else {
+        } else if (type == "Silver") {
             g.drawImage(silverCandy, x, y, width + 10, height + 10, null, null);
         }
     }
