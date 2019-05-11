@@ -18,21 +18,21 @@ public class FlickerCandyAnimation {
 
         flickerCandy = new BufferedImage[15];
 
-        flickerCandy[0] = getSprites(0, 0);
-        flickerCandy[1] = getSprites(16, 0);
-        flickerCandy[2] = getSprites(32, 0);
-        flickerCandy[3] = getSprites(48, 0);
-        flickerCandy[4] = getSprites(64, 0);
-        flickerCandy[5] = getSprites(80, 0);
-        flickerCandy[6] = getSprites(96, 0);
+        flickerCandy[14] = getSprites(0, 0);
+        flickerCandy[13] = getSprites(16, 0);
+        flickerCandy[12] = getSprites(32, 0);
+        flickerCandy[11] = getSprites(48, 0);
+        flickerCandy[10] = getSprites(64, 0);
+        flickerCandy[9] = getSprites(80, 0);
+        flickerCandy[8] = getSprites(96, 0);
         flickerCandy[7] = getSprites(112, 0);
-        flickerCandy[8] = getSprites(128, 0);
-        flickerCandy[9] = getSprites(144, 0);
-        flickerCandy[10] = getSprites(0, 16);
-        flickerCandy[11] = getSprites(16, 16);
-        flickerCandy[12] = getSprites(32, 16);
-        flickerCandy[13] = getSprites(48, 16);
-        flickerCandy[14] = getSprites(64, 16);
+        flickerCandy[6] = getSprites(128, 0);
+        flickerCandy[5] = getSprites(144, 0);
+        flickerCandy[4] = getSprites(0, 16);
+        flickerCandy[3] = getSprites(16, 16);
+        flickerCandy[2] = getSprites(32, 16);
+        flickerCandy[1] = getSprites(48, 16);
+        flickerCandy[0] = getSprites(64, 16);
     }
 
     public BufferedImage getSprites(int x, int y){
